@@ -40,8 +40,22 @@ import torch  # noqa: E402
 from diffusers import Flux2KleinPipeline  # noqa: E402
 from PIL import Image  # noqa: E402
 
-pipe = Flux2KleinPipeline.from_pretrained(manifest["model"], torch_dtype=torch.bfloat16)
-pipe.enable_model_cpu_offload()
+# Kaggle gives two 15 GB GPUs. The text encoder and the image model are each about 8 GB, so on one
+# card they have to take turns (slow, and what one leaves behind starves the other). Spread across
+# both cards nothing has to move. If that is not possible, fall back to taking turns on one card.
+placement = "one GPU, models take turns"
+pipe = None
+if torch.cuda.device_count() >= 2:
+    try:
+        pipe = Flux2KleinPipeline.from_pretrained(manifest["model"], torch_dtype=torch.bfloat16, device_map="balanced")
+        placement = "two GPUs, one model on each"
+    except Exception as exc:
+        report["placement_error"] = f"{type(exc).__name__}: {exc}"[:300]
+        pipe = None
+if pipe is None:
+    pipe = Flux2KleinPipeline.from_pretrained(manifest["model"], torch_dtype=torch.bfloat16)
+    pipe.enable_model_cpu_offload()
+report["placement"] = placement
 report["setup_seconds"] = round(time.time() - started, 1)
 report["gpu"] = torch.cuda.get_device_name(0)
 save_report()
@@ -70,9 +84,16 @@ def shrink(image, longest):
 def free_gpu():
     import gc
 
+    if placement.startswith("one GPU"):
+        try:
+            pipe.maybe_free_model_hooks()  # send every model back to the CPU, whatever state a failure left
+        except Exception:
+            pass
     gc.collect()
-    torch.cuda.empty_cache()
-    torch.cuda.reset_peak_memory_stats()
+    for index in range(torch.cuda.device_count()):
+        with torch.cuda.device(index):
+            torch.cuda.empty_cache()
+            torch.cuda.reset_peak_memory_stats()
 
 
 def generate(item, reference_side, scale):
@@ -82,7 +103,7 @@ def generate(item, reference_side, scale):
     arguments = dict(
         prompt=item["prompt"], width=width, height=height,
         guidance_scale=manifest["guidance_scale"], num_inference_steps=manifest["steps"],
-        generator=torch.Generator(device="cuda").manual_seed(item["seed"]),
+        generator=torch.Generator(device="cpu").manual_seed(item["seed"]),
     )
     if references:
         arguments["image"] = references if len(references) > 1 else references[0]
@@ -106,7 +127,7 @@ for item in manifest["items"]:
             continue
         image.save(os.path.join(OUT, item["file"]), quality=95)
         record.update(status="ok", width=width, height=height, reference_side=reference_side,
-                      peak_vram_gb=round(torch.cuda.max_memory_allocated() / 1e9, 2))
+                      peak_vram_gb=round(max(torch.cuda.max_memory_allocated(i) for i in range(torch.cuda.device_count())) / 1e9, 2))
         del image
         break
     else:

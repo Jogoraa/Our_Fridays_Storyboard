@@ -1,0 +1,10 @@
+{
+  "key": "6158831502e3366dd11d3c28fb081db5e3b7343980a05b08eb9da3701f622a3c",
+  "written": "2026-11-25T08:55:50+00:00",
+  "kind": "reference",
+  "shot": null,
+  "aspect": null,
+  "seed": 7002,
+  "model": "black-forest-labs/FLUX.2-klein-4B",
+  "gpu_seconds": 92.15
+}

@@ -1,0 +1,659 @@
+{
+  "model": "black-forest-labs/FLUX.2-klein-4B",
+  "setup_seconds": 137.3,
+  "items": [
+    {
+      "file": "girma_c1.jpg",
+      "seed": 7001,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 120.58
+    },
+    {
+      "file": "girma_c2.jpg",
+      "seed": 7002,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 92.15
+    },
+    {
+      "file": "girma_c3.jpg",
+      "seed": 7003,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 92.01
+    },
+    {
+      "file": "kebede_c1.jpg",
+      "seed": 7101,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 91.58
+    },
+    {
+      "file": "kebede_c2.jpg",
+      "seed": 7102,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 91.04
+    },
+    {
+      "file": "kebede_c3.jpg",
+      "seed": 7103,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 90.93
+    },
+    {
+      "file": "hana_c1.jpg",
+      "seed": 7201,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 90.01
+    },
+    {
+      "file": "hana_c2.jpg",
+      "seed": 7202,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 89.77
+    },
+    {
+      "file": "hana_c3.jpg",
+      "seed": 7203,
+      "attempts": [],
+      "status": "ok",
+      "width": 864,
+      "height": 1152,
+      "reference_side": 512,
+      "peak_vram_gb": 12.54,
+      "seconds": 89.43
+    },
+    {
+      "file": "shot_01_9x16.jpg",
+      "seed": 2001,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 4.68 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.70 GiB is free. Including non-PyTorch memory, this process has 12.86 GiB memory in use. Of the allocated memory 12.64 GiB is allocated by PyTorch, and 89.69 MiB is reserved by PyTorch"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 17.29 MiB is reserved by PyTor"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 14.16
+    },
+    {
+      "file": "shot_01_16x9.jpg",
+      "seed": 2001,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.8
+    },
+    {
+      "file": "shot_02_9x16.jpg",
+      "seed": 2002,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.8
+    },
+    {
+      "file": "shot_02_16x9.jpg",
+      "seed": 2002,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.84
+    },
+    {
+      "file": "shot_03_9x16.jpg",
+      "seed": 2003,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.74
+    },
+    {
+      "file": "shot_03_16x9.jpg",
+      "seed": 2003,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.73
+    },
+    {
+      "file": "shot_04_9x16.jpg",
+      "seed": 2004,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.68
+    },
+    {
+      "file": "shot_04_16x9.jpg",
+      "seed": 2004,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.66
+    },
+    {
+      "file": "shot_05_9x16.jpg",
+      "seed": 2005,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.68
+    },
+    {
+      "file": "shot_05_16x9.jpg",
+      "seed": 2005,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.64
+    },
+    {
+      "file": "shot_06_9x16.jpg",
+      "seed": 2006,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.77
+    },
+    {
+      "file": "shot_06_16x9.jpg",
+      "seed": 2006,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.79
+    },
+    {
+      "file": "shot_07_9x16.jpg",
+      "seed": 2007,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.73
+    },
+    {
+      "file": "shot_07_16x9.jpg",
+      "seed": 2007,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.72
+    },
+    {
+      "file": "shot_08_9x16.jpg",
+      "seed": 2008,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.73
+    },
+    {
+      "file": "shot_08_16x9.jpg",
+      "seed": 2008,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.74
+    },
+    {
+      "file": "shot_09_9x16.jpg",
+      "seed": 2009,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.64
+    },
+    {
+      "file": "shot_09_16x9.jpg",
+      "seed": 2009,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.69
+    },
+    {
+      "file": "shot_10_9x16.jpg",
+      "seed": 2010,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.81
+    },
+    {
+      "file": "shot_10_16x9.jpg",
+      "seed": 2010,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.8
+    },
+    {
+      "file": "shot_11_9x16.jpg",
+      "seed": 2011,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.73
+    },
+    {
+      "file": "shot_11_16x9.jpg",
+      "seed": 2011,
+      "attempts": [
+        {
+          "reference_side": 512,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 1.0,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        },
+        {
+          "reference_side": 384,
+          "scale": 0.8334,
+          "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc"
+        }
+      ],
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 18.81 MiB is free. Including non-PyTorch memory, this process has 14.54 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 9.29 MiB is reserved by PyTorc",
+      "seconds": 0.72
+    }
+  ],
+  "errors": [
+    "shot_01_9x16.jpg",
+    "shot_01_16x9.jpg",
+    "shot_02_9x16.jpg",
+    "shot_02_16x9.jpg",
+    "shot_03_9x16.jpg",
+    "shot_03_16x9.jpg",
+    "shot_04_9x16.jpg",
+    "shot_04_16x9.jpg",
+    "shot_05_9x16.jpg",
+    "shot_05_16x9.jpg",
+    "shot_06_9x16.jpg",
+    "shot_06_16x9.jpg",
+    "shot_07_9x16.jpg",
+    "shot_07_16x9.jpg",
+    "shot_08_9x16.jpg",
+    "shot_08_16x9.jpg",
+    "shot_09_9x16.jpg",
+    "shot_09_16x9.jpg",
+    "shot_10_9x16.jpg",
+    "shot_10_16x9.jpg",
+    "shot_11_9x16.jpg",
+    "shot_11_16x9.jpg"
+  ],
+  "total_seconds": 1014.5,
+  "gpu": "Tesla T4"
+}

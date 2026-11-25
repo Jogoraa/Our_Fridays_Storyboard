@@ -24,7 +24,7 @@
       "noun": "elderly man with the short white beard",
       "description": "Fictional Ethiopian man from the Amhara highlands, 78 years old, East African Habesha features, thin, deep brown skin, short white hair, short trimmed white beard, gentle smile with deep laugh lines.",
       "wardrobe": "A white cotton gabi shawl over a faded light-blue pyjama shirt.",
-      "reference_asset": null
+      "reference_asset": "outputs/references/girma_c2.jpg"
     },
     {
       "id": "kebede",
@@ -32,7 +32,7 @@
       "noun": "bald elderly man with the grey moustache",
       "description": "Fictional Ethiopian man from the Amhara highlands, 82 years old, East African Habesha features, broad build, deep brown skin, bald head, grey moustache, tired kind eyes.",
       "wardrobe": "A grey knitted cardigan over a cream pyjama shirt.",
-      "reference_asset": null
+      "reference_asset": "outputs/references/kebede_c3.jpg"
     },
     {
       "id": "hana",
@@ -40,7 +40,7 @@
       "noun": "young woman caregiver",
       "description": "Fictional Ethiopian woman, 27 years old, East African Habesha features, youthful face, deep brown skin, black hair braided back, calm kind expression.",
       "wardrobe": "A plain light-green caregiver tunic with short sleeves.",
-      "reference_asset": null
+      "reference_asset": "outputs/references/hana_c1.jpg"
     }
   ],
   "formats": [
