@@ -2,12 +2,13 @@ import copy
 
 import pytest
 
+from tests import FIXTURE
 from pipeline.validate import StoryboardError, load_storyboard, validate_storyboard
 
 
 @pytest.fixture
 def sb():
-    return copy.deepcopy(load_storyboard())
+    return copy.deepcopy(load_storyboard(FIXTURE))
 
 
 def test_repo_storyboard_is_valid(sb):
@@ -49,3 +50,9 @@ def test_every_shot_renders_both_aspect_ratios(sb):
     del sb["shots"][0]["render"]["9:16"]
     with pytest.raises(StoryboardError, match="9:16"):
         validate_storyboard(sb)
+
+
+def test_the_films_own_storyboard_is_valid():
+    live = load_storyboard()
+    assert 8 <= len(live["shots"]) <= 12
+    assert all(shot["reason"] for shot in live["shots"])

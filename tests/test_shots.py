@@ -5,6 +5,7 @@ import pytest
 
 from pipeline import shots, timing
 from pipeline.common import probe_duration, run_ffmpeg
+from tests import FIXTURE
 from pipeline.validate import load_storyboard
 
 
@@ -24,7 +25,7 @@ def make_image(path, size="1280x720", colour="0x8B5A2B"):
 @pytest.fixture(scope="module")
 def world(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("shots")
-    sb = copy.deepcopy(load_storyboard())
+    sb = copy.deepcopy(load_storyboard(FIXTURE))
     sb["shots"] = sb["shots"][:2]
     sb["shots"][0]["camera_move"] = "push_in"
     sb["shots"][1]["camera_move"] = "pan_left"

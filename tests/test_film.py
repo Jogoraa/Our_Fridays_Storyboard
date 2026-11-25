@@ -5,6 +5,7 @@ import pytest
 
 from pipeline import assemble, music, narration, shots, timing
 from pipeline.common import probe_duration
+from tests import FIXTURE
 from pipeline.validate import load_storyboard
 from tests.test_narration import FakeSynth
 from tests.test_shots import make_image, video_size
@@ -13,7 +14,7 @@ from tests.test_shots import make_image, video_size
 @pytest.fixture(scope="module")
 def made(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("film")
-    sb = copy.deepcopy(load_storyboard())
+    sb = copy.deepcopy(load_storyboard(FIXTURE))
     for shot in sb["shots"]:
         shot["narration"]["lang"] = "en"
         shot["narration"]["text"] = shot["narration"]["source_en"]

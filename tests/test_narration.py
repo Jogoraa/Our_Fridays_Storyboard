@@ -9,6 +9,7 @@ import pytest
 
 from pipeline import narration
 from pipeline.common import ProviderError
+from tests import FIXTURE
 from pipeline.validate import load_storyboard
 
 
@@ -39,7 +40,7 @@ class FakeSynth:
 @pytest.fixture
 def sb():
     """The repo storyboard, normalised to English so tests do not depend on the film's language."""
-    board = copy.deepcopy(load_storyboard())
+    board = copy.deepcopy(load_storyboard(FIXTURE))
     for shot in board["shots"]:
         shot["narration"]["lang"] = "en"
         shot["narration"]["text"] = shot["narration"]["source_en"]

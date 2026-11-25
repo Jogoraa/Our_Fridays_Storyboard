@@ -5,6 +5,7 @@ import pytest
 
 from pipeline import assemble, music, narration, timing
 from pipeline.common import probe_duration
+from tests import FIXTURE
 from pipeline.validate import load_storyboard
 from tests.test_narration import FakeSynth
 
@@ -12,7 +13,7 @@ from tests.test_narration import FakeSynth
 @pytest.fixture(scope="module")
 def cut(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("radio")
-    sb = copy.deepcopy(load_storyboard())
+    sb = copy.deepcopy(load_storyboard(FIXTURE))
     durations = narration.run(
         sb, lang="en", synth=FakeSynth(), out_dir=tmp / "narration", log_path=tmp / "runs.jsonl", sleep=lambda _: None,
     )
@@ -53,6 +54,7 @@ def test_changed_subtitle_reassembles(cut):
 
 def test_mix_applies_the_tempo_to_every_narration_clip(cut):
     _, plan, _, _ = cut
+    count = len(plan["shots"])
     faster = {**plan, "tempo": 1.08}
-    assert assemble.mix_filter(faster, 8).count("atempo=1.08") == 8
-    assert "atempo" not in assemble.mix_filter(plan, 8)
+    assert assemble.mix_filter(faster, count).count("atempo=1.08") == count
+    assert "atempo" not in assemble.mix_filter({**plan, "tempo": 1.0}, count)

@@ -241,6 +241,13 @@
       "items": {
         "type": "string"
       }
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "source_note": {
+      "type": "string"
     }
   },
   "$defs": {
@@ -276,6 +283,10 @@
             "string",
             "null"
           ]
+        },
+        "noun": {
+          "type": "string",
+          "minLength": 1
         }
       }
     },
@@ -450,6 +461,10 @@
             "integer",
             "null"
           ]
+        },
+        "style_block": {
+          "type": "string",
+          "minLength": 1
         }
       }
     }

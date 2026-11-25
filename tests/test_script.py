@@ -5,12 +5,13 @@ import pytest
 
 from pipeline import script
 from pipeline.common import ProviderError, RetryableError
+from tests import FIXTURE
 from pipeline.validate import load_storyboard
 
 
 @pytest.fixture
 def sb():
-    return copy.deepcopy(load_storyboard())
+    return copy.deepcopy(load_storyboard(FIXTURE))
 
 
 def run(sb, generate, tmp_path, **kwargs):
