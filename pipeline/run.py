@@ -13,7 +13,7 @@ from pipeline import assemble, keyframes, music, narration, script, shots, timin
 from pipeline.common import OUTPUTS, ConfigError, ProviderError
 from pipeline.validate import StoryboardError, load_storyboard
 
-STAGES = ("validate", "script", "narration", "radio-cut", "keyframes", "shots", "film")
+STAGES = ("validate", "script", "narration", "radio-cut", "keyframes", "music", "shots", "film")
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -95,6 +95,13 @@ def run(args: argparse.Namespace) -> None:
         keyframes.run(sb, only_shot=args.shot, force=args.force and only == "keyframes", runner=runner)
         if only == "keyframes":
             return
+
+    if only == "music":
+        print("music")
+        runner = functools.partial(music.kaggle_runner, push=not args.collect)
+        for path in music.candidates(sb, plan["total"], force=args.force, runner=runner):
+            print(f"  candidate: {path.name}")
+        return
 
     aspects = [args.aspect] if args.aspect else [f["aspect_ratio"] for f in sb["formats"]]
     print("shots")

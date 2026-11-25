@@ -137,34 +137,8 @@ def build_manifest(todo: list[dict], references: Path | None = None) -> dict:
 
 
 def kaggle_runner(manifest: dict, *, push: bool = True) -> tuple[Path, dict]:
-    """Push one Kaggle job with the manifest baked into the script, wait, and download its output.
-
-    With push=False nothing is started: the job already pushed is waited for and collected. That is
-    how a run resumes after this machine sleeps or the terminal closes while the GPU is still busy.
-    """
-    work = OUTPUTS / "tmp" / "keyframes_job"
-    if not push:
-        ref = kaggle_jobs.kernel_ref(JOB_SLUG)
-        print(f"  keyframes: collecting the job already on Kaggle ({JOB_SLUG})")
-        minutes = kaggle_jobs.wait(ref, timeout_minutes=150)
-        downloaded = work / "output"
-        shutil.rmtree(downloaded, ignore_errors=True)
-        kaggle_jobs.download(ref, downloaded)
-        return downloaded, {"job_minutes": round(minutes, 2), "job": JOB_SLUG, "collected": True}
-    shutil.rmtree(work, ignore_errors=True)
-    work.mkdir(parents=True)
-    encoded = base64.b64encode(json.dumps(manifest, ensure_ascii=False).encode("utf-8")).decode("ascii")
-    script = work / "job.py"
-    script.write_text(
-        JOB_SCRIPT.read_text(encoding="utf-8").replace('MANIFEST_B64 = ""', f'MANIFEST_B64 = "{encoded}"', 1),
-        encoding="utf-8",
-    )
-    ref = kaggle_jobs.push(JOB_SLUG, script)
-    print(f"  keyframes: pushed {len(manifest['items'])} images to Kaggle as {JOB_SLUG}; waiting for the GPU")
-    minutes = kaggle_jobs.wait(ref, timeout_minutes=150)
-    downloaded = work / "output"
-    kaggle_jobs.download(ref, downloaded)
-    return downloaded, {"job_minutes": round(minutes, 2), "job": JOB_SLUG}
+    """One Kaggle job for every missing image. push=False collects a job that is already running."""
+    return kaggle_jobs.run_script_job(JOB_SLUG, JOB_SCRIPT, manifest, OUTPUTS / "tmp" / "keyframes_job", start=push)
 
 
 def run(

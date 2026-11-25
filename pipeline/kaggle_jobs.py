@@ -5,6 +5,7 @@ Kaggle CLI, polled until it finishes, and its /kaggle/working folder downloaded.
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import shutil
@@ -93,3 +94,32 @@ def download(ref: str, into: Path) -> list[Path]:
     into.mkdir(parents=True, exist_ok=True)
     _cli(["kernels", "output", ref, "-p", str(into)])
     return sorted(p for p in into.rglob("*") if p.is_file())
+
+
+def run_script_job(slug: str, template: Path, manifest: dict, work: Path, *, start: bool = True,
+                   timeout_minutes: float = 150) -> tuple[Path, dict]:
+    """Bake a manifest into a job script, run it on Kaggle, and return (downloaded folder, job facts).
+
+    With start=False nothing is started: the job already pushed under this slug is waited for and
+    collected. That is how a run resumes after the terminal closes while the GPU is still busy.
+    """
+    ref = kernel_ref(slug)
+    downloaded = work / "output"
+    if start:
+        shutil.rmtree(work, ignore_errors=True)
+        work.mkdir(parents=True)
+        encoded = base64.b64encode(json.dumps(manifest, ensure_ascii=False).encode("utf-8")).decode("ascii")
+        script = work / "job.py"
+        source = template.read_text(encoding="utf-8")
+        marker = 'MANIFEST_B64 = ""'
+        if marker not in source:
+            raise ConfigError(f"{template.name} has no MANIFEST_B64 line to fill in")
+        script.write_text(source.replace(marker, f'MANIFEST_B64 = "{encoded}"', 1), encoding="utf-8")
+        push(slug, script)
+        print(f"  kaggle: pushed {slug}; waiting for the GPU")
+    else:
+        print(f"  kaggle: collecting the job already pushed as {slug}")
+        shutil.rmtree(downloaded, ignore_errors=True)
+    minutes = wait(ref, timeout_minutes=timeout_minutes)
+    download(ref, downloaded)
+    return downloaded, {"job_minutes": round(minutes, 2), "job": slug, "collected": not start}
