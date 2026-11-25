@@ -46,7 +46,7 @@ Newest last. Only things that actually happened are recorded here.
 - **When:** 25 November, first real narration call.
 - **What broke:** `HTTP 429: Rate limit exceeded for model gemini-3.8-flash-tts (limit: 10 requests per day on Free Tier)`. The plan was one speech call per shot: eight calls per language, sixteen for Amharic plus the English comparison, before any re-take. That does not fit in ten.
 - **What I tried:** Checked whether other speech models have their own allowance. `gemini-3.8-flash-lite-tts` answered (5.5 s of Amharic audio) while the main model was refusing, so quotas are per model. `gemini-3.1-flash-tts-preview` rejected the request: `Speech metadata is not supported for this model`, so it cannot take the same style instruction.
-- **Resolution:** In progress. The narration stage is being changed to record the whole film in one call and split it into per-shot files, keeping single-shot calls for re-takes. See EXPERIMENTS.md once it has run.
+- **Resolution:** Three things together. Recording the whole film in one request was tried and rejected (EXPERIMENTS E1, E2). The stage falls back to the lighter voice model, which has its own allowance. And the limit turned out to be a rolling window, not a calendar day: the error says when a slot frees up, so with `--wait-for-quota` the stage waits that long and carries on. Because every finished shot is cached, a run that stops on quota resumes where it left off.
 
 ## F7. The Amharic draft contained non-words and an Arabic letter
 
@@ -55,3 +55,43 @@ Newest last. Only things that actually happened are recorded here.
 - **What I tried:** Asked two stronger models for the same lines to compare. Both were unavailable (503, then the daily limit), so there is no comparison yet.
 - **Workaround:** The model draft is kept as evidence. A corrected version is written out line by line in `outputs/script/amharic_for_review.md`, and nothing is recorded until the author, a native speaker, approves each line.
 - **Lesson:** A small model can produce Amharic that looks plausible to a non-reader and is wrong. The script stage only proposes; a person approves.
+
+## F8. Cloudflare's free image allowance was already gone
+
+- **When:** 25 November, the first image request of the project.
+- **What broke:** `HTTP 429: you have used up your daily free allocation of 10,000 neurons`. This project had not made a single Cloudflare call; something else on the same account had used the day's allowance. It resets at 00:00 UTC.
+- **What I tried:** The Gemini image models on the same key (`gemini-3.1-flash-image`, `gemini-2.5-flash-image`, `gemini-3.1-flash-lite-image`): all `429 You exceeded your current quota`, which on a free key means no quota at all.
+- **What fixed it:** Changed provider. FLUX.2 klein 4B is open-weight (Apache 2.0), so the keyframes stage runs it on a Kaggle T4 instead of calling Cloudflare. The stage takes a `runner`, so a hosted API can be put back with one function.
+- **Lesson:** A shared free account is a shared quota. Open weights on a borrowed GPU are slower to start but nobody else can spend them.
+
+## F9. Kaggle: an old client, then a long queue
+
+- **What broke first:** `uvx kaggle` ran a cached old client that crashed with `ModuleNotFoundError: No module named 'six'`.
+- **Fix:** pin the invocation to `uvx --with six kaggle@latest` in `pipeline/kaggle_jobs.py`.
+- **What broke next:** the first GPU job sat in `QUEUED` for many minutes. A seven-second script took 941 s from push to output (EXPERIMENTS E10).
+- **Workaround:** one job for all images; a `--collect` flag that picks up a job already running, so closing the terminal does not lose it; each image saved as it finishes.
+
+## F10. One long take, cut in the wrong place
+
+- **What broke:** Recording all lines in one request and splitting at pauses produced eight clips with one cut a sentence early (EXPERIMENTS E2). Nothing crashed; the files looked fine.
+- **How it was caught:** not by ear. Shot 3 ran at 0.073 s per character and shot 4 at 0.143 while the rest were near 0.11.
+- **Fix:** the pace check was tightened so that this exact case is rejected automatically (E3), the misaligned clips were set aside in `outputs/archive/our_fridays/narration/am_one_take_rejected/`, and all eight shots were recorded one by one.
+- **Lesson:** A stage needs a check that can fail on output that is plausible but wrong.
+
+## F11. Amharic ran 96 seconds
+
+- **What broke:** `error: film would run 95.0 s, 5.0 s over the 90 s limit`, with each shot's length listed. The same story in English was 78.6 s.
+- **Fix:** a pitch-preserving tempo of 1.10 on the voice, set in the storyboard (EXPERIMENTS E6, E7). The check that stopped the build is `timing.check_total`; it runs before any assembly so an invalid film is never exported.
+
+## F12. Backslashes eaten on the way to disk
+
+- **What broke:** Subtitle override tags such as `{ad(250,200)}` were written into `pipeline/subtitles.py` with a single backslash, so Python read `` as a form-feed character. The tests that existed still passed, because they only looked for the visible text.
+- **How it was caught:** printing one generated subtitle line showed it ending at `{`.
+- **Fix:** corrected the source, and added `test_ass_contains_override_tags_and_no_control_characters`, which fails if any control character reaches the subtitle file.
+- **Lesson:** The tool that writes a file can change it. Test the bytes that matter, not just the words.
+
+## F13. The story changed after the pipeline was built
+
+- **What happened:** With the radio cut of "Our Fridays" finished, the author replaced the story with "The Window" (DESIGN.md, decision log).
+- **What it cost:** eleven new narration requests against a ten-request window, and every test that had quietly depended on the film's own storyboard (shot count, character names) would have broken.
+- **Fix:** tests now load a frozen sample storyboard (`tests/fixtures/storyboard.json`); one test checks the live storyboard is valid. The character-specific wording in the keyframe prompt ("the woman from reference image 1") became a `noun` field on each character. No stage needed a code change beyond that.
