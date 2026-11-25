@@ -5,6 +5,8 @@ import re
 
 MAX_CHARS = 40
 MAX_LINES = 2
+PORTRAIT_CHARS = 30
+LANDSCAPE_CHARS = 42
 HOLD_AFTER = 0.3
 
 
@@ -112,7 +114,9 @@ def _extras(sb: dict, timing: dict, width: int, height: int, font_size: int, mar
 def build_ass(sb: dict, timing: dict, *, width: int, height: int, extras: bool = False) -> str:
     """Subtitles for the whole film. With extras, also the phone messages and the end card."""
     margin_h = round(width * 0.075)
-    font_size = min(round((width - 2 * margin_h) / 21), round(height * 0.052))
+    # A phone held upright is narrow: fewer characters per line there, so the type can be large enough to read.
+    max_chars = PORTRAIT_CHARS if height > width else LANDSCAPE_CHARS
+    font_size = min(round((width - 2 * margin_h) / (max_chars * 0.55)), round(max(width, height) * 0.03))
     styles = [
         f"Style: Sub,Arial,{font_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,"
         f"1,0,0,0,100,100,0,0,1,{max(2, round(font_size / 16))},1,2,{margin_h},{margin_h},{margin_v(width, height)},1",
@@ -120,7 +124,7 @@ def build_ass(sb: dict, timing: dict, *, width: int, height: int, extras: bool =
     by_id = {shot["id"]: shot for shot in sb["shots"]}
     events: list[str] = []
     for slot in timing["shots"]:
-        cues = wrap(by_id[slot["id"]]["narration"]["subtitle_en"])
+        cues = wrap(by_id[slot["id"]]["narration"]["subtitle_en"], max_chars)
         start = slot["narration_start"]
         window_end = min(start + slot["narration_duration"] + HOLD_AFTER, slot["start"] + slot["duration"])
         weights = [len(cue) for cue in cues]

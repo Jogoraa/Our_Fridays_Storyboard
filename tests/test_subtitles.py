@@ -120,3 +120,18 @@ def test_ass_contains_override_tags_and_no_control_characters():
     ass = build_ass(film_storyboard(), timing(), width=1080, height=1920, extras=True)
     assert not [c for c in ass if ord(c) < 32 and c != "\n"]
     assert r"{\fad(250,200)}" in ass and r"\b1}" in ass and r"\N" in ass
+
+
+def test_portrait_subtitles_use_shorter_lines_and_larger_type_than_a_40_character_line_allows():
+    portrait = build_ass(storyboard(), timing(), width=1080, height=1920)
+    landscape = build_ass(storyboard(), timing(), width=1920, height=1080)
+
+    def longest_line(ass):
+        return max(len(part) for _, _, text in events(ass, "Sub") for part in text.split(r"\N"))
+
+    def font_size(ass):
+        return int(re.search(r"^Style: Sub,[^,]+,(\d+),", ass, re.M).group(1))
+
+    assert longest_line(portrait) <= 30
+    assert longest_line(landscape) <= 42
+    assert font_size(portrait) >= 52
