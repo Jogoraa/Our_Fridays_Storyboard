@@ -22,7 +22,7 @@
       "id": "girma",
       "name": "Ato Girma",
       "noun": "elderly man with the short white beard",
-      "description": "Fictional Ethiopian man in his late seventies, thin, dark brown skin, short white hair, short trimmed white beard, gentle smile with deep laugh lines, pale clouded eyes that do not focus.",
+      "description": "Fictional Ethiopian man from the Amhara highlands, 78 years old, East African Habesha features, thin, deep brown skin, short white hair, short trimmed white beard, gentle smile with deep laugh lines.",
       "wardrobe": "A white cotton gabi shawl over a faded light-blue pyjama shirt.",
       "reference_asset": null
     },
@@ -30,7 +30,7 @@
       "id": "kebede",
       "name": "Ato Kebede",
       "noun": "bald elderly man with the grey moustache",
-      "description": "Fictional Ethiopian man in his early eighties, broad build, dark brown skin, bald head, grey moustache, tired kind eyes.",
+      "description": "Fictional Ethiopian man from the Amhara highlands, 82 years old, East African Habesha features, broad build, deep brown skin, bald head, grey moustache, tired kind eyes.",
       "wardrobe": "A grey knitted cardigan over a cream pyjama shirt.",
       "reference_asset": null
     },
@@ -38,7 +38,7 @@
       "id": "hana",
       "name": "Hana",
       "noun": "young woman caregiver",
-      "description": "Fictional Ethiopian woman in her late twenties, warm brown skin, black hair tied back, calm kind face.",
+      "description": "Fictional Ethiopian woman, 27 years old, East African Habesha features, youthful face, deep brown skin, black hair braided back, calm kind expression.",
       "wardrobe": "A plain light-green caregiver tunic with short sleeves.",
       "reference_asset": null
     }

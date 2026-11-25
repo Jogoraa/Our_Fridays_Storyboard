@@ -1,0 +1,32 @@
+[
+  {
+    "seed": 3101,
+    "seconds": 87.0,
+    "lufs": -16.56,
+    "lra": 9.5,
+    "true_peak": -1.0,
+    "mean_db": -19.5,
+    "voice_band_db": -22.4,
+    "voice_band_minus_full": -2.9
+  },
+  {
+    "seed": 3102,
+    "seconds": 87.0,
+    "lufs": -18.76,
+    "lra": 6.8,
+    "true_peak": -1.0,
+    "mean_db": -21.3,
+    "voice_band_db": -24.2,
+    "voice_band_minus_full": -2.9
+  },
+  {
+    "seed": 3103,
+    "seconds": 87.0,
+    "lufs": -17.9,
+    "lra": 12.8,
+    "true_peak": -0.96,
+    "mean_db": -20.8,
+    "voice_band_db": -26.1,
+    "voice_band_minus_full": -5.3
+  }
+]

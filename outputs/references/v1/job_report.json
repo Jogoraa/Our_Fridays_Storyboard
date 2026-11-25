@@ -1,0 +1,311 @@
+{
+  "model": "black-forest-labs/FLUX.2-klein-4B",
+  "setup_seconds": 145.2,
+  "items": [
+    {
+      "file": "girma_c1.jpg",
+      "seed": 7001,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 107.23
+    },
+    {
+      "file": "girma_c2.jpg",
+      "seed": 7002,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 81.58
+    },
+    {
+      "file": "girma_c3.jpg",
+      "seed": 7003,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 85.56
+    },
+    {
+      "file": "kebede_c1.jpg",
+      "seed": 7101,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 85.95
+    },
+    {
+      "file": "kebede_c2.jpg",
+      "seed": 7102,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 85.4
+    },
+    {
+      "file": "kebede_c3.jpg",
+      "seed": 7103,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 84.68
+    },
+    {
+      "file": "hana_c1.jpg",
+      "seed": 7201,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 84.08
+    },
+    {
+      "file": "hana_c2.jpg",
+      "seed": 7202,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 83.51
+    },
+    {
+      "file": "hana_c3.jpg",
+      "seed": 7203,
+      "width": 864,
+      "height": 1152,
+      "status": "ok",
+      "peak_vram_gb": 12.54,
+      "seconds": 83.59
+    },
+    {
+      "file": "shot_01_9x16.jpg",
+      "seed": 2001,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 16.23 GiB. GPU 0 has a total capacity of 14.56 GiB of which 5.74 GiB is free. Including non-PyTorch memory, this process has 8.82 GiB memory in use. Of the allocated memory 8.60 GiB is allocated by PyTorch, and 93.81 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://doc",
+      "seconds": 15.3
+    },
+    {
+      "file": "shot_01_16x9.jpg",
+      "seed": 2001,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 32.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 1.88
+    },
+    {
+      "file": "shot_02_9x16.jpg",
+      "seed": 2002,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.03
+    },
+    {
+      "file": "shot_02_16x9.jpg",
+      "seed": 2002,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.02
+    },
+    {
+      "file": "shot_03_9x16.jpg",
+      "seed": 2003,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_03_16x9.jpg",
+      "seed": 2003,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_04_9x16.jpg",
+      "seed": 2004,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_04_16x9.jpg",
+      "seed": 2004,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_05_9x16.jpg",
+      "seed": 2005,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_05_16x9.jpg",
+      "seed": 2005,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_06_9x16.jpg",
+      "seed": 2006,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_06_16x9.jpg",
+      "seed": 2006,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_07_9x16.jpg",
+      "seed": 2007,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_07_16x9.jpg",
+      "seed": 2007,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_08_9x16.jpg",
+      "seed": 2008,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_08_16x9.jpg",
+      "seed": 2008,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_09_9x16.jpg",
+      "seed": 2009,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_09_16x9.jpg",
+      "seed": 2009,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_10_9x16.jpg",
+      "seed": 2010,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.02
+    },
+    {
+      "file": "shot_10_16x9.jpg",
+      "seed": 2010,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.02
+    },
+    {
+      "file": "shot_11_9x16.jpg",
+      "seed": 2011,
+      "width": 864,
+      "height": 1536,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    },
+    {
+      "file": "shot_11_16x9.jpg",
+      "seed": 2011,
+      "width": 1536,
+      "height": 864,
+      "status": "failed",
+      "error": "OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 4.81 MiB is free. Including non-PyTorch memory, this process has 14.55 GiB memory in use. Of the allocated memory 14.40 GiB is allocated by PyTorch, and 24.39 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d",
+      "seconds": 0.01
+    }
+  ],
+  "errors": [
+    "shot_01_9x16.jpg",
+    "shot_01_16x9.jpg",
+    "shot_02_9x16.jpg",
+    "shot_02_16x9.jpg",
+    "shot_03_9x16.jpg",
+    "shot_03_16x9.jpg",
+    "shot_04_9x16.jpg",
+    "shot_04_16x9.jpg",
+    "shot_05_9x16.jpg",
+    "shot_05_16x9.jpg",
+    "shot_06_9x16.jpg",
+    "shot_06_16x9.jpg",
+    "shot_07_9x16.jpg",
+    "shot_07_16x9.jpg",
+    "shot_08_9x16.jpg",
+    "shot_08_16x9.jpg",
+    "shot_09_9x16.jpg",
+    "shot_09_16x9.jpg",
+    "shot_10_9x16.jpg",
+    "shot_10_16x9.jpg",
+    "shot_11_9x16.jpg",
+    "shot_11_16x9.jpg"
+  ],
+  "total_seconds": 944.3,
+  "gpu": "Tesla T4"
+}

@@ -57,27 +57,62 @@ def load_reference(name):
     raise FileNotFoundError(f"reference {name} is neither generated in this job nor embedded")
 
 
+def shrink(image, longest):
+    """Reference images are conditioning, not output. Every reference pixel becomes tokens the model
+    must attend to, and attention memory grows with the square of the token count."""
+    scale = longest / max(image.size)
+    if scale >= 1:
+        return image
+    size = (max(16, int(image.width * scale) // 16 * 16), max(16, int(image.height * scale) // 16 * 16))
+    return image.resize(size, Image.LANCZOS)
+
+
+def free_gpu():
+    import gc
+
+    gc.collect()
+    torch.cuda.empty_cache()
+    torch.cuda.reset_peak_memory_stats()
+
+
+def generate(item, reference_side, scale):
+    width = int(item["width"] * scale) // 16 * 16
+    height = int(item["height"] * scale) // 16 * 16
+    references = [shrink(load_reference(name), reference_side) for name in item.get("references", [])]
+    arguments = dict(
+        prompt=item["prompt"], width=width, height=height,
+        guidance_scale=manifest["guidance_scale"], num_inference_steps=manifest["steps"],
+        generator=torch.Generator(device="cuda").manual_seed(item["seed"]),
+    )
+    if references:
+        arguments["image"] = references if len(references) > 1 else references[0]
+    return pipe(**arguments).images[0], width, height
+
+
+# If memory runs out, try again with smaller references, then with a smaller picture.
+LADDER = [(manifest.get("reference_max_side", 512), 1.0), (384, 1.0), (384, 0.8334)]
+
 for item in manifest["items"]:
     began = time.time()
-    record = {"file": item["file"], "seed": item["seed"], "width": item["width"], "height": item["height"]}
-    try:
-        references = [load_reference(name) for name in item.get("references", [])]
-        arguments = dict(
-            prompt=item["prompt"], width=item["width"], height=item["height"],
-            guidance_scale=manifest["guidance_scale"], num_inference_steps=manifest["steps"],
-            generator=torch.Generator(device="cuda").manual_seed(item["seed"]),
-        )
-        if references:
-            arguments["image"] = references if len(references) > 1 else references[0]
-        image = pipe(**arguments).images[0]
+    record = {"file": item["file"], "seed": item["seed"], "attempts": []}
+    for reference_side, scale in LADDER:
+        free_gpu()
+        try:
+            image, width, height = generate(item, reference_side, scale)
+        except Exception as exc:  # keep going: one bad image must not lose the rest
+            record["attempts"].append({"reference_side": reference_side, "scale": scale,
+                                       "error": f"{type(exc).__name__}: {exc}"[:300]})
+            del exc
+            continue
         image.save(os.path.join(OUT, item["file"]), quality=95)
-        record["status"] = "ok"
-        record["peak_vram_gb"] = round(torch.cuda.max_memory_allocated() / 1e9, 2)
-    except Exception as exc:  # keep going: one bad image must not lose the rest
+        record.update(status="ok", width=width, height=height, reference_side=reference_side,
+                      peak_vram_gb=round(torch.cuda.max_memory_allocated() / 1e9, 2))
+        del image
+        break
+    else:
         record["status"] = "failed"
-        record["error"] = f"{type(exc).__name__}: {exc}"[:500]
+        record["error"] = record["attempts"][-1]["error"]
         report["errors"].append(item["file"])
-        torch.cuda.empty_cache()
     record["seconds"] = round(time.time() - began, 2)
     report["items"].append(record)
     print(json.dumps(record), flush=True)

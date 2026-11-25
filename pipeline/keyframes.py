@@ -19,13 +19,14 @@ from pipeline.common import OUTPUTS, ROOT, RUNS_PATH, ProviderError, cache_key, 
 from pipeline.shots import aspect_tag, keyframe_path
 
 STAGE = "keyframes"
-VERSION = "1"
+VERSION = "2"
 MODEL = "black-forest-labs/FLUX.2-klein-4B"
 STEPS = 4
 GUIDANCE = 1.0
 CANDIDATES = 3                               # reference options per character; one is chosen by eye
 SIZES = {"9:16": (864, 1536), "16:9": (1536, 864)}   # multiples of 16; upscaled to 1080p in the edit
 REFERENCE_SIZE = (864, 1152)
+REFERENCE_MAX_SIDE = 512                     # references are shrunk to this before conditioning (GPU memory)
 JOB_SCRIPT = ROOT / "gpu_jobs" / "flux_keyframes.py"
 JOB_SLUG = "our-fridays-keyframes"
 
@@ -104,7 +105,7 @@ def plan(sb: dict, *, references: Path | None = None, keyframes: Path | None = N
             # same job as its reference does not look out of date once the reference file arrives.
             key = cache_key(STAGE, VERSION, {
                 "kind": "keyframe", "model": MODEL, "steps": STEPS, "guidance": GUIDANCE, "prompt": prompt,
-                "seed": shot["seed"], "size": [width, height],
+                "seed": shot["seed"], "size": [width, height], "reference_max_side": REFERENCE_MAX_SIDE,
                 "references": [reference_keys[c["id"]] for c in cast],
             })
             output = keyframe_path(shot["id"], aspect, keyframes)
@@ -132,6 +133,7 @@ def build_manifest(todo: list[dict], references: Path | None = None) -> dict:
                 embedded[name] = base64.b64encode(path.read_bytes()).decode("ascii")
     return {
         "model": MODEL, "steps": STEPS, "guidance_scale": GUIDANCE, "embedded": embedded,
+        "reference_max_side": REFERENCE_MAX_SIDE,
         "items": [{k: item[k] for k in ("file", "prompt", "seed", "width", "height", "references")} for item in todo],
     }
 
@@ -171,7 +173,10 @@ def run(
             "stage": STAGE, "shot": item["shot"], "provider": "kaggle", "model": MODEL,
             "params": {"kind": item["kind"], "aspect": item["aspect"], "prompt": item["prompt"],
                        "width": item["width"], "height": item["height"], "steps": STEPS,
-                       "guidance_scale": GUIDANCE, "references": item["references"]},
+                       "guidance_scale": GUIDANCE, "references": item["references"],
+                       "made_at": [record.get("width"), record.get("height")],
+                       "reference_side": record.get("reference_side"),
+                       "failed_attempts": len(record.get("attempts", []))},
             "seed": item["seed"], "attempt": 1, "latency_s": record.get("seconds"),
             "gpu_seconds": record.get("seconds"), "gpu": report.get("gpu"), "job": job.get("job"),
             "status": "ok" if ok else "failed", "error": None if ok else record.get("error", "no image came back"),
