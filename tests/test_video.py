@@ -20,7 +20,7 @@ def fake_gpu(tmp_path, fail=False):
 
     def runner(manifest):
         calls.append(manifest)
-        folder = tmp_path / f"job{len(calls)}"
+        folder = tmp_path / f"job_{id(calls)}_{len(calls)}"
         folder.mkdir()
         records = []
         for item in manifest["items"]:
