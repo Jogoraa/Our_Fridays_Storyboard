@@ -202,10 +202,10 @@ def _tool(name: str) -> str:
     return path
 
 
-def run_ffmpeg(args: list[str], *, capture: bool = False) -> str:
+def run_ffmpeg(args: list[str], *, capture: bool = False, cwd: Path | None = None) -> str:
     """Run FFmpeg quietly. Returns stderr (where FFmpeg reports measurements) when capture is set."""
     command = [_tool("ffmpeg"), "-hide_banner", "-nostdin", "-y", *args]
-    result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    result = subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", cwd=cwd)
     if result.returncode != 0:
         tail = "\n".join(result.stderr.strip().splitlines()[-12:])
         raise ProviderError(f"ffmpeg failed:\n{tail}")
