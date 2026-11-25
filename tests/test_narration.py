@@ -211,3 +211,52 @@ def test_daily_quota_on_the_main_voice_model_falls_back_to_the_lighter_one(sb, r
     run(sb, synth, batch=True)
     assert [model for model, _ in synth.calls] == [main, lighter]
     assert [(line["model"], line["status"]) for line in log_lines(tmp_path)] == [(main, "failed"), (lighter, "ok")]
+
+
+def test_a_split_that_puts_a_sentence_in_the_wrong_shot_is_rejected_by_the_pace_check():
+    # Measured on the first real Amharic take: 0.073 and 0.143 s/char against ~0.11 for the rest.
+    texts = ["x" * 79, "x" * 82, "x" * 97, "x" * 73, "x" * 58]
+    seconds = [9.04, 9.06, 7.06, 10.44, 6.14]
+    clips = [wav_bytes(s) for s in seconds]
+    with pytest.raises(narration.RetryableError, match="misaligned"):
+        narration._check_pace(clips, texts)
+
+
+def test_natural_variation_in_pace_is_accepted():
+    # Measured on the per-shot English takes: 0.075 to 0.098 s/char.
+    texts = ["x" * n for n in (98, 95, 107, 95, 82, 98, 103, 104)]
+    clips = [wav_bytes(s) for s in (9.48, 8.28, 9.6, 7.2, 6.12, 7.76, 8.0, 10.2)]
+    narration._check_pace(clips, texts)
+
+
+def test_waits_for_quota_when_asked_and_then_finishes(sb, run, tmp_path):
+    class Limited(FakeSynth):
+        def __call__(self, text, *, model, voice, style_instruction):
+            self.calls.append(text)
+            if len(self.calls) in (2, 3):  # both voice models refuse once, after the first shot
+                raise QuotaError("HTTP 429: limit: 10 requests per day. Please retry in 6m40s", retry_after=400.0)
+            return wav_bytes(1.0)
+
+    slept = []
+    synth = Limited()
+    durations = narration.run(
+        sb, lang="en", synth=synth, out_dir=tmp_path / "narration", log_path=tmp_path / "runs.jsonl",
+        sleep=slept.append, wait_for_quota=True,
+    )
+    assert len(durations) == 8
+    assert slept == [405.0]
+
+
+def test_without_waiting_a_quota_error_stops_the_run_but_keeps_finished_shots(sb, run, tmp_path):
+    class Limited(FakeSynth):
+        def __call__(self, text, *, model, voice, style_instruction):
+            self.calls.append(text)
+            if len(self.calls) > 2:
+                raise QuotaError("HTTP 429: per day", retry_after=400.0)
+            return wav_bytes(1.0)
+
+    with pytest.raises(QuotaError):
+        run(sb, Limited())
+    resumed = FakeSynth()
+    run(sb, resumed)
+    assert len(resumed.calls) == 6

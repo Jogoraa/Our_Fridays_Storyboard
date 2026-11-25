@@ -41,7 +41,11 @@ class ProviderError(Exception):
 
 
 class QuotaError(ProviderError):
-    """A daily allowance is used up. Retrying now only wastes time; fall back or wait."""
+    """An allowance is used up. Retrying at once only wastes requests; fall back, or wait retry_after seconds."""
+
+    def __init__(self, message: str, retry_after: float | None = None):
+        super().__init__(message)
+        self.retry_after = retry_after
 
 
 # --- secrets -----------------------------------------------------------------

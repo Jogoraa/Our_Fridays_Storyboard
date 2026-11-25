@@ -21,6 +21,10 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--only", choices=STAGES, help="run a single stage")
     parser.add_argument("--shot", metavar="ID", help="limit generation to one shot, e.g. shot_03")
     parser.add_argument("--lang", help="narration language to build (default: the storyboard's)")
+    parser.add_argument("--one-take", action="store_true",
+                        help="record all changed shots in one speech request and split at pauses (saves quota, less reliable)")
+    parser.add_argument("--wait-for-quota", action="store_true",
+                        help="when a free allowance runs out, wait as long as the provider asks and continue")
     parser.add_argument("--force", action="store_true", help="ignore the cache for the stages that run")
     return parser
 
@@ -52,7 +56,7 @@ def run(args: argparse.Namespace) -> None:
 
     if args.only in (None, "narration"):
         print("narration")
-        narration.run(sb, lang=lang, only_shot=args.shot, force=args.force, batch=True)
+        narration.run(sb, lang=lang, only_shot=args.shot, force=args.force, batch=args.one_take, wait_for_quota=args.wait_for_quota)
         if args.only == "narration":
             return
 

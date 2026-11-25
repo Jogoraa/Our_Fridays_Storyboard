@@ -30,7 +30,10 @@ MIN_SECONDS = 0.5
 SILENCE_RMS = 50.0
 BATCH_MIN = 3                      # fewer changed shots than this are recorded one by one
 SEPARATOR = "\n\n<long pause>\n\n"  # spoken as a clear pause; this is where the take is cut
-PACE_TOLERANCE = 2.5               # a clip whose seconds-per-character is this far off the rest is suspect
+PACE_TOLERANCE = 1.3                # measured: honest takes stay within x1.18 of the median pace; a misplaced sentence does not
+
+MAX_QUOTA_WAIT = 20 * 60           # never sit waiting longer than this for one slot
+MAX_QUOTA_WAITS = 12
 
 _exhausted: set[str] = set()       # models whose daily quota ran out during this run
 
@@ -89,7 +92,10 @@ def _with_model_fallback(make_call: Callable[[str], Callable[[], object]], **log
             _exhausted.add(model)
             last = exc
             print(f"  narration: daily quota used up on {model}")
-    raise QuotaError(f"every voice model is out of quota for today; last error: {last}")
+    raise QuotaError(
+        f"every voice model is out of quota; last error: {last}",
+        retry_after=last.retry_after if last else None,
+    )
 
 
 def run(
@@ -99,6 +105,7 @@ def run(
     only_shot: str | None = None,
     force: bool = False,
     batch: bool = False,
+    wait_for_quota: bool = False,
     synth: Callable[..., bytes] | None = None,
     out_dir: Path | None = None,
     log_path: Path = RUNS_PATH,
@@ -182,10 +189,22 @@ def run(
             return call
 
         params = {"text": item["text"], "lang": lang, "voice": voice, "style_instruction": style}
-        data, model = _with_model_fallback(
-            single_call, shot=item["id"], params=params,
-            extra={"output": rel(item["output"]), "cost_usd": 0.0}, **common_log,
-        )
+        waits = 0
+        while True:
+            try:
+                data, model = _with_model_fallback(
+                    single_call, shot=item["id"], params=params,
+                    extra={"output": rel(item["output"]), "cost_usd": 0.0}, **common_log,
+                )
+                break
+            except QuotaError as exc:
+                # The "per day" allowance is a rolling window: the provider says when a slot frees up.
+                if not wait_for_quota or not exc.retry_after or exc.retry_after > MAX_QUOTA_WAIT or waits >= MAX_QUOTA_WAITS:
+                    raise
+                waits += 1
+                print(f"  narration {item['id']}: out of quota, waiting {exc.retry_after / 60:.1f} min as the provider asks")
+                sleep(exc.retry_after + 5.0)
+                _exhausted.clear()
         save(item, data, model, "single")
 
     summary = folder / "durations.json"

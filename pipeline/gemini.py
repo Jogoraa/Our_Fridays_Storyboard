@@ -36,7 +36,7 @@ def raise_for_status(status: int, text: str) -> None:
         return
     if status == 429:
         if "per day" in text:
-            raise QuotaError(f"HTTP 429: {text[:300]}")
+            raise QuotaError(f"HTTP 429: {text[:300]}", retry_after=retry_delay(text))
         raise RetryableError(f"HTTP 429: {text[:300]}", retry_after=retry_delay(text))
     if status >= 500:
         raise RetryableError(f"HTTP {status}: {text[:300]}")
