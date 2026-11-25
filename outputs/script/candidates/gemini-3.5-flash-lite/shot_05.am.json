@@ -1,6 +1,6 @@
 {
   "shot": "shot_05",
   "source_en": "But he deleted the message. He was afraid the truth might change their friendship.",
-  "proposed_am": "ነገር ግን መልዕክቱን አጠፋው። የእውነት መገለጥ ጓደኝነታቸውን ሊለውጠው ይችላል ብሎ ፈራ።",
+  "proposed_am": "ነገር ግን መልዕክቱን አጠፋው። የእውነቱ መታወቅ ጓደኝነታቸውን ሊለውጠው ይችላል ብሎም ፈራ።",
   "model": "gemini-3.5-flash-lite"
 }
