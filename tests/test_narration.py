@@ -133,3 +133,72 @@ def test_force_regenerates_even_when_cached(sb, run):
     synth = FakeSynth()
     run(sb, synth, only_shot="shot_01", force=True)
     assert len(synth.calls) == 1
+
+
+# --- one call for the whole film (the free speech quota is counted per request) ---
+
+from pipeline.common import QuotaError  # noqa: E402
+from tests.test_split import take  # noqa: E402
+
+
+class BatchSynth:
+    """Speaks every line in one take, with a clear pause where each separator is."""
+
+    def __init__(self, gap=1.0, fail_models=()):
+        self.calls = []
+        self.gap = gap
+        self.fail_models = set(fail_models)
+
+    def __call__(self, text, *, model, voice, style_instruction):
+        self.calls.append((model, text))
+        if model in self.fail_models:
+            raise QuotaError("HTTP 429: limit: 10 requests per day")
+        lines = text.count(narration.SEPARATOR.strip()) + 1
+        if self.gap == 0:
+            return take([2.0 * lines], [])
+        return take([1.0 + 0.2 * i for i in range(lines)], [self.gap] * (lines - 1))
+
+
+def test_batch_records_all_shots_in_one_call(sb, run, tmp_path):
+    synth = BatchSynth()
+    durations = run(sb, synth, batch=True)
+    assert len(synth.calls) == 1
+    assert len(durations) == 8
+    assert durations["shot_01"] == pytest.approx(1.0, abs=0.25)
+    assert durations["shot_08"] == pytest.approx(2.4, abs=0.25)
+    lines = log_lines(tmp_path)
+    assert len(lines) == 1
+    assert lines[0]["params"]["mode"] == "batch" and len(lines[0]["params"]["shots"]) == 8
+
+
+def test_after_a_batch_one_edited_line_costs_one_single_shot_call(sb, run, tmp_path):
+    run(sb, BatchSynth(), batch=True)
+    sb["shots"][2]["narration"]["text"] = "A changed line for shot three."
+    synth = FakeSynth()
+    run(sb, synth, batch=True)
+    assert synth.calls == ["A changed line for shot three."]
+    assert log_lines(tmp_path)[-1]["shot"] == "shot_03"
+
+
+def test_batch_that_cannot_be_split_falls_back_to_one_call_per_shot(sb, run, tmp_path):
+    class Unsplittable(BatchSynth):
+        def __call__(self, text, **kwargs):
+            if narration.SEPARATOR.strip() in text:
+                self.calls.append(("batch", text))
+                return take([16.0], [])
+            return FakeSynth.__call__(self, text, **kwargs)
+    synth = Unsplittable()
+    synth.responses = []
+    durations = run(sb, synth, batch=True)
+    assert len(durations) == 8
+    statuses = [(line["params"].get("mode", "single"), line["status"]) for line in log_lines(tmp_path)]
+    assert statuses[:2] == [("batch", "retry"), ("batch", "failed")]
+    assert statuses[2:] == [("single", "ok")] * 8
+
+
+def test_daily_quota_on_the_main_voice_model_falls_back_to_the_lighter_one(sb, run, tmp_path):
+    main, lighter = narration.models()
+    synth = BatchSynth(fail_models=[main])
+    run(sb, synth, batch=True)
+    assert [model for model, _ in synth.calls] == [main, lighter]
+    assert [(line["model"], line["status"]) for line in log_lines(tmp_path)] == [(main, "failed"), (lighter, "ok")]

@@ -17,6 +17,7 @@ ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 TEXT_MODEL = os.environ.get("GEMINI_TEXT_MODEL", "gemini-3.8-flash")
 TEXT_FALLBACK_MODEL = os.environ.get("GEMINI_TEXT_FALLBACK_MODEL", "gemini-3.5-flash-lite")
 TTS_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts")
+TTS_FALLBACK_MODEL = os.environ.get("GEMINI_TTS_FALLBACK_MODEL", "gemini-3.8-flash-lite-tts")
 TIMEOUT_SECONDS = 180.0
 
 

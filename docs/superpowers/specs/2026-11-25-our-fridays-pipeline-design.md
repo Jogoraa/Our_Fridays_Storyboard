@@ -9,7 +9,7 @@ Dawit  is submitting "B2W0: AI-Content Generation" (brief: `AI-Content Generatio
 1. Codebase and report, graded by reading code, text, logs and documents only (no media is opened), followed by an AI interview.
 2. Film (50), walkthrough video (30), public post (20), graded by hand.
 
-The film is "Our Fridays", a fictional story Abu wrote: two friends, Rahel and Bekele, an unspoken love, a move to another city, and a promise to keep their Friday coffee. The starter folder holds a storyboard draft (8 shots, 84 s + 4 s end card), a schema and a design worksheet. No pipeline, media or logs exist yet.
+The film is "Our Fridays", a fictional story Dawit wrote: two friends, Rahel and Bekele, an unspoken love, a move to another city, and a promise to keep their Friday coffee. The starter folder holds a storyboard draft (8 shots, 84 s + 4 s end card), a schema and a design worksheet. No pipeline, media or logs exist yet.
 
 The brief weighs process as heavily as the film. So the thing being built is a small, honest, reproducible studio in code, and the film is its output.
 
@@ -31,32 +31,32 @@ The brief weighs process as heavily as the film. So the thing being built is a s
 
 ## Anti-goals (would make this a failure even if it runs)
 
-- Invented evidence. Audience feedback, experiments, failures, latencies and costs are only ever written from things that actually happened. Sections waiting on Abu stay marked pending.
-- A repository Abu cannot explain in the interview. Code stays small and plain; ARCHITECTURE.md explains every choice.
+- Invented evidence. Audience feedback, experiments, failures, latencies and costs are only ever written from things that actually happened. Sections waiting on Dawit stay marked pending.
+- A repository Dawit cannot explain in the interview. Code stays small and plain; ARCHITECTURE.md explains every choice.
 - Ending the day with video clips but no finished film.
 
 ## Constraints
 
 - About 36 hours. Windows 11, no local GPU, no `make`. Python 3.14, uv, FFmpeg 9 (full build), git and gh are installed.
-- No provider keys yet. Abu supplies a Gemini API key, a Cloudflare account ID plus Workers AI token, and a Kaggle API token in a local `.env`.
+- No provider keys yet. Dawit supplies a Gemini API key, a Cloudflare account ID plus Workers AI token, and a Kaggle API token in a local `.env`.
 - Free tiers only: Cloudflare daily image allowance (roughly 50–170 images), Kaggle about 30 GPU hours a week on T4s, with queues and session timeouts.
-- Only Abu can do: two audience tests with at least three real people each, the walkthrough recording, the public post, the report's personal reflections, the interview, and a native-speaker listen to the Amharic narration.
+- Only Dawit can do: two audience tests with at least three real people each, the walkthrough recording, the public post, the report's personal reflections, the interview, and a native-speaker listen to the Amharic narration.
 - Model names in the brief (Gemini 3.8 Flash TTS, FLUX.2 klein, FLUX.1 schnell, Wan 2.2 TI2V-5B, ACE-Step 1.5) must be checked against current provider docs at build time; anything that has moved goes in FAILURES.md.
 
 ## Approaches
 
-1. **Stills first, then upgrade to video. Chosen by Abu.** Build the whole pipeline with every shot as a keyframe plus a slow FFmpeg camera move, giving a finished film within hours. Then replace assets one at a time with Wan 2.2 clips from Kaggle as the queue allows. Always submittable; each upgrade is a logged experiment; matches the per-shot regeneration the walkthrough must show. Cost: some shots may stay as moving stills.
+1. **Stills first, then upgrade to video. Chosen by Dawit.** Build the whole pipeline with every shot as a keyframe plus a slow FFmpeg camera move, giving a finished film within hours. Then replace assets one at a time with Wan 2.2 clips from Kaggle as the queue allows. Always submittable; each upgrade is a logged experiment; matches the per-shot regeneration the walkthrough must show. Cost: some shots may stay as moving stills.
 2. **Full video from the start.** All shots through Wan 2.2 before any assembly. Most motion if it works, but a free T4 takes many minutes per clip and one failure near the deadline leaves no film.
 3. **Paid frontier models.** Dropped: needs a payment card and the brief does not reward it.
 
-## Decided with Abu
+## Decided with Dawit
 
 - Approach 1.
 - The story is fiction he wrote, made for this assignment. No real person is shown or voiced.
 
-## My calls (Abu can overrule any of these)
+## Dawit's decisions (can overrule any of these)
 
-- **Audience:** young Ethiopian adults — Abu's friends and cohort colleagues on Slack — watching on a phone. "The assignment" cannot be the audience because the brief needs two tests with three real people each. Intent: they recognise the feeling of something left unsaid, and leave warmed that the friendship continues.
+- **Audience:** young Ethiopian adults — Dawit's friends and cohort colleagues on Slack — watching on a phone. "The assignment" cannot be the audience because the brief needs two tests with three real people each. Intent: they recognise the feeling of something left unsaid, and leave warmed that the friendship continues.
 - **Language:** Amharic narration, English subtitles. An English narration track is generated as a measured comparison (the one piece of ceiling work).
 - **Run command:** `uv run film`, with `--radio-cut`, `--only <stage>`, `--shot <id>`, `--aspect <9:16|16:9>`.
 - **Python**, standard library plus `jsonschema`, `httpx`, `python-dotenv`; FFmpeg called as a subprocess.
@@ -87,7 +87,7 @@ Extends the starter. Additions: `project_status` becomes an enum (draft, radio_c
 
 | Stage | Reads | Model / tool | Writes |
 |---|---|---|---|
-| script | English lines | Gemini Flash: drafts Amharic lines and checks subtitle length (2 lines, about 40 characters) | `outputs/script/` proposals for Abu to approve into the storyboard |
+| script | English lines | Gemini Flash: drafts Amharic lines and checks subtitle length (2 lines, about 40 characters) | `outputs/script/` proposals for Dawit to approve into the storyboard |
 | narration | narration text, style | Gemini Flash TTS, one file per shot | `outputs/narration/shot_XX.wav`, measured durations, `timing.json` |
 | keyframes | characters, style block, prompts, seeds | Cloudflare Workers AI: FLUX.2 klein with reference images, FLUX.1 schnell as fallback | character/style reference sheet first, then one keyframe per shot per aspect ratio |
 | shots | keyframes, motion prompts, `render` | Wan 2.2 TI2V-5B on Kaggle for `video`; FFmpeg zoompan for `still` | `outputs/clips/shot_XX_<aspect>.mp4` |
@@ -112,21 +112,21 @@ Kaggle jobs are pushed and polled through the Kaggle API from the `shots` and `m
 
 ### Order of work, with an approval between stages
 
-1. Today: repo, schema 1.1, validation, logging and caching, a smoke test of each provider, narration, radio cut. **Abu plays the radio cut to three people and gives me their words.**
+1. Today: repo, schema 1.1, validation, logging and caching, a smoke test of each provider, narration, radio cut. **Dawit plays the radio cut to three people and gives me their words.**
 2. Today/tonight: storyboard changes from that feedback, reference sheet, keyframes, a complete stills film in both aspect ratios, Kaggle jobs for music and the first video upgrades running overnight.
-3. Tomorrow morning: chosen score, video upgrades, near-final cut. **Abu runs the second test.**
-4. Tomorrow afternoon: final export, all documents from the real logs, GitHub push. Abu writes the post and report reflections (I draft structure and facts), records the walkthrough, submits.
+3. Tomorrow morning: chosen score, video upgrades, near-final cut. **Dawit runs the second test.**
+4. Tomorrow afternoon: final export, all documents from the real logs, GitHub push. Dawit writes the post and report reflections (I draft structure and facts), records the walkthrough, submits.
 
 ## Rules settled after review (my calls unless marked)
 
-- **If Amharic fails.** English narration is an acceptable final film; the brief allows any language. Abu decides after hearing the first Amharic narration. If Gemini TTS rejects Amharic outright, the film goes English and the failure is written up.
-- **If the film runs long.** The end card counts inside the 60–90 s. Target is 80–85 s total with a 3 s end card. I may tighten pauses and padding myself. Cutting or rewording a line or dropping a shot is Abu's: I propose the trim and he approves it.
-- **Who judges look and sound.** I choose by stated criteria (same face and wardrobe as the reference, clean hands and faces, no stray text; for the voice, clear names and calm pace; for the score, no lead melody fighting the voice) and record each choice with its reason. Abu reviews in three batches: the radio cut, a contact sheet of references and keyframes, and the near-final cut. If he is away, I proceed with my pick and he can overrule it later; the cache makes that a cheap redo.
+- **If Amharic fails.** English narration is an acceptable final film; the brief allows any language. Dawit decides after hearing the first Amharic narration. If Gemini TTS rejects Amharic outright, the film goes English and the failure is written up.
+- **If the film runs long.** The end card counts inside the 60–90 s. Target is 80–85 s total with a 3 s end card. I may tighten pauses and padding myself. Cutting or rewording a line or dropping a shot is Dawit's: I propose the trim and he approves it.
+- **Who judges look and sound.** I choose by stated criteria (same face and wardrobe as the reference, clean hands and faces, no stray text; for the voice, clear names and calm pace; for the score, no lead melody fighting the voice) and record each choice with its reason. Dawit reviews in three batches: the radio cut, a contact sheet of references and keyframes, and the near-final cut. If he is away, I proceed with my pick and he can overrule it later; the cache makes that a cheap redo.
 - **Keyframes versus feedback.** The reference sheet starts immediately. Shot keyframes wait for the first test's feedback, or three hours, whichever comes first, to protect the daily image allowance.
 - **Clean clone with no keys.** `uv run film` rebuilds both films from committed `outputs/` whose cache keys match: zero model calls, real FFmpeg assembly. With keys, `--force` or any storyboard edit triggers live generation. Each committed media file stays well under GitHub's 100 MB limit.
 - **No Kaggle GPU.** Music falls back to ACE-Step on Colab or a hosted Space, then to the synthesised pad as a last resort, stated honestly in FAILURES.md. Shots stay as moving stills.
-- **Testers' privacy.** DESIGN.md records testers as short descriptions (for example "friend, 24, designer"), never names, with their words quoted only as Abu reports them.
-- **Repository.** Public GitHub repository under Abu's account, created with `gh` when he says to publish.
+- **Testers' privacy.** DESIGN.md records testers as short descriptions (for example "friend, 24, designer"), never names, with their words quoted only as Dawit reports them.
+- **Repository.** Public GitHub repository under Dawit's account, created with `gh` when he says to publish.
 
 ## Appendix: the rubric this is planned against
 
@@ -146,7 +146,7 @@ Assignment 1 (code, text, logs, documents; media not opened; AI interview follow
 Assignment 2 (manual):
 - Film, 50: 60–90 s in both aspect ratios; clear narration, ducked score, accurate subtitles; consistent characters and style; AI end card; a story that lands for the chosen audience.
 - Walkthrough, 30: at most five minutes; architecture and one hard decision; one keyframe prompt or narration line changed, pipeline rerun, only that shot regenerated, shown on screen (logs with a single new model call count).
-- Public post, 20: public, written by Abu: the story, why it matters to him, one thing learned; platform AI label on.
+- Public post, 20: public, written by Dawit: the story, why it matters to him, one thing learned; platform AI label on.
 - Gate: a real person shown or voiced without a consent record scores the film zero.
 
 Report contents: what was made and for whom; what the audience taught; hardest problem and its solution; the practice that helped and the one that did not; ceiling work; what to build next.

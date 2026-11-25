@@ -52,7 +52,7 @@ def run(args: argparse.Namespace) -> None:
 
     if args.only in (None, "narration"):
         print("narration")
-        narration.run(sb, lang=lang, only_shot=args.shot, force=args.force)
+        narration.run(sb, lang=lang, only_shot=args.shot, force=args.force, batch=True)
         if args.only == "narration":
             return
 

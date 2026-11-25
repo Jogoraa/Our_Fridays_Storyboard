@@ -20,7 +20,7 @@
 - Final film total 60–90 s including the end card; target 80–85 s with a 3 s end card.
 - Nothing in DESIGN.md, EXPERIMENTS.md, FAILURES.md or COSTS.md is written unless it happened.
 - Provider model ids are verified against current docs before first use; a moved model is recorded in FAILURES.md.
-- Local commits after each task. No push and no public repo until Abu says to publish.
+- Local commits after each task. No push and no public repo until Dawit says to publish.
 
 ## Review Focus
 
@@ -139,7 +139,7 @@ Migration of `storyboard.json`: `narration.text` starts as the English line with
 
 **Interfaces — Consumes:** Task 2 core, Task 3 `generate_text`, `synthesize`, Task 4 `build_timing`.
 **Produces:**
-- `script.run(sb: dict, *, force: bool = False) -> Path` — one Gemini text call per shot translating `narration.source_en` into natural spoken Amharic for a warm narrator; writes `outputs/script/<shot>.am.json` (`{source_en, proposed_am}`) and a combined `outputs/script/proposal.md` for Abu to read. Does not modify `storyboard.json`.
+- `script.run(sb: dict, *, force: bool = False) -> Path` — one Gemini text call per shot translating `narration.source_en` into natural spoken Amharic for a warm narrator; writes `outputs/script/<shot>.am.json` (`{source_en, proposed_am}`) and a combined `outputs/script/proposal.md` for Dawit to read. Does not modify `storyboard.json`.
 - `narration.run(sb: dict, *, lang: str | None = None, only_shot: str | None = None, force: bool = False, synth=gemini.synthesize) -> dict[str, float]` — per shot: key from `{text, lang, model, voice, style_instruction}`; if cached, print `cache hit` and skip; else call through `call_with_retry`, reject audio shorter than 0.5 s or with RMS below a silence threshold as `RetryableError`, write `outputs/narration/<lang>/<shot>.wav`; returns measured durations and writes `outputs/narration/<lang>/durations.json`.
 
 - [ ] **Step 1: failing tests** (fake `synth` returning a generated tone WAV, `tmp_path` outputs and log):
@@ -149,8 +149,8 @@ Migration of `storyboard.json`: `narration.text` starts as the English line with
   - `test_silent_audio_is_retried_and_not_cached` (Review Focus 3)
   - `test_only_shot_limits_calls`
 - [ ] **Step 2–4:** fail, implement, pass.
-- [ ] **Step 5:** run `script.run`, give Abu `outputs/script/proposal.md`; after he approves or edits the Amharic, write it into `storyboard.json` (`narration.text`, `lang: "am"`).
-- [ ] **Step 6:** run the narration stage for real; Abu listens to shot 1 before the rest is trusted. Commit.
+- [ ] **Step 5:** run `script.run`, give Dawit `outputs/script/proposal.md`; after he approves or edits the Amharic, write it into `storyboard.json` (`narration.text`, `lang: "am"`).
+- [ ] **Step 6:** run the narration stage for real; Dawit listens to shot 1 before the rest is trusted. Commit.
 
 ### Task 6: Placeholder music, subtitles, radio cut, CLI
 
@@ -166,4 +166,4 @@ Migration of `storyboard.json`: `narration.text` starts as the English line with
 - [ ] **Step 1: failing tests:** `test_wrap_never_exceeds_two_lines_of_40`; `test_wrap_keeps_all_words_in_order`; `test_build_ass_cues_stay_inside_narration_window`; `test_portrait_margin_larger_than_landscape`.
 - [ ] **Step 2–4:** fail, implement, pass.
 - [ ] **Step 5:** run `uv run film --radio-cut`. Verify with `ffprobe`: duration equals `timing.total` within one frame, one video and one audio stream; measured integrated loudness within 1 LU of −14; a second run reports cache hits and adds no lines to `runs.jsonl`.
-- [ ] **Step 6:** start README, ARCHITECTURE, FAILURES, EXPERIMENTS, COSTS, ETHICS with only what is true so far; update DESIGN.md audience and intent. Commit. Hand the radio cut to Abu for the first audience test.
+- [ ] **Step 6:** start README, ARCHITECTURE, FAILURES, EXPERIMENTS, COSTS, ETHICS with only what is true so far; update DESIGN.md audience and intent. Commit. Hand the radio cut to Dawit for the first audience test.
