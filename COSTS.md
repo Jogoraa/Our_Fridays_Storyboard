@@ -48,10 +48,10 @@ What the same work would cost at published prices. Sources are in `pipeline/cost
 
 | Item | Measured quantity | List price | Equivalent (USD) |
 |---|---|---|---|
-| Narration kept, `gemini-3.8-flash-lite-tts` | 123.1 s of audio | $0.0015 per 10 s | 0.0185 |
-| Narration kept, `gemini-3.8-flash-tts` | 103.0 s of audio | $0.00225 per 10 s | 0.0232 |
+| Narration kept, `gemini-3.8-flash-lite-tts` | 34.9 s of audio | $0.0015 per 10 s | 0.0052 |
+| Narration kept, `gemini-3.8-flash-tts` | 39.8 s of audio | $0.00225 per 10 s | 0.0090 |
 | GPU sessions (images, music, video) | 99.8 GPU minutes on one T4 | $0.35 per hour | 0.5822 |
-| **Total** | | | **0.6238** |
+| **Total** | | | **0.5964** |
 
 Text calls (script drafts) are a fraction of a cent and are left out. Narration that was recorded and then discarded is not counted in the audio seconds above; the attempts are in the first table.
 

@@ -43,9 +43,10 @@ def main() -> int:
     else:
         rows.append(("gemini", "-", "-", "skipped: GEMINI_API_KEY is empty in .env"))
 
-    for name, keys in (("cloudflare", ("CLOUDFLARE_ACCOUNT_ID", "CLOUDFLARE_API_TOKEN")), ("kaggle", ("KAGGLE_USERNAME", "KAGGLE_KEY"))):
-        missing = [k for k in keys if not has_env(k)]
-        rows.append((name, "-", "-", f"skipped: {', '.join(missing)} empty in .env" if missing else "keys present; stage not built yet"))
+    if has_env("KAGGLE_USERNAME") and (has_env("KAGGLE_API_TOKEN") or has_env("KAGGLE_KEY")):
+        rows.append(("kaggle", "-", "-", "keys present; a GPU job is tested by `uv run film --only keyframes`"))
+    else:
+        rows.append(("kaggle", "-", "-", "skipped: KAGGLE_USERNAME and KAGGLE_API_TOKEN are not both set in .env"))
 
     width = max(len(r[0]) for r in rows)
     for name, model, latency, detail in rows:

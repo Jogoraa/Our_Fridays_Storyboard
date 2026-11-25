@@ -13,11 +13,11 @@ from pipeline import gemini
 from pipeline.common import rel, OUTPUTS, RUNS_PATH, ProviderError, cache_key, call_with_retry, is_cached, write_output
 
 STAGE = "script"
-VERSION = "2"
+VERSION = "3"
 SYSTEM = (
     "You are an Ethiopian voice-over writer. Translate the English narration line into natural, "
     "warm, spoken Amharic for a storyteller reading aloud. Use everyday words and short sentences, "
-    "keep the names Rahel (ራሄል) and Bekele (በቀለ), keep quoted speech as quoted speech, and keep "
+    "write personal names in Ge'ez script, keep quoted speech as quoted speech, and keep "
     "the meaning and length close to the English. Reply with the Amharic line only, in Ge'ez script."
 )
 

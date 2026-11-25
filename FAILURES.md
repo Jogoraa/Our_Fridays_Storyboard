@@ -50,10 +50,10 @@ Newest last. Only things that actually happened are recorded here.
 
 ## F7. The Amharic draft contained non-words and an Arabic letter
 
-- **When:** 25 November. Evidence: `outputs/script/candidates/gemini-3.5-flash-lite/`.
+- **When:** 25 November. Evidence: `outputs/archive/our_fridays/script/candidates/gemini-3.5-flash-lite/`.
 - **What broke:** The fallback model's Amharic had an Arabic letter inside an Amharic word (shot 4, "ላك"), invented words (shot 3 "ኩኩራ", shot 8 "አንባርቆሹ"), a wrong noun (shot 7, "ፌጦ", a plant, for "packet") and lost the word "Fridays", the film's title, in shot 7.
 - **What I tried:** Asked two stronger models for the same lines to compare. Both were unavailable (503, then the daily limit), so there is no comparison yet.
-- **Workaround:** The model draft is kept as evidence. A corrected version is written out line by line in `outputs/script/amharic_for_review.md`, and nothing is recorded until the author, a native speaker, approves each line.
+- **Workaround:** The model draft is kept as evidence. A corrected version was written out line by line for the author (`outputs/archive/our_fridays/script/amharic_for_review.md`), and nothing is recorded until the author, a native speaker, approves each line.
 - **Lesson:** A small model can produce Amharic that looks plausible to a non-reader and is wrong. The script stage only proposes; a person approves.
 
 ## F8. Cloudflare's free image allowance was already gone
@@ -75,7 +75,7 @@ Newest last. Only things that actually happened are recorded here.
 
 - **What broke:** Recording all lines in one request and splitting at pauses produced eight clips with one cut a sentence early (EXPERIMENTS E2). Nothing crashed; the files looked fine.
 - **How it was caught:** not by ear. Shot 3 ran at 0.073 s per character and shot 4 at 0.143 while the rest were near 0.11.
-- **Fix:** the pace check was tightened so that this exact case is rejected automatically (E3), the misaligned clips were set aside in `outputs/archive/our_fridays/narration/am_one_take_rejected/`, and all eight shots were recorded one by one.
+- **Fix:** the pace check was tightened so that this exact case is rejected automatically (E3), the misaligned clips were discarded, and all eight shots were recorded one by one.
 - **Lesson:** A stage needs a check that can fail on output that is plausible but wrong.
 
 ## F11. Amharic ran 96 seconds

@@ -4,7 +4,7 @@ import pytest
 
 from pipeline.subtitles import build_ass, margin_v, wrap
 
-LINE = "As the bus pulled away, his phone lit up: “Friday. Same time?” Bekele smiled and typed, “I’ll be there.”"
+LINE = "As the bus pulled away, his phone lit up: “Friday. Same time?” Dawit smiled and typed, “I’ll be there.”"
 
 
 def test_wrap_never_exceeds_two_lines_of_40():
@@ -77,11 +77,7 @@ def test_portrait_margin_larger_than_landscape():
 def film_storyboard():
     sb = storyboard()
     sb["end_card"] = {"duration_seconds": 3, "text": "Made with AI"}
-    sb["title"] = "Our Fridays"
-    sb["shots"][1]["overlay_text"] = [
-        {"text": "አርብ። ልክ እንደ ተለመደው?", "at_fraction": 0.25, "role": "received"},
-        {"text": "እመጣለሁ", "at_fraction": 0.75, "role": "sent"},
-    ]
+    sb["title"] = "Sample Film"
     return sb
 
 
@@ -101,25 +97,15 @@ def test_end_card_text_is_on_screen_for_the_whole_end_card():
     assert start == pytest.approx(16.0, abs=0.02) and end == pytest.approx(19.0, abs=0.02)
 
 
-def test_phone_messages_appear_inside_their_shot_in_order():
-    ass = build_ass(film_storyboard(), timing(), width=1080, height=1920, extras=True)
-    received, sent = events(ass, "Received"), events(ass, "Sent")
-    assert len(received) == 1 and len(sent) == 1
-    assert received[0][0] == pytest.approx(8.0 + 0.25 * 8.0, abs=0.02)
-    assert sent[0][0] == pytest.approx(8.0 + 0.75 * 8.0, abs=0.02)
-    assert received[0][1] <= 16.0 and sent[0][1] <= 16.0
-    assert "እመጣለሁ" in sent[0][2]
-
-
 def test_radio_cut_subtitles_have_no_extras():
     ass = build_ass(film_storyboard(), timing(), width=1080, height=1920)
-    assert not events(ass, "Card") and not events(ass, "Sent")
+    assert not events(ass, "Card")
 
 
 def test_ass_contains_override_tags_and_no_control_characters():
     ass = build_ass(film_storyboard(), timing(), width=1080, height=1920, extras=True)
     assert not [c for c in ass if ord(c) < 32 and c != "\n"]
-    assert r"{\fad(250,200)}" in ass and r"\b1}" in ass and r"\N" in ass
+    assert r"{\fad(400,0)}" in ass and r"\b1}" in ass and r"\N" in ass
 
 
 def test_portrait_subtitles_use_shorter_lines_and_larger_type_than_a_40_character_line_allows():

@@ -1,6 +1,6 @@
 {
   "shot": "shot_01",
   "source_en": "Every Friday, Rahel and Bekele met at the same small café. She knew exactly how he took his coffee.",
-  "proposed_am": "ራሄልና በቀለ አርብ አርብ ሁልጊዜ በሚገናኙበት ትንሽዬ ካፌ ነበረች። ረሄልም በቀለ ቡናውን እንዴት እንደሚወድው ታውቅ ነበር።",
+  "proposed_am": "አርብ አርብ ራሄልና በቀለ ሁልጊዜ በሚገናኙበት ትንሽ ኬሻ ካፌ ውስጥ ይገናኙ ነበር። ቡናውን እንዴት እንደሚወድው ታውቅለት ነበር።",
   "model": "gemini-3.5-flash-lite"
 }

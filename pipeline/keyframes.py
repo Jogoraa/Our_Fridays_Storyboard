@@ -29,7 +29,7 @@ SEND_SCALE = 0.8334   # what two 15 GB T4s were measured to fit: 720x1280. Upsca
 REFERENCE_SIZE = (864, 1152)
 REFERENCE_MAX_SIDE = 512                     # references are shrunk to this before conditioning (GPU memory)
 JOB_SCRIPT = ROOT / "gpu_jobs" / "flux_keyframes.py"
-JOB_SLUG = "our-fridays-keyframes"
+JOB_SLUG = "the-window-keyframes"
 
 Runner = Callable[[dict], tuple[Path, dict]]
 

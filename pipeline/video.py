@@ -29,7 +29,7 @@ NEGATIVE = (
     "jpeg artifacts, deformed, extra fingers, malformed hands, distorted face, morphing, flicker, fast motion"
 )
 JOB_SCRIPT = ROOT / "gpu_jobs" / "wan_i2v.py"
-JOB_SLUG = "our-fridays-video"
+JOB_SLUG = "the-window-video"
 
 Runner = Callable[[dict], tuple[Path, dict]]
 

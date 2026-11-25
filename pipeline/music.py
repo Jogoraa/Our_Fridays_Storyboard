@@ -18,7 +18,7 @@ MODEL = "acestep-v15-turbo"
 STEPS = 8
 CANDIDATE_SEEDS = (3101, 3102, 3103)
 JOB_SCRIPT = ROOT / "gpu_jobs" / "acestep_score.py"
-JOB_SLUG = "our-fridays-score"
+JOB_SLUG = "the-window-score"
 
 # D major pad, below the voice's main energy, with a slow swell.
 _PAD = (

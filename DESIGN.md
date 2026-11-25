@@ -44,7 +44,7 @@ Two look decisions follow from the intent. The imagined shots (04, 05) have thei
 
 ### 25 November: the story changed before any picture was made
 
-The project began as "Our Fridays", a fictional story about two friends and an unspoken love. The pipeline was built around it and a radio cut was produced in English and in Amharic (kept in `outputs/archive/our_fridays/`; the calls are in `runs.jsonl`).
+The project began as "Our Fridays", a fictional story about two friends and an unspoken love. The pipeline was built around it and a radio cut was produced in English and in Amharic (its storyboard and measurements are kept in `outputs/archive/our_fridays/`; the calls are in `runs.jsonl`).
 
 Before it was shown to anyone, the author chose to replace the story with this one. His reasons, in his words, are to be added here by him. What the builder observed: the brief asks for a story that matters to the maker and their family, and "Our Fridays" was invented for the assignment; this parable is one the author already carried, in his own language, about elders.
 

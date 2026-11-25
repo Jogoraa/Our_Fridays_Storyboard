@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/our-fridays/storyboard.schema.json",
-  "title": "Our Fridays storyboard (the contract between pipeline stages)",
+  "$id": "https://example.invalid/film/storyboard.schema.json",
+  "title": "Storyboard: the contract between pipeline stages",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -417,36 +417,6 @@
                 "still",
                 "video"
               ]
-            }
-          }
-        },
-        "overlay_text": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "text",
-              "at_fraction",
-              "role"
-            ],
-            "properties": {
-              "text": {
-                "type": "string",
-                "minLength": 1
-              },
-              "at_fraction": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1
-              },
-              "role": {
-                "enum": [
-                  "draft",
-                  "sent",
-                  "received"
-                ]
-              }
             }
           }
         },

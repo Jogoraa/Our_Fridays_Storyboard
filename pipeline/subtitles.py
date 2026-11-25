@@ -64,43 +64,14 @@ _STYLE_FORMAT = (
     "Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, "
     "Alignment, MarginL, MarginR, MarginV, Encoding"
 )
-# ASS colours are &HAABBGGRR. BorderStyle 3 draws an opaque box in the outline colour: a message bubble.
-_BUBBLES = {
-    # role: (box colour, italic, alignment: 7 top-left, 9 top-right)
-    "received": ("&H003A3A3A", 0, 7),
-    "sent": ("&H00D9822B", 0, 9),
-    "draft": ("&H00707070", 1, 9),
-}
-
-
-def _extras(sb: dict, timing: dict, width: int, height: int, font_size: int, margin_h: int) -> tuple[list[str], list[str]]:
-    """Styles and events for the phone messages and the end card. All on-screen text is drawn here."""
-    top = round(height * (0.14 if height > width else 0.10))
-    bubble_size = round(font_size * 1.05)
-    styles = [
-        f"Style: {role.capitalize()},Arial,{bubble_size},&H00FFFFFF,&H00FFFFFF,{colour},{colour},"
-        f"0,{italic},0,0,100,100,0,0,3,{round(bubble_size * 0.45)},0,{align},{margin_h},{margin_h},{top},1"
-        for role, (colour, italic, align) in _BUBBLES.items()
-    ]
+def _end_card(sb: dict, timing: dict, width: int, height: int, margin_h: int) -> tuple[list[str], list[str]]:
+    """Style and event for the end card: the title and the "Made with AI" line, drawn in the edit."""
     card_size = round(min(width, height) * 0.055)
-    styles.append(
+    styles = [
         f"Style: Card,Arial,{card_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
         f"0,0,0,0,100,100,2,0,1,0,0,5,{margin_h},{margin_h},0,1"
-    )
-
+    ]
     events: list[str] = []
-    slots = {slot["id"]: slot for slot in timing["shots"]}
-    for shot in sb["shots"]:
-        slot = slots[shot["id"]]
-        shot_end = slot["start"] + slot["duration"]
-        for index, message in enumerate(shot.get("overlay_text", [])):
-            start = slot["start"] + message["at_fraction"] * slot["duration"]
-            drop = top + index * round(bubble_size * 2.6)  # later messages sit below earlier ones
-            text = message["text"] + ("|" if message["role"] == "draft" else "")
-            events.append(
-                f"Dialogue: 1,{_stamp(start)},{_stamp(shot_end)},{message['role'].capitalize()},,0,0,{drop},,"
-                f"{{\\fad(250,200)}}{text}"
-            )
     card = timing["end_card"]
     title = sb.get("title", "")
     lines = ([f"{{\\fs{round(card_size * 1.5)}\\b1}}{title}{{\\b0\\fs{card_size}}}", ""] if title else []) + [sb["end_card"]["text"]]
@@ -112,7 +83,7 @@ def _extras(sb: dict, timing: dict, width: int, height: int, font_size: int, mar
 
 
 def build_ass(sb: dict, timing: dict, *, width: int, height: int, extras: bool = False) -> str:
-    """Subtitles for the whole film. With extras, also the phone messages and the end card."""
+    """Subtitles for the whole film. With extras, also the end card."""
     margin_h = round(width * 0.075)
     # A phone held upright is narrow: fewer characters per line there, so the type can be large enough to read.
     max_chars = PORTRAIT_CHARS if height > width else LANDSCAPE_CHARS
@@ -136,7 +107,7 @@ def build_ass(sb: dict, timing: dict, *, width: int, height: int, extras: bool =
             events.append(f"Dialogue: 0,{_stamp(cursor)},{_stamp(end)},Sub,,0,0,0,,{text}")
             cursor = end
     if extras:
-        more_styles, more_events = _extras(sb, timing, width, height, font_size, margin_h)
+        more_styles, more_events = _end_card(sb, timing, width, height, margin_h)
         styles += more_styles
         events += more_events
     header = "\n".join([

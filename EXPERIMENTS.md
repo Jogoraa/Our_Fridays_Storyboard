@@ -2,7 +2,7 @@
 
 Each entry states a hypothesis, the one thing that was changed, what was measured and what was decided. Evidence is in `runs.jsonl` (stage, shot and model are given so the lines can be found), in files under `outputs/`, or in a test that pins the result.
 
-Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are in `outputs/archive/our_fridays/`. The pipeline is the same for "The Window".
+Entries E1 to E10 were run on the project's first story, "Our Fridays", before the film became "The Window" (DESIGN.md, decision log). The pipeline is the same. Its audio and video were removed when the repository was cleaned up; what is kept in `outputs/archive/our_fridays/` is the text evidence these entries cite (measured durations, the model's unedited Amharic drafts, the old storyboard), and every call is still in `runs.jsonl`.
 
 ## E1. Can the whole film be narrated in one speech request?
 
@@ -16,7 +16,7 @@ Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are 
 
 - **Hypothesis:** A line's share of the speaking time is close to its share of the characters, so each line break should be the pause nearest to that fraction of the speech.
 - **Change:** `split_take(..., weights=[len(line) ...])` matches pauses to expected positions in order, minimising total distance (`_by_text` in `pipeline/split.py`). The raw take is now saved so a failed split can be studied without another request.
-- **Result:** On the real Amharic take (`outputs/archive/our_fridays/narration/am/takes/`, 25 pauses between 0.3 s and 1.4 s) it returned eight clips. But the seconds-per-character of each clip gave it away: shot 3 came out at 0.073 s/char and shot 4 at 0.143, against about 0.11 for the others. A sentence from shot 3 had landed in shot 4. The two shots together were the right length; the cut between them was one pause early.
+- **Result:** On the real Amharic take (25 pauses between 0.3 s and 1.4 s; `runs.jsonl`, stage `narration`, mode `batch`, model `gemini-3.8-flash-lite-tts`) it returned eight clips. But the seconds-per-character of each clip gave it away: shot 3 came out at 0.073 s/char and shot 4 at 0.143, against about 0.11 for the others. A sentence from shot 3 had landed in shot 4. The two shots together were the right length; the cut between them was one pause early.
 - **Decision:** Speaking pace is not uniform enough (quoted speech is slower) for position alone. One-take recording stays in the code as an opt-in, and per-shot recording is the default because it is aligned by construction. The saving was not worth a wrong cut.
 
 ## E3. How tight can the pace check be?
@@ -88,8 +88,8 @@ Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are 
 | 3103 | -17.9 | 12.8 | -5.3 dB |
 
 - **Hypothesis:** The candidate with the least energy in the voice's band will sit best under the narrator.
-- **Result:** Each candidate was mixed under the real narration with the film's ducking and loudness settings (`outputs/music/audition_seed*.mp3`). The author listened to all three and chose 3103, the one the measurement pointed to. It is also the most dynamic of the three, which suits a piece that has to open up on the imagined garden and nearly stop on the white wall.
-- **Decision:** `music.chosen = score_seed3103.flac` in the storyboard. The other two are kept.
+- **Result:** Each candidate was mixed under the real narration with the film's ducking and loudness settings. The author listened to all three and chose 3103, the one the measurement pointed to. It is also the most dynamic of the three, which suits a piece that has to open up on the imagined garden and nearly stop on the white wall.
+- **Decision:** `music.chosen = score_seed3103.flac` in the storyboard. The two that were not chosen were deleted in the clean-up; their measurements stay in `candidates_measured.json`, and `uv run film --only music` regenerates them from the same seeds.
 - **Cost:** 23 s of GPU for all three; 194 s for the whole job including building ACE-Step's environment and downloading the model.
 
 ## E12. Does describing the characters more specifically change the reference portraits?

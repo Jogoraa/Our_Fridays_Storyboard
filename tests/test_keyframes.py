@@ -53,7 +53,7 @@ def test_first_run_makes_references_then_every_keyframe_in_one_job(sb, tmp_path)
     assert len(gpu.manifests) == 1
     files = [item["file"] for item in gpu.manifests[0]["items"]]
     assert len(files) == 2 * keyframes.CANDIDATES + 8 * 2
-    assert files[:6] == ["rahel_c1.jpg", "rahel_c2.jpg", "rahel_c3.jpg", "bekele_c1.jpg", "bekele_c2.jpg", "bekele_c3.jpg"]
+    assert files[:6] == ["alem_c1.jpg", "alem_c2.jpg", "alem_c3.jpg", "dawit_c1.jpg", "dawit_c2.jpg", "dawit_c3.jpg"]
     assert (tmp_path / "keyframes" / "shot_01_9x16.jpg").is_file()
     assert (tmp_path / "keyframes" / "shot_08_16x9.jpg").is_file()
     assert len(made) == 22
@@ -83,20 +83,20 @@ def test_changing_one_keyframe_prompt_regenerates_only_that_shot(sb, tmp_path):
     manifest = gpu.manifests[0]
     assert [item["file"] for item in manifest["items"]] == ["shot_03_9x16.jpg", "shot_03_16x9.jpg"]
     # The approved references already exist, so they travel inside the manifest.
-    assert set(manifest["embedded"]) == {"rahel_c1.jpg", "bekele_c1.jpg"}
+    assert set(manifest["embedded"]) == {"alem_c1.jpg", "dawit_c1.jpg"}
 
 
 def test_keyframes_use_the_references_of_the_characters_in_the_shot(sb, tmp_path):
     gpu = FakeGpu(tmp_path)
     run(sb, gpu, tmp_path)
     items = {item["file"]: item for item in gpu.manifests[0]["items"]}
-    assert items["shot_01_9x16.jpg"]["references"] == ["rahel_c1.jpg", "bekele_c1.jpg"]
-    assert items["shot_04_9x16.jpg"]["references"] == ["bekele_c1.jpg"]
+    assert items["shot_01_9x16.jpg"]["references"] == ["alem_c1.jpg", "dawit_c1.jpg"]
+    assert items["shot_04_9x16.jpg"]["references"] == ["dawit_c1.jpg"]
     assert sb["style_block"] in items["shot_04_9x16.jpg"]["prompt"]
     # Sent at the size measured to fit the GPUs, not the size asked for.
     assert (items["shot_01_9x16.jpg"]["width"], items["shot_01_9x16.jpg"]["height"]) == (720, 1280)
     assert (items["shot_01_16x9.jpg"]["width"], items["shot_01_16x9.jpg"]["height"]) == (1280, 720)
-    assert (items["rahel_c1.jpg"]["width"], items["rahel_c1.jpg"]["height"]) == (864, 1152)
+    assert (items["alem_c1.jpg"]["width"], items["alem_c1.jpg"]["height"]) == (864, 1152)
     assert "on the left of the reference image" in items["shot_01_9x16.jpg"]["prompt"]
     assert "on the right of the reference image" in items["shot_01_9x16.jpg"]["prompt"]
     assert "from reference image 1" in items["shot_04_9x16.jpg"]["prompt"]
@@ -104,12 +104,12 @@ def test_keyframes_use_the_references_of_the_characters_in_the_shot(sb, tmp_path
 
 def test_choosing_a_different_reference_regenerates_that_characters_shots_only(sb, tmp_path):
     run(sb, FakeGpu(tmp_path), tmp_path)
-    sb["characters"][0]["reference_asset"] = "outputs/references/rahel_c2.jpg"
+    sb["characters"][0]["reference_asset"] = "outputs/references/alem_c2.jpg"
     gpu = FakeGpu(tmp_path)
     run(sb, gpu, tmp_path)
     shots_redone = {item["file"][:7] for item in gpu.manifests[0]["items"]}
-    with_rahel = {shot["id"] for shot in sb["shots"] if "rahel" in shot["characters"]}
-    assert shots_redone == with_rahel
+    with_alem = {shot["id"] for shot in sb["shots"] if "alem" in shot["characters"]}
+    assert shots_redone == with_alem
 
 
 def test_a_failed_image_is_logged_not_cached_and_retried_next_run(sb, tmp_path):

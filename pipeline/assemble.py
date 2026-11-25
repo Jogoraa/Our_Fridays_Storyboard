@@ -152,7 +152,7 @@ def film(
     clips: dict[str, Path],
     narration_dir: Path | None = None,
     out_dir: Path | None = None,
-    name: str = "our_fridays",
+    name: str = "film",
     force: bool = False,
 ) -> Path:
     """The film in one aspect ratio: shots, end card, burned-in subtitles and messages, mixed sound."""
