@@ -1,87 +1,91 @@
-# Amharic narration — for the author's review
+# The Window: Amharic narration for the author to correct
 
-Nothing here is used in the film until the author approves it.
-
-- **Model draft** is what `gemini-3.5-flash-lite` produced (kept unedited in `candidates/gemini-3.5-flash-lite/`).
-- **Suggested** is a corrected version proposed by the coding agent. It still needs a native speaker's judgement.
-- Problems spotted in the model draft are listed under each shot.
+Edit the line after each **Amharic:** and save. Nothing is recorded until you say it is approved.
 
 ## shot_01
 
-English: Every Friday, Rahel and Bekele met at the same small café. She knew exactly how he took his coffee.
+Picture: Wide establishing shot of a small plain room in a home for the elderly: two metal-frame single beds side by side, one directly beneath the r...
 
-Model draft: አርብ አርብ ራሄልና በቀለ ሁልጊዜ በሚገናኙበት ትንሽ ኬሻ ካፌ ውስጥ ይገናኙ ነበር። ቡናውን እንዴት እንደሚወድው ታውቅለት ነበር።
+English subtitle: In a home for the elderly, two old men shared one room. The room had a single window.
 
-Problem: "ኬሻ" is a stray word; "እንደሚወድው" is misspelled.
-
-Suggested: አርብ አርብ ራሄልና በቀለ በዚያው ትንሽ ካፌ ይገናኙ ነበር። ቡናውን እንዴት እንደሚወድ በትክክል ታውቅ ነበር።
+**Amharic:** በአንድ የአረጋውያን መጦሪያ ውስጥ ሁለት አዛውንቶች አንድ ክፍል ይጋሩ ነበር። ክፍሉ አንድ መስኮት ብቻ ነበረው።
 
 ## shot_02
 
-English: He knew when her smile was hiding a difficult day. What she didn’t know was that he loved her.
+Picture: Medium shot from near the foot of the bed: Ato Kebede lies flat on his back under a brown wool blanket, looking straight up at the ceiling w...
 
-Model draft: ራሄል ፈገግ ስትል ከጀርባው ከባድ ቀን እንዳለበት በቀለ ያውቅ ነበር። እርሷ ግን እሱ እንደሚወዳት ፈጽሞ አታውቅም ነበር።
+English subtitle: Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling.
 
-Problem: readable, but wordy and "እንዳለበት" has the wrong gender.
-
-Suggested: ፈገግታዋ ከባድ ቀን ሲደብቅ እሱ ያውቅ ነበር። እሷ ያላወቀችው ግን እንደሚወዳት ነበር።
+**Amharic:** የአቶ ግርማ አልጋ ከመስኮቱ አጠገብ ነበር። አቶ ከበደ ግን በጀርባቸው ተኝተው ጣሪያውን ብቻ ነበር የሚያዩት።
 
 ## shot_03
 
-English: One afternoon, Rahel told him she’d accepted a job in another city. Bekele smiled and told her he was proud.
+Picture: Medium close-up of Ato Girma sitting up in bed, his face turned toward the bright window so the light falls on it, one hand lifted slightly ...
 
-Model draft: አንድ ቀን ከሰዓት በኋላ ራሄል በሌላ ከተማ ሥራ እንዳገኘች ነገረችው። በቀለ ፈገግ ብሎ ኩኩራ እንደሚሰማት ነገራት።
+English subtitle: Every afternoon, Ato Girma sat up and described everything he could see through the window.
 
-Problem: "ኩኩራ" is not a word (should be about pride, ኩራት), and the sentence says she feels it, not he.
-
-Suggested: አንድ ቀን ከሰዓት በኋላ ራሄል በሌላ ከተማ ሥራ እንዳገኘች ነገረችው። በቀለ ፈገግ ብሎ እንደኮራባት ነገራት።
+**Amharic:** ዘወትር ከሰዓት በኋላ አቶ ግርማ ቁጭ ብለው በመስኮቱ የሚታያቸውን ሁሉ ይተርኩላቸው ነበር።
 
 ## shot_04
 
-English: That night, he typed, “There’s something I’ve wanted to tell you.” His thumb hovered over send.
+Picture: A beautiful public garden seen from slightly above: tall jacaranda trees in purple bloom around a green lawn, a small group of children runn...
 
-Model draft: ዚያን ዕለት ማታ፣ «አንቺን ልነግርሽ የፈለኩት አንድ ነገር አለ» ብሎ ጻፈ፤ ጣቱ ላك በሚለው ቁልፍ ላይ ቆመ።
+English subtitle: “I see a garden ringed with beautiful trees… children chasing a ball.”
 
-Problem: "ዚያን" is missing its first letter; "ላك" contains an Arabic letter (ك) instead of ክ.
-
-Suggested: በዚያ ምሽት «ልነግርሽ የፈለግሁት አንድ ነገር አለ» ብሎ ጻፈ። አውራ ጣቱ «ላክ» በሚለው ላይ ቆመ።
+**Amharic:** «በሚያማምሩ ዛፎች የተከበበ መናፈሻ ይታየኛል… ህጻናት ኳስ እያባረሩ ይጫወታሉ።»
 
 ## shot_05
 
-English: But he deleted the message. He was afraid the truth might change their friendship.
+Picture: A young Ethiopian couple seen from behind, walking hand in hand along a garden path under tall trees. Beyond the garden, the rooftops of a c...
 
-Model draft: ነገር ግን መልዕክቱን አጠፋው። የእውነት መገለጥ ጓደኝነታቸውን ሊለውጠው ይችላል ብሎ ፈራ።
+English subtitle: “Sweethearts walk hand in hand… and beyond them, I see lovely hills.”
 
-Problem: correct but stiff ("የእውነት መገለጥ").
-
-Suggested: ነገር ግን መልዕክቱን አጠፋው። እውነቱ ጓደኝነታቸውን እንዳይለውጠው ፈራ።
+**Amharic:** «ፍቅረኛሞች እጅ ለእጅ ተያይዘው ይዞራሉ… ከባሻገር ደግሞ ውብ ተራሮች ይታዩኛል።»
 
 ## shot_06
 
-English: At the bus station, Rahel admitted she was scared. Bekele picked up her bag and walked beside her.
+Picture: Close-up of Ato Kebede lying on his pillow with his eyes closed and a peaceful, contented smile, warm light from the window side touching hi...
 
-Model draft: በአውቶቡስ ጣቢያው ራሄል እንደፈራች ተናገረች። በቀለ ጓዟን አንስቶ አብሯት ሄደ።
+English subtitle: Ato Kebede closed his eyes and saw it all. Weeks went by like this.
 
-Problem: none found. "መናኸሪያ" may sound more natural than "ጣቢያ"; the author decides.
-
-Suggested: በአውቶቡስ መናኸሪያው ራሄል እንደፈራች ተናገረች። በቀለ ሻንጣዋን አንስቶ ከጎኗ ሄደ።
+**Amharic:** አቶ ከበደ ዓይናቸውን ጨፍነው ሁሉንም ያዩ ነበር። በዚህ ሁኔታ ሳምንታት አለፉ።
 
 ## shot_07
 
-English: Before boarding, she handed him a small packet of coffee. “So we can still have our Fridays,” she said.
+Picture: Early morning in the same room, cool pale light: the bed beneath the window is empty and neatly made, a folded white cotton shawl resting on...
 
-Model draft: ከመሳፈሯ በፊት ትንሽ የቡና ፌጦ ሰጠችው። “የዕለቱ የቡና ሰዓታችን እንዳይቀር” አለችው።
+English subtitle: One morning, Ato Girma’s bed was empty. He had passed away in the night.
 
-Problem: "ፌጦ" is the wrong word (it is a plant, not a packet); "Fridays" was lost, and it is the title of the film.
-
-Suggested: ከመሳፈሯ በፊት ትንሽ የቡና ጥቅል ሰጠችው። «አርቦቻችን እንዳይቀሩ» አለችው።
+**Amharic:** አንድ ማለዳ የአቶ ግርማ አልጋ ባዶ ነበር። ሌሊቱን አርፈው ነበር።
 
 ## shot_08
 
-English: As the bus pulled away, his phone lit up: “Friday. Same time?” Bekele smiled and typed, “I’ll be there.”
+Picture: Ato Kebede, now in the bed beneath the window, pushes himself up on his elbows and leans toward the window with an eager, hopeful expression...
 
-Model draft: አንባርቆሹ አውቶብስ ሲንቀሳቀስ፣ ስልኩ በራ፡ “አርብ። ልክ እንደ ቀድሞው?” በቀለ ፈገግ ብሎ “እመጣለሁ” ብሎ ጻፈ።
+English subtitle: Ato Kebede asked for his bed to be moved to the window. He could not wait to see.
 
-Problem: "አንባርቆሹ" is not a word.
+**Amharic:** አቶ ከበደ አልጋቸው ወደ መስኮቱ እንዲወሰድ ጠየቁ። ለማየት በጣም ቸኩለዋል።
 
-Suggested: አውቶቡሱ ሲንቀሳቀስ ስልኩ በራ፦ «አርብ። በተለመደው ሰዓት?» በቀለ ፈገግ ብሎ «እመጣለሁ» ብሎ ጻፈ።
+## shot_09
+
+Picture: View straight out through an open window with a plain wooden frame: nothing but a blank white-painted concrete wall a few metres away, flat ...
+
+English subtitle: But beyond the window there was only a white wall.
+
+**Amharic:** ከመስኮቱ ባሻገር ግን ነጭ ግድግዳ ብቻ ነበር።
+
+## shot_10
+
+Picture: Ato Kebede sits up in the bed beneath the window, stunned, turning his face toward Hana, who stands beside the bed speaking gently with one ...
+
+English subtitle: The caregiver told him, “Ato Girma could not see. He was blind.”
+
+**Amharic:** ተንከባካቢዋም «አቶ ግርማ እኮ ማየት የማይችሉ ዓይነ ስውር ነበሩ» አለቻቸው።
+
+## shot_11
+
+Picture: Close-up of Ato Kebede beside the window with tears on his cheeks and a soft, grateful smile, his eyes lifted toward the window as warm gold...
+
+English subtitle: He had invented it all, to give his friend the hope to go on living.
+
+**Amharic:** ለካስ ያን ሁሉ የሚፈጥሩት፣ ለጓደኛቸው የመኖር ተስፋ ለመስጠት ነበር።

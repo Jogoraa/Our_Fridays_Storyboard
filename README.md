@@ -1,8 +1,8 @@
-# Our Fridays
+# The Window
 
-A 60–90 second short film about two friends, an unspoken love and a promise to keep meeting, made by a pipeline that turns one file, `storyboard.json`, into narration, pictures, music and a finished edit.
+A 60-90 second short film, narrated in Amharic, about two old men who share a room in a home for the elderly and the world one of them describes through its only window. It is made by a pipeline that turns one file, `storyboard.json`, into narration, pictures, music and a finished edit.
 
-**Status: in progress.** The contract, validation, narration, timing and the radio cut (narration over a placeholder bed on a black screen) are built and tested. Keyframes, moving shots, the score and the final edit are next.
+**Status: in progress.** Built and tested: the contract and its validation, narration, timing, the radio cut, keyframes on a Kaggle GPU, moving-still shots and the final edit in both aspect ratios. Still to come: video shots and the score.
 
 ## Run it
 
@@ -36,7 +36,7 @@ uv run film --only narration --shot shot_03
 uv run film --lang en              # build the English narration track instead
 uv run film --force                # ignore the cache for the stages that run
 uv run python -m pipeline.smoke    # call each provider once and log the latency
-uv run pytest                      # 49 tests, no network needed
+uv run pytest                      # about 100 tests, no network needed
 ```
 
 ## What it costs
@@ -61,4 +61,4 @@ Nothing so far. Every model used runs on a free tier. Measured latency and GPU m
 
 ## The film
 
-Fiction, written by the author. Narrated in Amharic with English subtitles, in vertical (9:16) and horizontal (16:9), ending on a "Made with AI" card. No real person is shown or voiced.
+Adapted from a widely shared parable ("The Hospital Window"), reset in a fictional home for the elderly in Addis Ababa. Narrated in Amharic with English subtitles, in vertical (9:16) and horizontal (16:9), ending on a "Made with AI" card. No real person or organisation is shown or voiced. The project began as a different story, "Our Fridays"; DESIGN.md records the change and `outputs/archive/` keeps that work.

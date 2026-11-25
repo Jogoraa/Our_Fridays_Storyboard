@@ -1,33 +1,45 @@
 {
   "schema_version": "1.1",
-  "title": "Our Fridays",
-  "project_status": "radio_cut",
-  "story_note": "A fictional story written by the author about friendship, unspoken love and change. No real person is depicted or voiced.",
-  "audience": "Young Ethiopian adults (the author's friends and cohort colleagues), watching on a phone.",
-  "intent": "They recognise the feeling of something left unsaid, and leave warmed that the friendship continues.",
+  "title": "The Window",
+  "slug": "the_window",
+  "project_status": "draft",
+  "story_note": "Two old men share a room in a home for the elderly. The one by the window describes a beautiful world outside to the one who cannot sit up. All characters and the home are fictional; no real person or organisation is depicted or voiced.",
+  "source_note": "Adapted from a widely circulated parable usually called 'The Hospital Window' (author uncertain; often credited to Harry Buschman). The setting, characters and narration are this project's own.",
+  "audience": "Young Ethiopian adults (the author's friends and cohort colleagues) who grew up around elders, watching on a phone.",
+  "intent": "They feel how much a small, invented kindness can carry, and leave wanting to give someone hope.",
   "narration_language": "am",
   "subtitle_language": "en",
-  "narration_style": "One warm, reflective narrator, natural pacing, in Amharic. Quoted dialogue is read by the narrator.",
+  "narration_style": "One warm, gentle narrator in Amharic, using respectful forms for the elders. Quoted speech is read by the narrator.",
   "narration_voice": {
     "voice": "Sulafat",
-    "style_instruction": "warm, calm, unhurried storytelling",
+    "style_instruction": "warm, gentle storytelling at a natural pace",
     "tempo": 1.1
   },
-  "visual_style": "Naturalistic cinematic photography in a contemporary Ethiopian city; muted terracotta, coffee brown and navy palette; gentle natural light; restrained expressions; shallow depth of field. Keep the subject central and allow reframing for both portrait and landscape. No generated legible text, logos, watermarks or celebrity likenesses.",
-  "style_block": "Naturalistic cinematic photograph, contemporary Ethiopian city, muted terracotta, coffee brown and navy palette, gentle natural light, shallow depth of field, restrained expressions, subject centred, no text, no logos, no watermark.",
+  "visual_style": "Naturalistic cinematic photography inside a modest home for the elderly in Addis Ababa: muted cream walls, soft green and warm wood, gentle window light. The imagined scenes outside the window are warmer and more luminous than the room, so the contrast with the white wall lands.",
+  "style_block": "Naturalistic cinematic photograph, modest home for the elderly in Addis Ababa, muted cream, soft green and warm wood palette, gentle natural window light, shallow depth of field, restrained expressions, no text, no logos, no watermark.",
   "characters": [
     {
-      "id": "rahel",
-      "name": "Rahel",
-      "description": "Fictional Ethiopian woman in her late twenties, warm brown skin, shoulder-length dark curly hair, thoughtful expressive eyes.",
-      "wardrobe": "Cream knit top, olive jacket and a simple tan shoulder bag.",
+      "id": "girma",
+      "name": "Ato Girma",
+      "noun": "elderly man with the short white beard",
+      "description": "Fictional Ethiopian man in his late seventies, thin, dark brown skin, short white hair, short trimmed white beard, gentle smile with deep laugh lines, pale clouded eyes that do not focus.",
+      "wardrobe": "A white cotton gabi shawl over a faded light-blue pyjama shirt.",
       "reference_asset": null
     },
     {
-      "id": "bekele",
-      "name": "Bekele",
-      "description": "Fictional Ethiopian man in his late twenties, warm brown skin, close-cropped curly dark hair, short neat beard, gentle and reserved expression.",
-      "wardrobe": "Navy overshirt over a light grey shirt, dark trousers and a modest wristwatch.",
+      "id": "kebede",
+      "name": "Ato Kebede",
+      "noun": "bald elderly man with the grey moustache",
+      "description": "Fictional Ethiopian man in his early eighties, broad build, dark brown skin, bald head, grey moustache, tired kind eyes.",
+      "wardrobe": "A grey knitted cardigan over a cream pyjama shirt.",
+      "reference_asset": null
+    },
+    {
+      "id": "hana",
+      "name": "Hana",
+      "noun": "young woman caregiver",
+      "description": "Fictional Ethiopian woman in her late twenties, warm brown skin, black hair tied back, calm kind face.",
+      "wardrobe": "A plain light-green caregiver tunic with short sleeves.",
       "reference_asset": null
     }
   ],
@@ -45,253 +57,301 @@
   ],
   "music": {
     "status": "placeholder",
-    "caption": "Understated solo piano with a soft warm ambient pad, intimate, reflective, slow, sparse, no lead melody competing with a voice, instrumental, no vocals.",
-    "tempo_bpm": 68,
-    "key": "F major",
+    "caption": "Sparse tender solo piano over a soft warm string pad, slow, intimate, bittersweet and hopeful, a gentle plucked lyre-like texture in the background, no lead melody competing with a voice, instrumental, no vocals.",
+    "tempo_bpm": 64,
+    "key": "D major",
     "candidates": [],
     "chosen": null,
-    "mix_direction": "Lower the music under narration; confirm levels by listening after generation.",
+    "mix_direction": "Lower the music under narration; let it rise in the pauses and under the imagined garden; nearly silent on the white wall.",
     "cues": [
       {
         "at_shot": "shot_01",
-        "direction": "Piano enters softly; warm and familiar."
+        "direction": "Piano enters softly and plainly; a quiet room."
       },
       {
         "at_shot": "shot_04",
-        "direction": "Thins to pad and single notes; night, hesitation."
+        "direction": "Opens up and warms as the imagined garden appears."
       },
       {
-        "at_shot": "shot_06",
-        "direction": "Warmth returns, slightly fuller; morning."
+        "at_shot": "shot_07",
+        "direction": "Thins to a single held note; the empty bed."
       },
       {
-        "at_shot": "shot_08",
-        "direction": "Opening figure returns and resolves into the end card."
+        "at_shot": "shot_09",
+        "direction": "Almost silent on the white wall."
+      },
+      {
+        "at_shot": "shot_11",
+        "direction": "The garden theme returns, gently, and resolves into the end card."
       }
     ]
   },
   "shots": [
     {
       "id": "shot_01",
-      "duration_seconds": 10,
+      "duration_seconds": 8,
       "characters": [
-        "rahel",
-        "bekele"
+        "girma",
+        "kebede"
       ],
-      "reason": "Establish their comfortable, familiar friendship.",
+      "reason": "Establish the place, the two men and the one window everything turns on.",
       "narration": {
-        "text": "ራሄልና በቀለ አርብ አርብ ሁልጊዜ በሚገናኙበት ትንሽዬ ካፌ ነበረች። ራሄልም በቀለ ቡናውን እንዴት እንደሚወደው ታውቅ ነበር።",
+        "text": "በአንድ የአረጋውያን መጦሪያ ውስጥ ሁለት አዛውንቶች አንድ ክፍል ይጋሩ ነበር። ክፍሉ አንድ መስኮት ብቻ ነበረው።",
         "lang": "am",
-        "source_en": "There was a little café where Rahel and Bekele met every Friday. Rahel knew just how Bekele liked his coffee.",
-        "subtitle_en": "There was a little café where Rahel and Bekele met every Friday. Rahel knew just how Bekele liked his coffee."
+        "source_en": "In a home for the elderly, two old men shared one room. The room had a single window.",
+        "subtitle_en": "In a home for the elderly, two old men shared one room. The room had a single window."
       },
-      "keyframe_prompt": "Inside a small café at golden hour, Rahel and Bekele sit close together at a wooden table with two simple cups. Rahel slides his preferred coffee toward Bekele. Frame them together in the centre with enough headroom for a portrait crop.",
-      "motion_prompt": "A gentle slow push toward the table as Rahel slides a cup toward Bekele.",
+      "keyframe_prompt": "Wide establishing shot of a small plain room in a home for the elderly: two metal-frame single beds side by side, one directly beneath the room's only window, soft daylight falling across it. Ato Girma sits propped up on pillows in the bed by the window, Ato Kebede lies flat in the other bed under a brown wool blanket. Cream walls, a small wooden table between the beds with two cups.",
+      "motion_prompt": "Very slow push in toward the two beds; curtain moves slightly in the breeze.",
       "camera_move": "push_in",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1001
+      "seed": 2001
     },
     {
       "id": "shot_02",
-      "duration_seconds": 10,
+      "duration_seconds": 8,
       "characters": [
-        "rahel",
-        "bekele"
+        "kebede",
+        "girma"
       ],
-      "reason": "Show his attention and introduce his unspoken feelings.",
+      "reason": "Show why Kebede depends on Girma: he can only see the ceiling.",
       "narration": {
-        "text": "ራሄል ፈገግ ሳትል ስትቀር ከጀርባው ከባድ ቀን እንዳለበት በቀለ ያውቅ ነበር። እርሷ ግን እሱ እንደሚወዳት ፈጽሞ አታውቅም ነበር።",
+        "text": "የአቶ ግርማ አልጋ ከመስኮቱ አጠገብ ነበር። አቶ ከበደ ግን በጀርባቸው ተኝተው ጣሪያውን ብቻ ነበር የሚያዩት።",
         "lang": "am",
-        "source_en": "When Rahel didn’t smile, Bekele knew a hard day lay behind it. But she never knew that he loved her.",
-        "subtitle_en": "When Rahel didn’t smile, Bekele knew a hard day lay behind it. But she never knew that he loved her."
+        "source_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling.",
+        "subtitle_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling."
       },
-      "keyframe_prompt": "At the same café table, Rahel gives a small tired smile; Bekele notices with a quiet sympathetic look and gently moves her cup closer. The mood is intimate, restrained and clearly platonic from her point of view.",
-      "motion_prompt": "Subtle eye movement and a small movement of Bekele's hand toward the coffee cup.",
+      "keyframe_prompt": "Medium shot from near the foot of the bed: Ato Kebede lies flat on his back under a brown wool blanket, looking straight up at the ceiling with a tired expression. Behind him, in soft focus, Ato Girma sits upright in the bed beside the bright window.",
+      "motion_prompt": "Kebede blinks slowly, staring upward; the camera drifts gently sideways.",
       "camera_move": "pan_right",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1002
+      "seed": 2002
     },
     {
       "id": "shot_03",
-      "duration_seconds": 10,
+      "duration_seconds": 8,
       "characters": [
-        "rahel",
-        "bekele"
+        "girma"
       ],
-      "reason": "Introduce the change that puts their friendship under pressure.",
+      "reason": "Introduce the daily ritual: Girma describing the world outside.",
       "narration": {
-        "text": "አንድ ቀን ከሰዓት በኋላ ራሄል በሌላ ከተማ ሥራ እንዳገኘች ነገረችው። በቀለ ፈገግ ብሎ «የኔ ጀግና እንዴት እንደምኮራብሽ ግን ታውቂያለሽ» ሲል ነገራት።",
+        "text": "ዘወትር ከሰዓት በኋላ አቶ ግርማ ቁጭ ብለው በመስኮቱ የሚታያቸውን ሁሉ ይተርኩላቸው ነበር።",
         "lang": "am",
-        "source_en": "One afternoon, Rahel told him she’d found a job in another city. Bekele smiled and said, “My hero, you know how proud I am of you.”",
-        "subtitle_en": "One afternoon, Rahel told him she’d found a job in another city. Bekele smiled and said, “My hero, you know how proud I am of you.”"
+        "source_en": "Every afternoon, Ato Girma sat up and described everything he could see through the window.",
+        "subtitle_en": "Every afternoon, Ato Girma sat up and described everything he could see through the window."
       },
-      "keyframe_prompt": "In the same café Rahel shares good news with a mixture of excitement and nervousness; Bekele responds with a supportive smile that hides a trace of sadness. Focus on their faces and body language rather than phone text.",
-      "motion_prompt": "Rahel speaks with a small excited gesture; Bekele smiles gently.",
-      "camera_move": "pull_out",
-      "render": {
-        "9:16": "still",
-        "16:9": "still"
-      },
-      "reference_assets": [],
-      "seed": 1003
-    },
-    {
-      "id": "shot_04",
-      "duration_seconds": 9,
-      "characters": [
-        "bekele"
-      ],
-      "reason": "Make the unsaid confession tangible.",
-      "narration": {
-        "text": "በዚያች ምሽት፣ በቀለ «አንድ ልነግርሽ የፈለኩት ነገር ነበር» ብሎ ጻፈ፤ ከዚያም ጣቱ ላክ በሚለው ቁልፍ ላይ ቆመ።",
-        "lang": "am",
-        "source_en": "That night, Bekele typed, “There was something I wanted to tell you.” Then his thumb stopped over send.",
-        "subtitle_en": "That night, Bekele typed, “There was something I wanted to tell you.” Then his thumb stopped over send."
-      },
-      "keyframe_prompt": "In Bekele's modest apartment at night, he sits alone holding a phone, lit softly by a lamp and the screen. Frame his face and hand; the screen remains blank for text to be added in editing.",
-      "motion_prompt": "Slow close-in toward the phone as Bekele's thumb pauses above the screen.",
+      "keyframe_prompt": "Medium close-up of Ato Girma sitting up in bed, his face turned toward the bright window so the light falls on it, one hand lifted slightly as if describing something, a gentle smile. Soft cream wall behind him.",
+      "motion_prompt": "Girma speaks softly and gestures with one hand toward the window; slow push in.",
       "camera_move": "push_in",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1004,
-      "overlay_text": [
-        {
-          "text": "አንድ ልነግርሽ የፈለኩት ነገር ነበር",
-          "at_fraction": 0.35,
-          "role": "draft"
-        }
-      ]
+      "seed": 2003
     },
     {
-      "id": "shot_05",
-      "duration_seconds": 10,
-      "characters": [
-        "bekele"
-      ],
-      "reason": "Show the cost of his hesitation.",
+      "id": "shot_04",
+      "duration_seconds": 8,
+      "characters": [],
+      "reason": "Let the audience see the world Girma describes, as vividly as Kebede imagines it.",
       "narration": {
-        "text": "ነገር ግን መልዕክቱን አጠፋው። የእውነቱ መታወቅ ጓደኝነታቸውን ሊለውጠው ይችላል ብሎም ፈራ።",
+        "text": "«በሚያማምሩ ዛፎች የተከበበ መናፈሻ ይታየኛል… ህጻናት ኳስ እያባረሩ ይጫወታሉ።»",
         "lang": "am",
-        "source_en": "But he deleted the message. He was afraid that the truth coming out might change their friendship.",
-        "subtitle_en": "But he deleted the message. He was afraid that the truth coming out might change their friendship."
+        "source_en": "“I see a garden ringed with beautiful trees… children chasing a ball.”",
+        "subtitle_en": "“I see a garden ringed with beautiful trees… children chasing a ball.”"
       },
-      "keyframe_prompt": "A close view of Bekele looking between his phone and a small, unbranded printed photograph of two friends at a café. His expression is conflicted; the phone screen is neutral and blank.",
-      "motion_prompt": "He lowers his gaze and slowly withdraws his thumb, leaving a beat of stillness.",
-      "camera_move": "tilt_down",
+      "keyframe_prompt": "A beautiful public garden seen from slightly above: tall jacaranda trees in purple bloom around a green lawn, a small group of children running after a football, long golden afternoon light and soft shadows.",
+      "motion_prompt": "Children run across the lawn; leaves move in a light wind; slow drift to the right.",
+      "camera_move": "pan_right",
+      "style_block": "Luminous warm cinematic photograph, golden afternoon light, rich greens and jacaranda purple, slightly dreamlike soft glow, shallow depth of field, no text, no logos, no watermark.",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1005
+      "seed": 2004
+    },
+    {
+      "id": "shot_05",
+      "duration_seconds": 8,
+      "characters": [],
+      "reason": "Widen the imagined world beyond the garden, so the later wall feels like a real loss.",
+      "narration": {
+        "text": "«ፍቅረኛሞች እጅ ለእጅ ተያይዘው ይዞራሉ… ከባሻገር ደግሞ ውብ ተራሮች ይታዩኛል።»",
+        "lang": "am",
+        "source_en": "“Sweethearts walk hand in hand… and beyond them, I see lovely hills.”",
+        "subtitle_en": "“Sweethearts walk hand in hand… and beyond them, I see lovely hills.”"
+      },
+      "keyframe_prompt": "A young Ethiopian couple seen from behind, walking hand in hand along a garden path under tall trees. Beyond the garden, the rooftops of a city and soft blue eucalyptus-covered hills in the distance under a warm evening sky.",
+      "motion_prompt": "The couple walk slowly away from the camera; the camera tilts up gently toward the hills.",
+      "camera_move": "tilt_up",
+      "style_block": "Luminous warm cinematic photograph, golden afternoon light, rich greens and jacaranda purple, slightly dreamlike soft glow, shallow depth of field, no text, no logos, no watermark.",
+      "render": {
+        "9:16": "still",
+        "16:9": "still"
+      },
+      "reference_assets": [],
+      "seed": 2005
     },
     {
       "id": "shot_06",
-      "duration_seconds": 11,
+      "duration_seconds": 7,
       "characters": [
-        "rahel",
-        "bekele"
+        "kebede"
       ],
-      "reason": "Let Rahel express her own feelings while showing Bekele's care.",
+      "reason": "Show what the stories give Kebede: he sees it all with his eyes closed.",
       "narration": {
-        "text": "በአውቶቡስ ጣቢያውም እንደ ደረሱ፤ ራሄል እንደፈራች ተናገረች። በቀለም ጓዟን ተሸክሞ አብሯት ሄደ።",
+        "text": "አቶ ከበደ ዓይናቸውን ጨፍነው ሁሉንም ያዩ ነበር። በዚህ ሁኔታ ሳምንታት አለፉ።",
         "lang": "am",
-        "source_en": "When they reached the bus station, Rahel said she was scared. Bekele carried her bag and walked with her.",
-        "subtitle_en": "When they reached the bus station, Rahel said she was scared. Bekele carried her bag and walked with her."
+        "source_en": "Ato Kebede closed his eyes and saw it all. Weeks went by like this.",
+        "subtitle_en": "Ato Kebede closed his eyes and saw it all. Weeks went by like this."
       },
-      "keyframe_prompt": "At a contemporary city bus station during soft morning light, Rahel with her tan shoulder bag looks nervous before a departure. Bekele lifts a single travel bag and walks beside her; both are grouped in the central crop-safe area.",
-      "motion_prompt": "Bekele picks up the bag as Rahel takes a small breath; they take a few gentle steps.",
+      "keyframe_prompt": "Close-up of Ato Kebede lying on his pillow with his eyes closed and a peaceful, contented smile, warm light from the window side touching his face.",
+      "motion_prompt": "Kebede breathes slowly and smiles with his eyes closed; almost still.",
+      "camera_move": "push_in",
+      "render": {
+        "9:16": "still",
+        "16:9": "still"
+      },
+      "reference_assets": [],
+      "seed": 2006
+    },
+    {
+      "id": "shot_07",
+      "duration_seconds": 7,
+      "characters": [
+        "hana"
+      ],
+      "reason": "The loss: the bed by the window is empty.",
+      "narration": {
+        "text": "አንድ ማለዳ የአቶ ግርማ አልጋ ባዶ ነበር። ሌሊቱን አርፈው ነበር።",
+        "lang": "am",
+        "source_en": "One morning, Ato Girma’s bed was empty. He had passed away in the night.",
+        "subtitle_en": "One morning, Ato Girma’s bed was empty. He had passed away in the night."
+      },
+      "keyframe_prompt": "Early morning in the same room, cool pale light: the bed beneath the window is empty and neatly made, a folded white cotton shawl resting on the pillow. Hana stands quietly beside it with her head bowed and her hands clasped.",
+      "motion_prompt": "Hana stands still, then lowers her head; dust drifts in the pale light; slow pull out.",
+      "camera_move": "pull_out",
+      "render": {
+        "9:16": "still",
+        "16:9": "still"
+      },
+      "reference_assets": [],
+      "seed": 2007
+    },
+    {
+      "id": "shot_08",
+      "duration_seconds": 8,
+      "characters": [
+        "kebede"
+      ],
+      "reason": "Kebede's hope: at last he will see the garden for himself.",
+      "narration": {
+        "text": "አቶ ከበደ አልጋቸው ወደ መስኮቱ እንዲወሰድ ጠየቁ። ለማየት በጣም ቸኩለዋል።",
+        "lang": "am",
+        "source_en": "Ato Kebede asked for his bed to be moved to the window. He could not wait to see.",
+        "subtitle_en": "Ato Kebede asked for his bed to be moved to the window. He could not wait to see."
+      },
+      "keyframe_prompt": "Ato Kebede, now in the bed beneath the window, pushes himself up on his elbows and leans toward the window with an eager, hopeful expression, bright daylight on his face.",
+      "motion_prompt": "Kebede strains upward and turns his head toward the window; slow push in.",
+      "camera_move": "push_in",
+      "render": {
+        "9:16": "still",
+        "16:9": "still"
+      },
+      "reference_assets": [],
+      "seed": 2008
+    },
+    {
+      "id": "shot_09",
+      "duration_seconds": 6,
+      "characters": [],
+      "reason": "The turn of the story: there was never anything to see.",
+      "narration": {
+        "text": "ከመስኮቱ ባሻገር ግን ነጭ ግድግዳ ብቻ ነበር።",
+        "lang": "am",
+        "source_en": "But beyond the window there was only a white wall.",
+        "subtitle_en": "But beyond the window there was only a white wall."
+      },
+      "keyframe_prompt": "View straight out through an open window with a plain wooden frame: nothing but a blank white-painted concrete wall a few metres away, flat grey daylight, no trees, no sky, no people.",
+      "motion_prompt": "Completely still; a faint change of light on the wall.",
+      "camera_move": "static",
+      "style_block": "Naturalistic photograph, flat grey overcast light, desaturated, plain and empty, sharp focus, no text, no logos, no watermark.",
+      "render": {
+        "9:16": "still",
+        "16:9": "still"
+      },
+      "reference_assets": [],
+      "seed": 2009
+    },
+    {
+      "id": "shot_10",
+      "duration_seconds": 8,
+      "characters": [
+        "kebede",
+        "hana"
+      ],
+      "reason": "The reveal, told gently by someone who knew Girma.",
+      "narration": {
+        "text": "ተንከባካቢዋም «አቶ ግርማ እኮ ማየት የማይችሉ ዓይነ ስውር ነበሩ» አለቻቸው።",
+        "lang": "am",
+        "source_en": "The caregiver told him, “Ato Girma could not see. He was blind.”",
+        "subtitle_en": "The caregiver told him, “Ato Girma could not see. He was blind.”"
+      },
+      "keyframe_prompt": "Ato Kebede sits up in the bed beneath the window, stunned, turning his face toward Hana, who stands beside the bed speaking gently with one hand resting on his shoulder.",
+      "motion_prompt": "Hana speaks softly; Kebede's expression changes from confusion to understanding; almost still.",
       "camera_move": "pan_left",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1006
+      "seed": 2010
     },
     {
-      "id": "shot_07",
-      "duration_seconds": 13,
+      "id": "shot_11",
+      "duration_seconds": 9,
       "characters": [
-        "rahel",
-        "bekele"
+        "kebede"
       ],
-      "reason": "Show her active choice to keep their friendship alive.",
+      "reason": "The meaning: Girma invented a world to give his friend hope. End on gratitude, not despair.",
       "narration": {
-        "text": "በአውቶቡሱም ከመሳፈሯ በፊት ትንሽ ቡና ዘግና ሰጠችውና፣ «የአርብ ቡናችን እንዳይቀር» አለችው።",
+        "text": "ለካስ ያን ሁሉ የሚፈጥሩት፣ ለጓደኛቸው የመኖር ተስፋ ለመስጠት ነበር።",
         "lang": "am",
-        "source_en": "Before she boarded the bus, she packed him a little coffee. “So we don’t miss our Friday coffee,” she said.",
-        "subtitle_en": "Before she boarded the bus, she packed him a little coffee. “So we don’t miss our Friday coffee,” she said."
+        "source_en": "He had invented it all, to give his friend the hope to go on living.",
+        "subtitle_en": "He had invented it all, to give his friend the hope to go on living."
       },
-      "keyframe_prompt": "At the bus station Rahel offers Bekele a plain unbranded small paper packet of coffee beans. Their hands and warm, restrained expressions are visible. A bus stands softly out of focus behind them.",
-      "motion_prompt": "Rahel extends the coffee packet; Bekele accepts it and they exchange a quiet smile.",
-      "camera_move": "push_in",
-      "render": {
-        "9:16": "still",
-        "16:9": "still"
-      },
-      "reference_assets": [],
-      "seed": 1007
-    },
-    {
-      "id": "shot_08",
-      "duration_seconds": 11,
-      "characters": [
-        "bekele"
-      ],
-      "reason": "Resolve the separation with a promise of continued friendship while leaving his feelings unspoken.",
-      "narration": {
-        "text": "ልክ አውቶብሱ ሲንቀሳቀስ፣ ስልኩ በራ፡ “አርብ። ልክ እንደ ተለመደው?” በቀለ ፈገግ ብሎ “እመጣለሁ” ብሎ ጻፈ።",
-        "lang": "am",
-        "source_en": "Just as the bus pulled away, his phone lit up: “Friday. Same as always?” Bekele smiled and typed, “I’ll be there.”",
-        "subtitle_en": "Just as the bus pulled away, his phone lit up: “Friday. Same as always?” Bekele smiled and typed, “I’ll be there.”"
-      },
-      "keyframe_prompt": "Bekele stands at the bus station holding the coffee packet; a departing bus is softly blurred in the background. He glances at his phone and smiles gently; keep the screen blank for the message to be added in editing.",
-      "motion_prompt": "The bus moves gently out of frame as Bekele lowers his gaze to the phone and smiles.",
+      "keyframe_prompt": "Close-up of Ato Kebede beside the window with tears on his cheeks and a soft, grateful smile, his eyes lifted toward the window as warm golden light falls across his face.",
+      "motion_prompt": "A tear runs down Kebede's cheek as he smiles faintly; warm light grows; slow pull out.",
       "camera_move": "pull_out",
       "render": {
         "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
-      "seed": 1008,
-      "overlay_text": [
-        {
-          "text": "አርብ። ልክ እንደ ተለመደው?",
-          "at_fraction": 0.35,
-          "role": "received"
-        },
-        {
-          "text": "እመጣለሁ",
-          "at_fraction": 0.75,
-          "role": "sent"
-        }
-      ]
+      "seed": 2011
     }
   ],
   "end_card": {
     "duration_seconds": 3,
     "text": "Made with AI"
   },
-  "planned_duration_seconds": 87,
+  "planned_duration_seconds": 88,
   "production_notes": [
-    "All times are planned. Record and measure narration before locking timing.",
-    "Character descriptions and Ethiopian setting are editable suggestions, not depictions of real people.",
-    "Create and approve character reference images before keyframes; none are included yet.",
-    "Subtitles must be timed from final speech and rendered with readable line lengths and safe margins in each aspect ratio.",
-    "Add phone messages and end-card text programmatically rather than relying on generated text.",
-    "Portrait and landscape compositions must be checked independently; some shots may need separate reframing.",
-    "No film, model output, audience test, experiment or model-call log is included in this starter."
+    "The film was first planned as 'Our Fridays'; the author changed the story on 25 November before any picture was generated. The earlier work is kept in outputs/archive/our_fridays and in runs.jsonl.",
+    "All times are planned. Real timing comes from the measured narration.",
+    "Characters, the home and its staff are fictional. No real organisation is named or shown.",
+    "Reference images for the three characters are approved before keyframes are trusted.",
+    "On-screen text (subtitles, end card) is drawn in the edit, never generated inside an image.",
+    "Portrait and landscape keyframes are generated separately, not cropped from each other."
   ]
 }
