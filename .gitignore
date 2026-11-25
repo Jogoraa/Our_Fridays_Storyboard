@@ -8,3 +8,5 @@ __pycache__/
 .pytest_cache/
 outputs/tmp/
 .superpowers/
+outputs/film/work/*.wav
+outputs/smoke/
