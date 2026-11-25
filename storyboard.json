@@ -56,12 +56,31 @@
     }
   ],
   "music": {
-    "status": "placeholder",
+    "status": "chosen",
     "caption": "Sparse tender solo piano over a soft warm string pad, slow, intimate, bittersweet and hopeful, a gentle plucked lyre-like texture in the background, no lead melody competing with a voice, instrumental, no vocals.",
     "tempo_bpm": 64,
     "key": "D major",
-    "candidates": [],
-    "chosen": null,
+    "candidates": [
+      {
+        "id": "seed3101",
+        "seed": 3101,
+        "file": "score_seed3101.flac",
+        "note": "LUFS -16.56, loudness range 9.5, voice band -2.9 dB relative to full band"
+      },
+      {
+        "id": "seed3102",
+        "seed": 3102,
+        "file": "score_seed3102.flac",
+        "note": "LUFS -18.76, loudness range 6.8, voice band -2.9 dB relative to full band"
+      },
+      {
+        "id": "seed3103",
+        "seed": 3103,
+        "file": "score_seed3103.flac",
+        "note": "LUFS -17.9, loudness range 12.8, voice band -5.3 dB relative to full band"
+      }
+    ],
+    "chosen": "score_seed3103.flac",
     "mix_direction": "Lower the music under narration; let it rise in the pauses and under the imagined garden; nearly silent on the white wall.",
     "cues": [
       {

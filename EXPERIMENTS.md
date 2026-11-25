@@ -74,3 +74,20 @@ Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are 
 - **Change:** pushed a seven-second script (`gpu_jobs/gpu_check.py`) that reports the hardware.
 - **Result:** 941 s from push to downloaded output (`runs.jsonl`, stage `smoke`, provider `kaggle`), for 7.1 s of work. The rest was queueing and container start. Hardware: two Tesla T4 with 15 GB each, 20.9 GB of disk, internet on.
 - **Decision:** Never send one image per job. The keyframes stage puts every missing image into a single job, and saves each image as it finishes.
+
+## E11. Three score candidates, chosen under the voice
+
+- **Why:** Every seed gives a different piece. A score is judged under the narration, not alone.
+- **Change:** seed only (3101, 3102, 3103). Same caption, 64 BPM, D major, 87 s, instrumental, ACE-Step 1.5 turbo at 8 steps, one batch of three (`runs.jsonl`, stage `music`).
+- **Measured** (`outputs/music/candidates_measured.json`):
+
+| Seed | Integrated loudness (LUFS) | Loudness range | Voice band (300 Hz to 3 kHz) relative to full band |
+|---|---|---|---|
+| 3101 | -16.6 | 9.5 | -2.9 dB |
+| 3102 | -18.8 | 6.8 | -2.9 dB |
+| 3103 | -17.9 | 12.8 | -5.3 dB |
+
+- **Hypothesis:** The candidate with the least energy in the voice's band will sit best under the narrator.
+- **Result:** Each candidate was mixed under the real narration with the film's ducking and loudness settings (`outputs/music/audition_seed*.mp3`). The author listened to all three and chose 3103, the one the measurement pointed to. It is also the most dynamic of the three, which suits a piece that has to open up on the imagined garden and nearly stop on the white wall.
+- **Decision:** `music.chosen = score_seed3103.flac` in the storyboard. The other two are kept.
+- **Cost:** 23 s of GPU for all three; 194 s for the whole job including building ACE-Step's environment and downloading the model.
