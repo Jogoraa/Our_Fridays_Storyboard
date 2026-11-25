@@ -245,3 +245,23 @@ def probe_duration(path: Path) -> float:
     if result.returncode != 0 or not result.stdout.strip():
         raise ProviderError(f"ffprobe could not read {path}: {result.stderr.strip()}")
     return float(result.stdout.strip())
+
+
+def small_jpeg(path: Path, longest: int) -> bytes:
+    """The image as a JPEG no larger than `longest` pixels on its long side.
+
+    Used when an image has to travel inside a GPU job script: Kaggle refuses a script much over
+    1 MB, and conditioning images are shrunk on the GPU anyway. If the file cannot be read as an
+    image the original bytes are returned unchanged.
+    """
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as temp:
+        target = Path(temp) / "small.jpg"
+        try:
+            run_ffmpeg(["-i", str(path), "-vf",
+                        f"scale='if(gt(iw,ih),min({longest},iw),-2)':'if(gt(iw,ih),-2,min({longest},ih))'",
+                        "-q:v", "3", str(target)])
+        except ProviderError:
+            return Path(path).read_bytes()
+        return target.read_bytes()

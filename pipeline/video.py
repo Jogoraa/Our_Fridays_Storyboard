@@ -13,7 +13,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from pipeline import kaggle_jobs
-from pipeline.common import OUTPUTS, ROOT, RUNS_PATH, cache_key, is_cached, log_run, mark_output, rel
+from pipeline.common import small_jpeg, OUTPUTS, ROOT, RUNS_PATH, cache_key, is_cached, log_run, mark_output, rel
 from pipeline.shots import keyframe_path, video_source_path
 
 STAGE = "video"
@@ -74,7 +74,7 @@ def run(sb: dict, *, only_shot: str | None = None, force: bool = False, runner: 
         "model": MODEL, "num_frames": NUM_FRAMES, "fps": FPS, "steps": STEPS, "guidance_scale": GUIDANCE,
         "negative_prompt": NEGATIVE, "budget_minutes": 300,
         "items": [{"file": item["file"], "prompt": item["prompt"], "seed": item["seed"], "width": item["width"],
-                   "height": item["height"], "image_b64": base64.b64encode(item["keyframe"].read_bytes()).decode("ascii")}
+                   "height": item["height"], "image_b64": base64.b64encode(small_jpeg(item["keyframe"], max(item["width"], item["height"]))).decode("ascii")}
                   for item in todo],
     }
     folder, job = (runner or kaggle_runner)(manifest)

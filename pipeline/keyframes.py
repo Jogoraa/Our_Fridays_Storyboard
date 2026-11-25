@@ -15,7 +15,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from pipeline import kaggle_jobs
-from pipeline.common import OUTPUTS, ROOT, RUNS_PATH, ProviderError, cache_key, is_cached, log_run, mark_output, rel
+from pipeline.common import small_jpeg, OUTPUTS, ROOT, RUNS_PATH, ProviderError, cache_key, is_cached, log_run, mark_output, rel
 from pipeline.shots import aspect_tag, keyframe_path
 
 STAGE = "keyframes"
@@ -130,7 +130,7 @@ def build_manifest(todo: list[dict], references: Path | None = None) -> dict:
                 path = folder / name
                 if not path.is_file():
                     raise ProviderError(f"reference {name} does not exist and is not planned in this job")
-                embedded[name] = base64.b64encode(path.read_bytes()).decode("ascii")
+                embedded[name] = base64.b64encode(small_jpeg(path, REFERENCE_MAX_SIDE)).decode("ascii")
     return {
         "model": MODEL, "steps": STEPS, "guidance_scale": GUIDANCE, "embedded": embedded,
         "reference_max_side": REFERENCE_MAX_SIDE,

@@ -18,6 +18,7 @@ from pipeline.common import ConfigError, ProviderError, RetryableError, require_
 
 CLI = ["uvx", "--with", "six", "kaggle@latest"]
 POLL_SECONDS = 30
+MAX_SCRIPT_BYTES = 900_000
 FINISHED = ("complete",)
 FAILED = ("error", "cancel")
 
@@ -39,7 +40,7 @@ def _cli(args: list[str], *, check: bool = True) -> str:
     result = subprocess.run(CLI + args, env=_env(), capture_output=True, text=True, encoding="utf-8", errors="replace")
     output = (result.stdout + result.stderr).strip()
     if check and result.returncode != 0:
-        raise RetryableError(f"kaggle {' '.join(args[:2])} failed: {output[-400:]}")
+        raise ProviderError(f"kaggle {' '.join(args[:2])} failed: {output[-400:]}")
     return output
 
 
@@ -115,6 +116,10 @@ def run_script_job(slug: str, template: Path, manifest: dict, work: Path, *, sta
         if marker not in source:
             raise ConfigError(f"{template.name} has no MANIFEST_B64 line to fill in")
         script.write_text(source.replace(marker, f'MANIFEST_B64 = "{encoded}"', 1), encoding="utf-8")
+        size = script.stat().st_size
+        if size > MAX_SCRIPT_BYTES:
+            raise ProviderError(f"job script is {size / 1e6:.2f} MB; Kaggle refuses scripts much over 1 MB. "
+                                "Shrink the images embedded in the manifest.")
         push(slug, script)
         print(f"  kaggle: pushed {slug}; waiting for the GPU")
     else:
