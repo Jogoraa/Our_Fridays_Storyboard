@@ -19,6 +19,7 @@ from pipeline.common import ConfigError, ProviderError, RetryableError, require_
 CLI = ["uvx", "--with", "six", "kaggle@latest"]
 POLL_SECONDS = 30
 MAX_SCRIPT_BYTES = 900_000
+MAX_DROPPED_POLLS = 10
 FINISHED = ("complete",)
 FAILED = ("error", "cancel")
 
@@ -78,9 +79,19 @@ def status(ref: str) -> str:
 def wait(ref: str, *, timeout_minutes: float = 120, sleep=time.sleep) -> float:
     """Block until the kernel finishes. Returns the minutes it took. Raises if it failed or timed out."""
     started = time.monotonic()
+    dropped = 0
     while True:
-        state = status(ref)
         minutes = (time.monotonic() - started) / 60
+        try:
+            state = status(ref)
+            dropped = 0
+        except ProviderError as exc:
+            # A dropped connection while polling says nothing about the job. Give up only if it persists.
+            dropped += 1
+            if dropped > MAX_DROPPED_POLLS:
+                raise ProviderError(f"lost contact with Kaggle while waiting for {ref}: {exc}") from exc
+            sleep(POLL_SECONDS)
+            continue
         if state in FINISHED:
             return minutes
         if state in FAILED:
