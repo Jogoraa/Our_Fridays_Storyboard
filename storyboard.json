@@ -134,18 +134,17 @@
       "id": "shot_02",
       "duration_seconds": 8,
       "characters": [
-        "kebede",
-        "girma"
+        "kebede"
       ],
-      "reason": "Show why Kebede depends on Girma: he can only see the ceiling.",
+      "reason": "Show why Kebede depends on Girma: he can only see the ceiling. Girma is present only as his shawl by the window.",
       "narration": {
         "text": "የአቶ ግርማ አልጋ ከመስኮቱ አጠገብ ነበር። አቶ ከበደ ግን በጀርባቸው ተኝተው ጣሪያውን ብቻ ነበር የሚያዩት።",
         "lang": "am",
         "source_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling.",
         "subtitle_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling."
       },
-      "keyframe_prompt": "Medium shot from near the foot of the bed: Ato Kebede lies flat on his back under a brown wool blanket, looking straight up at the ceiling with a tired expression. Behind him, in soft focus, Ato Girma sits upright in the bed beside the bright window. Exactly two people in the picture: one man lying down, one man sitting up.",
-      "motion_prompt": "Kebede blinks slowly, staring upward; the camera drifts gently sideways.",
+      "keyframe_prompt": "Medium shot from beside the bed, slightly above: Ato Kebede lies flat on his back under a brown wool blanket, head on a white pillow, staring straight up at the ceiling with a tired expression. He is the only person in the picture. Behind him, out of focus, a bright window and the edge of the neighbouring bed with a folded white cotton shawl on it.",
+      "motion_prompt": "The old man blinks slowly, staring upward; the camera drifts gently sideways.",
       "camera_move": "pan_right",
       "render": {
         "9:16": "still",
