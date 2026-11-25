@@ -93,8 +93,13 @@ def test_keyframes_use_the_references_of_the_characters_in_the_shot(sb, tmp_path
     assert items["shot_01_9x16.jpg"]["references"] == ["rahel_c1.jpg", "bekele_c1.jpg"]
     assert items["shot_04_9x16.jpg"]["references"] == ["bekele_c1.jpg"]
     assert sb["style_block"] in items["shot_04_9x16.jpg"]["prompt"]
-    assert (items["shot_01_9x16.jpg"]["width"], items["shot_01_9x16.jpg"]["height"]) == (864, 1536)
-    assert (items["shot_01_16x9.jpg"]["width"], items["shot_01_16x9.jpg"]["height"]) == (1536, 864)
+    # Sent at the size measured to fit the GPUs, not the size asked for.
+    assert (items["shot_01_9x16.jpg"]["width"], items["shot_01_9x16.jpg"]["height"]) == (720, 1280)
+    assert (items["shot_01_16x9.jpg"]["width"], items["shot_01_16x9.jpg"]["height"]) == (1280, 720)
+    assert (items["rahel_c1.jpg"]["width"], items["rahel_c1.jpg"]["height"]) == (864, 1152)
+    assert "on the left of the reference image" in items["shot_01_9x16.jpg"]["prompt"]
+    assert "on the right of the reference image" in items["shot_01_9x16.jpg"]["prompt"]
+    assert "from reference image 1" in items["shot_04_9x16.jpg"]["prompt"]
 
 
 def test_choosing_a_different_reference_regenerates_that_characters_shots_only(sb, tmp_path):

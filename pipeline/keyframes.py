@@ -24,7 +24,8 @@ MODEL = "black-forest-labs/FLUX.2-klein-4B"
 STEPS = 4
 GUIDANCE = 1.0
 CANDIDATES = 3                               # reference options per character; one is chosen by eye
-SIZES = {"9:16": (864, 1536), "16:9": (1536, 864)}   # multiples of 16; upscaled to 1080p in the edit
+SIZES = {"9:16": (864, 1536), "16:9": (1536, 864)}   # the size asked for; multiples of 16
+SEND_SCALE = 0.8334   # what two 15 GB T4s were measured to fit: 720x1280. Upscaled to 1080p in the edit.
 REFERENCE_SIZE = (864, 1152)
 REFERENCE_MAX_SIDE = 512                     # references are shrunk to this before conditioning (GPU memory)
 JOB_SCRIPT = ROOT / "gpu_jobs" / "flux_keyframes.py"
@@ -56,11 +57,18 @@ def reference_prompt(character: dict, style_block: str) -> str:
 
 def keyframe_prompt(shot: dict, characters: dict[str, dict], style_block: str, aspect: str) -> str:
     cast = [characters[c] for c in shot["characters"]]
-    who = " ".join(
-        f"{c['name']} is the {c.get('noun', 'person')} from reference image {i + 1}: "
-        f"same face, same hair, {c['wardrobe']}"
-        for i, c in enumerate(cast)
-    )
+    if len(cast) == 1:
+        c = cast[0]
+        who = f"{c['name']} is the {c.get('noun', 'person')} from reference image 1: same face, same hair, {c['wardrobe']}"
+    elif cast:
+        # Two people travel as ONE reference image, side by side (FAILURES F14), so say who is where.
+        sides = ["on the left", "on the right", "third from the left", "fourth from the left"]
+        who = "The reference image shows the people side by side. " + " ".join(
+            f"{c['name']} is the {c.get('noun', 'person')} {sides[i]} of the reference image: same face, same hair, {c['wardrobe']}"
+            for i, c in enumerate(cast)
+        )
+    else:
+        who = ""
     framing = "Vertical frame, subject centred." if aspect == "9:16" else "Wide horizontal frame, subject centred."
     # A shot may carry its own look (for example an imagined scene); otherwise the film's style block applies.
     return " ".join(part for part in (shot["keyframe_prompt"], who, framing, shot.get("style_block", style_block)) if part)
@@ -134,7 +142,14 @@ def build_manifest(todo: list[dict], references: Path | None = None) -> dict:
     return {
         "model": MODEL, "steps": STEPS, "guidance_scale": GUIDANCE, "embedded": embedded,
         "reference_max_side": REFERENCE_MAX_SIDE,
-        "items": [{k: item[k] for k in ("file", "prompt", "seed", "width", "height", "references")} for item in todo],
+        "ladders": {"from_text": [[512, 1.0], [512, 0.9]], "conditioned": [[384, 1.0], [320, 1.0], [320, 0.9]]},
+        "items": [
+            {"file": item["file"], "prompt": item["prompt"], "seed": item["seed"], "references": item["references"],
+             # References are made at full size (measured to fit); keyframes are sent at the size that fits.
+             "width": item["width"] if item["kind"] == "reference" else int(item["width"] * SEND_SCALE) // 16 * 16,
+             "height": item["height"] if item["kind"] == "reference" else int(item["height"] * SEND_SCALE) // 16 * 16}
+            for item in todo
+        ],
     }
 
 
