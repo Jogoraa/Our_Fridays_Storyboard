@@ -117,3 +117,31 @@ Newest last. Only things that actually happened are recorded here.
 - **I had fixed a real problem (reference size) and assumed it was the problem.** The first report did not include how much memory was already in use, so the first diagnosis was a guess that fitted. The job now records every attempt's full error.
 - **Fix:** Kaggle gives two T4s and the job was using one. The pipeline is now loaded with `device_map="balanced"`, which puts the text encoder on one card and the image model on the other, so nothing takes turns. If only one GPU is present the job falls back to the old mode and, before each image, sends every model back to the CPU (`maybe_free_model_hooks`) so that one failure cannot poison the next image. The placement used is written to the job report.
 - **Cost so far:** two failed jobs, about 33 minutes of GPU session and two hours of elapsed time, for references only.
+
+### F14, third attempt: ten of 22, and a pattern
+
+- **What happened:** With the models spread over both GPUs, ten keyframes were made and twelve failed. The split was exact: every shot with one character worked (at 720x1280, after two failed rungs at the larger size), every shot with two characters failed, and every shot with no characters failed.
+- **What that told me:** There was now a configuration known to work, and two known not to. Rather than reason about why the text-only images failed in two-GPU mode, I used what had been measured: text-only images had already been made nine times in single-GPU mode (the portraits).
+- **Fourth job, which made all twelve:**
+  - Shots with no characters run first, in single-GPU mode. All six succeeded on the first rung, about 92 s each, peak 12.0 GB.
+  - Shots with characters run second, in two-GPU mode. Two characters are sent as one reference image with both people side by side, and the prompt says who is on the left and who is on the right. All six succeeded on the second rung (320-pixel reference), about 177 s each, peak 13.5 GB.
+  - Keyframes are sent at 720x1280, the size that fits, and upscaled to 1080p in the edit. The storyboard still records the size that was wanted.
+- **Total for keyframes:** four jobs, about 97 minutes of GPU session, for 9 portraits and 22 keyframes. The same 31 images in the working configuration would take about 55 minutes.
+- **Lesson:** After two wrong diagnoses, the thing that worked was to stop explaining and start sorting: which images succeeded, which failed, what do the successes have in common. The job's per-attempt report made that possible.
+
+## F15. Kaggle refused the job script: HTTP 400
+
+- **What broke:** `kaggle kernels push failed: 400 Client Error: Bad Request`. Nothing else in the message.
+- **Cause:** The script was 1.26 MB. The three approved reference portraits were embedded in it at full size so the job could condition on them. Kaggle rejects kernel sources much over 1 MB.
+- **Fix:** `common.small_jpeg` shrinks an image to the size the job will use anyway (512 pixels for references, the clip size for video keyframes) before it is embedded. The manifest for 22 keyframes is now 106 KB. `run_script_job` checks the script size before pushing and says what to do, so this cannot come back as a bare 400.
+
+## F16. The first video job ran out of memory
+
+- **When:** 25 November. Evidence: `runs.jsonl`, stage `video`, three lines with status `failed`.
+- **What broke:** Wan 2.2 TI2V-5B, image-to-video, 480x832, 73 frames, 30 steps, on one T4 with the models taking turns. `Tried to allocate 4.91 GiB` with 0.9 GB free and 13.7 GB already in use. The two smaller rungs (49 frames, then 20 steps) failed in under a second because the first failure left the card full, exactly as in F14.
+- **Status:** Not fixed yet. All three shots fell back to moving stills, which is what the shots stage is for. The retry will apply what F14 taught: spread the models over both GPUs, and reset the model placement after a failure.
+
+## F17. A dropped connection killed the local wait
+
+- **What broke:** `kaggle kernels status failed: ('Connection aborted.', ConnectionResetError(10054 ...))` while polling. The local command exited; the job on Kaggle carried on.
+- **Fix:** `kaggle_jobs.wait` now treats a failed poll as "no news" and only gives up after ten in a row (`tests/test_kaggle_jobs.py`). The finished job was picked up with `--collect`.

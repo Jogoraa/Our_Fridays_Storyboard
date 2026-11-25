@@ -144,7 +144,7 @@
         "source_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling.",
         "subtitle_en": "Ato Girma’s bed was beside it. Ato Kebede lay flat on his back and saw only the ceiling."
       },
-      "keyframe_prompt": "Medium shot from near the foot of the bed: Ato Kebede lies flat on his back under a brown wool blanket, looking straight up at the ceiling with a tired expression. Behind him, in soft focus, Ato Girma sits upright in the bed beside the bright window.",
+      "keyframe_prompt": "Medium shot from near the foot of the bed: Ato Kebede lies flat on his back under a brown wool blanket, looking straight up at the ceiling with a tired expression. Behind him, in soft focus, Ato Girma sits upright in the bed beside the bright window. Exactly two people in the picture: one man lying down, one man sitting up.",
       "motion_prompt": "Kebede blinks slowly, staring upward; the camera drifts gently sideways.",
       "camera_move": "pan_right",
       "render": {

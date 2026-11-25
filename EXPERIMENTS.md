@@ -99,3 +99,30 @@ Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are 
 - **Change:** the character descriptions only. Same seeds (7001 to 7203), same model, same size, same style block.
 - **Result** (`outputs/references/sheet.jpg` against `v1/sheet.jpg`): Hana changed clearly: younger, and her hair is braided as the new text says. The two men are almost pixel-for-pixel the same portraits as before. With the seed fixed, the extra ethnicity wording did nothing visible for them; the exact age and the hairstyle did.
 - **Decision:** Concrete, visible attributes (age in years, hairstyle, clothing) steer this model; regional labels on their own do not. The approved references are Girma candidate 2, Kebede candidate 3 and Hana candidate 1, chosen for a clear, front-lit face. Whether the men read as Ethiopian was put to the author, who looked at the sheet and approved all three on 25 November. The audience test will ask the same thing.
+
+## E13. What fits on two 15 GB T4s, measured
+
+- **Why:** Three keyframe jobs failed on memory before one worked (FAILURES F14). This table is the result of those jobs, from the per-image reports kept in `outputs/references/` and logged in `runs.jsonl` (`made_at`, `reference_side`, `failed_attempts`, `gpu_seconds`).
+
+| Image | Size | Model placement | References | Outcome | Seconds | Peak memory |
+|---|---|---|---|---|---|---|
+| Portrait, text only | 864x1152 | one GPU, taking turns | none | made, 18 of 18 | 85 to 92 | 12.5 GB |
+| Keyframe | 864x1536 | one GPU, taking turns | two at 864 px | out of memory | - | wanted 16.2 GB more |
+| Keyframe | 864x1536 | one GPU, taking turns | two at 512 px | out of memory | - | wanted 4.7 GB more |
+| Keyframe | 864x1536 | two GPUs | one at 512 px | out of memory | - | - |
+| Keyframe | 720x1280 | two GPUs | one at 384 px | made, 10 of 10 | 86 | 13.5 GB |
+| Keyframe | 720x1280 | two GPUs | two at 384 px | out of memory | - | wanted 4.0 GB more |
+| Keyframe | 720x1280 | two GPUs | none | out of memory | - | - |
+| Keyframe | 720x1280 | one GPU, taking turns | none | made, 6 of 6 | 92 | 12.0 GB |
+| Keyframe | 720x1280 | two GPUs | two people in one 320 px image | made, 6 of 6 | 177 | 13.5 GB |
+
+- **Decision:** The last four rows are the configuration the job now uses. The 177 s for combined references includes one failed rung at 384 px each time; starting at 320 px would save about half of it.
+- **What I would test next with more quota:** whether text-only images fail in two-GPU mode because of where the library places the image decoder. I did not need the answer to finish, so I did not spend a job on it.
+
+## E14. Two references as one image: it fits, but the model may copy the layout
+
+- **Hypothesis:** Putting both characters' references side by side in a single image carries both identities for the memory cost of one reference.
+- **Change:** for shots with two characters, one combined reference and a prompt that says who is on the left and who is on the right.
+- **Result:** All six such images were made, and in five the two people are the right two people in the right places (shots 1 and 10 in both ratios, shot 2 in landscape). In shot 2 portrait the model drew three men: Kebede lying down as asked, plus both men from the reference sitting side by side behind him. The reference's layout leaked into the picture. The rejected image is kept at `outputs/keyframes/rejected/shot_02_9x16_three_men.jpg`.
+- **Fix tried:** one sentence added to shot 2's keyframe prompt: "Exactly two people in the picture: one man lying down, one man sitting up." Only shot 2 was planned for regeneration (two images, one job). Result recorded below when the job returns.
+- **Decision:** Keep the combined reference; check every two-character keyframe for extra people before it goes into the film.
