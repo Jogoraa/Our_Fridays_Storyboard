@@ -7,15 +7,39 @@ from __future__ import annotations
 
 import base64
 import os
+import re
 
 import httpx
 
-from pipeline.common import ProviderError, RetryableError, require_env
+from pipeline.common import ProviderError, QuotaError, RetryableError, require_env
 
 ENDPOINT = "https://generativelanguage.googleapis.com/v1beta/interactions"
 TEXT_MODEL = os.environ.get("GEMINI_TEXT_MODEL", "gemini-3.8-flash")
+TEXT_FALLBACK_MODEL = os.environ.get("GEMINI_TEXT_FALLBACK_MODEL", "gemini-3.5-flash-lite")
 TTS_MODEL = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts")
 TIMEOUT_SECONDS = 180.0
+
+
+def retry_delay(message: str) -> float | None:
+    """Read 'Please retry in 56m50s' from an error message. None if the provider gave no hint."""
+    match = re.search(r"retry in (?:(\d+)h)?(?:(\d+)m)?(?:(\d+(?:\.\d+)?)s)?", message)
+    if not match or not any(match.groups()):
+        return None
+    hours, minutes, seconds = (float(g) if g else 0.0 for g in match.groups())
+    return hours * 3600 + minutes * 60 + seconds
+
+
+def raise_for_status(status: int, text: str) -> None:
+    """Sort a response into: fine, worth retrying, daily quota gone, or a request that will never work."""
+    if status == 200:
+        return
+    if status == 429:
+        if "per day" in text:
+            raise QuotaError(f"HTTP 429: {text[:300]}")
+        raise RetryableError(f"HTTP 429: {text[:300]}", retry_after=retry_delay(text))
+    if status >= 500:
+        raise RetryableError(f"HTTP {status}: {text[:300]}")
+    raise ProviderError(f"HTTP {status}: {text[:500]}")
 
 
 def _post(body: dict) -> dict:
@@ -24,10 +48,7 @@ def _post(body: dict) -> dict:
         response = httpx.post(ENDPOINT, headers=headers, json=body, timeout=TIMEOUT_SECONDS)
     except httpx.TransportError as exc:
         raise RetryableError(f"network error: {type(exc).__name__}: {exc}") from exc
-    if response.status_code == 429 or response.status_code >= 500:
-        raise RetryableError(f"HTTP {response.status_code}: {response.text[:300]}")
-    if response.status_code != 200:
-        raise ProviderError(f"HTTP {response.status_code}: {response.text[:500]}")
+    raise_for_status(response.status_code, response.text)
     return response.json()
 
 

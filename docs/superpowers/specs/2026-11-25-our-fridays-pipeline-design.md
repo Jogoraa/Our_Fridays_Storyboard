@@ -4,7 +4,7 @@ Date: 2026-11-25. Deadline for both submissions: Thursday 26 November 2026, 23:5
 
 ## Intent and why
 
-Abu is submitting "B2W0: AI-Content Generation" (brief: `AI-Content Generation.pdf`, "The Heritage Short"). He wants the highest mark he can get on both assignments, each out of 100:
+Dawit  is submitting "B2W0: AI-Content Generation" (brief: `AI-Content Generation.pdf`, "The Heritage Short"). He wants the highest mark he can get on both assignments, each out of 100:
 
 1. Codebase and report, graded by reading code, text, logs and documents only (no media is opened), followed by an AI interview.
 2. Film (50), walkthrough video (30), public post (20), graded by hand.

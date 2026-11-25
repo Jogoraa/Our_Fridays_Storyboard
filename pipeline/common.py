@@ -31,9 +31,17 @@ class ConfigError(Exception):
 class RetryableError(Exception):
     """A provider failure worth trying again: rate limit, server error, timeout, empty output."""
 
+    def __init__(self, message: str, retry_after: float | None = None):
+        super().__init__(message)
+        self.retry_after = retry_after
+
 
 class ProviderError(Exception):
     """A provider failure that retrying will not fix, or retries ran out."""
+
+
+class QuotaError(ProviderError):
+    """A daily allowance is used up. Retrying now only wastes time; fall back or wait."""
 
 
 # --- secrets -----------------------------------------------------------------
@@ -56,6 +64,14 @@ def has_env(name: str) -> bool:
     except ConfigError:
         return False
     return True
+
+
+def rel(path: Path) -> str:
+    """A path as written to logs: relative to the repository, so no machine-specific folders leak."""
+    try:
+        return Path(path).resolve().relative_to(ROOT).as_posix()
+    except ValueError:
+        return Path(path).name
 
 
 # --- caching -----------------------------------------------------------------
@@ -173,7 +189,8 @@ def call_with_retry(
             )
             if last:
                 raise ProviderError(f"{provider} {model} failed after {attempts} attempts: {exc}") from exc
-            sleep(base_delay * 2 ** (attempt - 1))
+            # Wait as long as the provider asks (plus a second), otherwise back off exponentially.
+            sleep(exc.retry_after + 1.0 if exc.retry_after else base_delay * 2 ** (attempt - 1))
         except ConfigError:
             # No request was sent (for example a missing key), so there is no model call to log.
             raise

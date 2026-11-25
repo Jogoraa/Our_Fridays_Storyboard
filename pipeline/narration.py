@@ -11,7 +11,7 @@ from collections.abc import Callable
 from pathlib import Path
 
 from pipeline import gemini
-from pipeline.common import OUTPUTS, RUNS_PATH, RetryableError, cache_key, call_with_retry, is_cached, write_output
+from pipeline.common import rel, OUTPUTS, RUNS_PATH, RetryableError, cache_key, call_with_retry, is_cached, write_output
 from pipeline.validate import StoryboardError
 
 STAGE = "narration"
@@ -85,7 +85,7 @@ def run(
 
         data = call_with_retry(
             take, stage=STAGE, shot=shot_id, provider="gemini", model=model, params=params,
-            sleep=sleep, log_path=log_path, extra={"output": output.as_posix(), "cost_usd": 0.0},
+            sleep=sleep, log_path=log_path, extra={"output": rel(output), "cost_usd": 0.0},
         )
         seconds = inspect_wav(data)[0]
         write_output(output, data, key, {"shot": shot_id, "lang": lang, "seconds": round(seconds, 3), "model": model})

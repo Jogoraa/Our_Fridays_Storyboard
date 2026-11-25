@@ -150,3 +150,31 @@ def test_config_error_is_not_logged_as_a_model_call(tmp_path):
     with pytest.raises(ConfigError, match="GEMINI_API_KEY"):
         call_with_retry(fn, stage="s", provider="p", model="m", params={}, sleep=lambda _: None, log_path=log)
     assert not log.exists()
+
+
+def test_retry_waits_for_the_delay_the_provider_asks_for(tmp_path):
+    calls = []
+
+    def fn():
+        calls.append(1)
+        if len(calls) == 1:
+            raise RetryableError("HTTP 429: per minute limit", retry_after=12.0)
+        return "ok"
+
+    slept = []
+    call_with_retry(fn, stage="s", provider="p", model="m", params={}, sleep=slept.append, log_path=tmp_path / "r.jsonl")
+    assert slept == [13.0]
+
+
+def test_daily_quota_is_not_retried(tmp_path):
+    log = tmp_path / "runs.jsonl"
+    calls = []
+
+    def fn():
+        calls.append(1)
+        raise common.QuotaError("HTTP 429: limit: 20 requests per day")
+
+    with pytest.raises(common.QuotaError):
+        call_with_retry(fn, stage="s", provider="p", model="m", params={}, sleep=lambda _: None, log_path=log)
+    assert len(calls) == 1
+    assert [line["status"] for line in read_log(log)] == ["failed"]
