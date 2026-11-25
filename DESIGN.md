@@ -25,7 +25,7 @@ Narration in Amharic, the audience's first language, using the respectful plural
 | Shot | What we see | Why it is in the film |
 |---|---|---|
 | 01 | The room: two beds, one window | Establish the place, the two men and the one window everything turns on |
-| 02 | Kebede flat on his back, Girma upright behind | Show why Kebede depends on Girma: he can only see the ceiling |
+| 02 | Kebede flat on his back, staring up; Girma's shawl by the window behind him | Show why Kebede depends on Girma: he can only see the ceiling |
 | 03 | Girma facing the window light, describing | Introduce the daily ritual |
 | 04 | The imagined garden, children with a ball | Let the audience see the world as vividly as Kebede imagines it |
 | 05 | The imagined couple, city and hills | Widen that world, so the wall later feels like a real loss |
