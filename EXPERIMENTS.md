@@ -91,3 +91,11 @@ Entries E1 to E10 were run on the first story, "Our Fridays", whose outputs are 
 - **Result:** Each candidate was mixed under the real narration with the film's ducking and loudness settings (`outputs/music/audition_seed*.mp3`). The author listened to all three and chose 3103, the one the measurement pointed to. It is also the most dynamic of the three, which suits a piece that has to open up on the imagined garden and nearly stop on the white wall.
 - **Decision:** `music.chosen = score_seed3103.flac` in the storyboard. The other two are kept.
 - **Cost:** 23 s of GPU for all three; 194 s for the whole job including building ACE-Step's environment and downloading the model.
+
+## E12. Does describing the characters more specifically change the reference portraits?
+
+- **Why:** In the first set of portraits (`outputs/references/v1/sheet.jpg`) the two men could be read as South Asian rather than Ethiopian, and Hana, described as "in her late twenties", looked about forty.
+- **Hypothesis:** Naming a region and features ("from the Amhara highlands, East African Habesha features") and giving an exact age ("27 years old, youthful face") will move the faces.
+- **Change:** the character descriptions only. Same seeds (7001 to 7203), same model, same size, same style block.
+- **Result** (`outputs/references/sheet.jpg` against `v1/sheet.jpg`): Hana changed clearly: younger, and her hair is braided as the new text says. The two men are almost pixel-for-pixel the same portraits as before. With the seed fixed, the extra ethnicity wording did nothing visible for them; the exact age and the hairstyle did.
+- **Decision:** Concrete, visible attributes (age in years, hairstyle, clothing) steer this model; regional labels on their own do not. The approved references are Girma candidate 2, Kebede candidate 3 and Hana candidate 1, chosen for a clear, front-lit face. Whether the men read as Ethiopian is a question for the author and the audience test, not for the builder.

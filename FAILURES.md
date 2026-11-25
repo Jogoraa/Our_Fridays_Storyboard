@@ -109,3 +109,11 @@ Newest last. Only things that actually happened are recorded here.
   - A retry ladder: if memory still runs out, try 384-pixel references, then the picture itself at five sixths of the size. The size actually used is recorded per image in `runs.jsonl` (`made_at`, `reference_side`, `failed_attempts`).
 - **Cost of the failure:** 944 s of GPU session and about an hour of waiting, for nine usable images.
 - **Lesson:** "Keep going after an error" is only safe if the error leaves the GPU clean. And a job that takes fifteen minutes to start needs its own retries inside it.
+
+### F14, second attempt: the first fix was not the cause
+
+- **What happened:** The job with smaller references and cleanup between images failed the same way: nine portraits made, 22 keyframes out of memory (`outputs/references/job2_report.json`, three attempts recorded per image).
+- **What the report showed this time:** Before the first keyframe had allocated anything, the error read `12.64 GiB is allocated by PyTorch` and only 1.7 GB was free. The keyframe needed 4.68 GB more. So the shortage was not mainly the references. The text encoder and the image model are about 8 GB each, and in the memory-saving mode they take turns on one 15 GB card; what stays resident between turns left too little for a picture a third larger than the portraits. After the first failure the two models were both left on the card (14.4 GB allocated), which is why every later image failed in under a second whatever its size.
+- **I had fixed a real problem (reference size) and assumed it was the problem.** The first report did not include how much memory was already in use, so the first diagnosis was a guess that fitted. The job now records every attempt's full error.
+- **Fix:** Kaggle gives two T4s and the job was using one. The pipeline is now loaded with `device_map="balanced"`, which puts the text encoder on one card and the image model on the other, so nothing takes turns. If only one GPU is present the job falls back to the old mode and, before each image, sends every model back to the CPU (`maybe_free_model_hooks`) so that one failure cannot poison the next image. The placement used is written to the job report.
+- **Cost so far:** two failed jobs, about 33 minutes of GPU session and two hours of elapsed time, for references only.
