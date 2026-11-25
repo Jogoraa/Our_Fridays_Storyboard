@@ -71,7 +71,7 @@ def build() -> str:
         "|---|---|---|---|---|---|",
     ]
     gpu_total = 0.0
-    for stage in ("smoke", "keyframes", "music", "shots"):
+    for stage in ("smoke", "keyframes", "music", "video"):
         jobs = [r for r in rows if r["stage"] == stage and r["provider"] == "kaggle" and r["model"] in ("gpu-job", "gpu-check")]
         outputs = [r for r in rows if r["stage"] == stage and r["provider"] == "kaggle" and r["model"] not in ("gpu-job", "gpu-check") and r["status"] == "ok"]
         if not jobs:

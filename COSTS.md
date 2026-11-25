@@ -37,6 +37,7 @@ Log covered: 218 model-call attempts, 2026-11-25T06:59:56+00:00 to 2026-11-25T19
 | smoke | 1 job(s) | 0 | 0 | 941 | 0.0 |
 | keyframes | 6 job(s) | 44 | 4585 | 16679 | 109.7 |
 | music | 1 job(s) | 3 | 23 | 227 | 3.2 |
+| video | 2 job(s) | 2 | 6778 | 0 | 182.2 |
 
 Keyframes: 44 images, mean 104.2 s each on the GPU (min 65.9, max 178.6).
 
@@ -50,8 +51,8 @@ What the same work would cost at published prices. Sources are in `pipeline/cost
 |---|---|---|---|
 | Narration kept, `gemini-3.8-flash-lite-tts` | 34.9 s of audio | $0.0015 per 10 s | 0.0052 |
 | Narration kept, `gemini-3.8-flash-tts` | 39.8 s of audio | $0.00225 per 10 s | 0.0090 |
-| GPU sessions (images, music, video) | 112.9 GPU minutes on one T4 | $0.35 per hour | 0.6588 |
-| **Total** | | | **0.6730** |
+| GPU sessions (images, music, video) | 295.2 GPU minutes on one T4 | $0.35 per hour | 1.7219 |
+| **Total** | | | **1.7361** |
 
 Text calls (script drafts) are a fraction of a cent and are left out. Narration that was recorded and then discarded is not counted in the audio seconds above; the attempts are in the first table.
 
