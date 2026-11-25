@@ -144,6 +144,8 @@ from tests.test_split import take  # noqa: E402
 class BatchSynth:
     """Speaks every line in one take, with a clear pause where each separator is."""
 
+    PACE = 0.02  # seconds per character
+
     def __init__(self, gap=1.0, fail_models=()):
         self.calls = []
         self.gap = gap
@@ -153,10 +155,9 @@ class BatchSynth:
         self.calls.append((model, text))
         if model in self.fail_models:
             raise QuotaError("HTTP 429: limit: 10 requests per day")
-        lines = text.count(narration.SEPARATOR.strip()) + 1
-        if self.gap == 0:
-            return take([2.0 * lines], [])
-        return take([1.0 + 0.2 * i for i in range(lines)], [self.gap] * (lines - 1))
+        # Like a real voice: each line takes time in proportion to its length.
+        lines = text.split(narration.SEPARATOR)
+        return take([self.PACE * len(line) for line in lines], [self.gap] * (len(lines) - 1))
 
 
 def test_batch_records_all_shots_in_one_call(sb, run, tmp_path):
@@ -164,8 +165,10 @@ def test_batch_records_all_shots_in_one_call(sb, run, tmp_path):
     durations = run(sb, synth, batch=True)
     assert len(synth.calls) == 1
     assert len(durations) == 8
-    assert durations["shot_01"] == pytest.approx(1.0, abs=0.25)
-    assert durations["shot_08"] == pytest.approx(2.4, abs=0.25)
+    for shot in sb["shots"]:
+        expected = BatchSynth.PACE * len(shot["narration"]["text"])
+        assert durations[shot["id"]] == pytest.approx(expected, abs=0.25)
+    assert len(list((tmp_path / "narration" / "en" / "takes").glob("*.wav"))) == 1
     lines = log_lines(tmp_path)
     assert len(lines) == 1
     assert lines[0]["params"]["mode"] == "batch" and len(lines[0]["params"]["shots"]) == 8

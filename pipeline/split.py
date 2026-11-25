@@ -86,22 +86,82 @@ def _trim(samples: array.array, rate: int) -> array.array:
     return samples[max(0, loud[0] * size - air):min(len(samples), (loud[-1] + 1) * size + air)]
 
 
-def split_take(data: bytes, lines: int) -> list[bytes]:
-    """Return `lines` WAV clips, cut at the `lines - 1` longest pauses, each trimmed of dead air."""
-    samples, rate = _read(data)
-    quiet, size = _quiet_windows(samples, rate)
-    silences = sorted(_interior_silences(quiet, size, rate), key=lambda s: s[1] - s[0], reverse=True)
-    needed = lines - 1
-    if len(silences) < needed:
-        raise SplitError(f"found {len(silences)} pauses but need {needed} to separate {lines} lines")
-    if needed and len(silences) > needed:
-        shortest_break = silences[needed - 1][1] - silences[needed - 1][0]
-        longest_inner = silences[needed][1] - silences[needed][0]
+def _by_length(silences: list[tuple[int, int]], needed: int, rate: int) -> list[tuple[int, int]]:
+    """Choose line breaks as the longest pauses. Refuses when length alone cannot tell them apart."""
+    ranked = sorted(silences, key=lambda s: s[1] - s[0], reverse=True)
+    if needed and len(ranked) > needed:
+        shortest_break = ranked[needed - 1][1] - ranked[needed - 1][0]
+        longest_inner = ranked[needed][1] - ranked[needed][0]
         if shortest_break < CLEAR_MARGIN * longest_inner:
             raise SplitError(
                 f"ambiguous: the shortest line break ({shortest_break / rate:.2f} s) is not clearly longer "
                 f"than a pause inside a line ({longest_inner / rate:.2f} s)"
             )
-    cuts = sorted((start + end) // 2 for start, end in silences[:needed])
+    return ranked[:needed]
+
+
+def _by_text(silences: list[tuple[int, int]], quiet: list[bool], size: int, weights: list[float]) -> list[tuple[int, int]]:
+    """Choose line breaks as the pauses nearest to where the text says each line should end.
+
+    A line's share of the speaking time is close to its share of the characters, so the break after
+    line i should fall where that fraction of the speech has been spoken. Pauses are matched to the
+    expected positions in order, minimising the total distance.
+    """
+    spoken_before = [0]
+    for is_quiet in quiet:
+        spoken_before.append(spoken_before[-1] + (0 if is_quiet else 1))
+    total_spoken = spoken_before[-1] or 1
+    silences = sorted(silences)
+    position = [spoken_before[min(start // size, len(quiet))] / total_spoken for start, _ in silences]
+    total_weight = float(sum(weights))
+    expected, running = [], 0.0
+    for weight in weights[:-1]:
+        running += weight
+        expected.append(running / total_weight)
+    tolerance = 0.5 * min(weights) / total_weight
+
+    count, needed = len(silences), len(expected)
+    infinity = float("inf")
+    # best[j][k]: lowest cost of placing the first j breaks using only the first k pauses.
+    best = [[infinity] * (count + 1) for _ in range(needed + 1)]
+    took = [[False] * (count + 1) for _ in range(needed + 1)]
+    best[0] = [0.0] * (count + 1)
+    for j in range(1, needed + 1):
+        for k in range(j, count + 1):
+            distance = abs(position[k - 1] - expected[j - 1])
+            use = best[j - 1][k - 1] + distance if distance <= tolerance else infinity
+            skip = best[j][k - 1]
+            best[j][k], took[j][k] = (use, True) if use < skip else (skip, False)
+    if best[needed][count] == infinity:
+        raise SplitError("no pause is close to where the text says a line should end")
+    chosen, j, k = [], needed, count
+    while j:
+        if took[j][k]:
+            chosen.append(silences[k - 1])
+            j -= 1
+        k -= 1
+    return chosen
+
+
+def split_take(data: bytes, lines: int, weights: list[float] | None = None) -> list[bytes]:
+    """Return `lines` WAV clips cut at pauses, each trimmed of dead air.
+
+    Without weights the longest pauses are the line breaks. With weights (the length of each line's
+    text) the breaks are the pauses nearest to where each line should end, which still works when
+    the speaker pauses as long at a comma as between lines.
+    """
+    samples, rate = _read(data)
+    quiet, size = _quiet_windows(samples, rate)
+    silences = _interior_silences(quiet, size, rate)
+    needed = lines - 1
+    if weights is not None and len(weights) != lines:
+        raise SplitError(f"got {len(weights)} weights for {lines} lines")
+    if len(silences) < needed:
+        raise SplitError(f"found {len(silences)} pauses but need {needed} to separate {lines} lines")
+    if weights is None:
+        chosen = _by_length(silences, needed, rate)
+    else:
+        chosen = _by_text(silences, quiet, size, [float(w) for w in weights]) if needed else []
+    cuts = sorted((start + end) // 2 for start, end in chosen)
     edges = [0, *cuts, len(samples)]
     return [_write(_trim(samples[a:b], rate), rate) for a, b in zip(edges, edges[1:])]

@@ -143,8 +143,12 @@ def run(
         def batch_call(model: str) -> Callable[[], list[bytes]]:
             def call() -> list[bytes]:
                 data = synth(joined, model=model, voice=voice, style_instruction=style)
+                # Keep the raw take: if the split fails it can be studied without spending another request.
+                raw = folder / "takes" / f"take_{model}_{int(time.time())}.wav"
+                raw.parent.mkdir(parents=True, exist_ok=True)
+                raw.write_bytes(data)
                 try:
-                    clips = split_take(data, len(todo))
+                    clips = split_take(data, len(todo), weights=[len(text) for text in texts])
                 except SplitError as exc:
                     raise RetryableError(f"could not split the take: {exc}") from exc
                 for clip in clips:
