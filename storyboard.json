@@ -168,7 +168,7 @@
         "subtitle_en": "Every afternoon, Ato Girma sat up and described everything he could see through the window."
       },
       "keyframe_prompt": "Medium close-up of Ato Girma sitting up in bed, his face turned toward the bright window so the light falls on it, one hand lifted slightly as if describing something, a gentle smile. Soft cream wall behind him.",
-      "motion_prompt": "Girma speaks softly and gestures with one hand toward the window; slow push in.",
+      "motion_prompt": "The old man speaks softly and gestures gently with his raised hand, turning his face slightly toward the window light. Slow push in.",
       "camera_move": "push_in",
       "render": {
         "9:16": "video",
@@ -235,7 +235,7 @@
         "subtitle_en": "Ato Kebede closed his eyes and saw it all. Weeks went by like this."
       },
       "keyframe_prompt": "Close-up of Ato Kebede lying on his pillow with his eyes closed and a peaceful, contented smile, warm light from the window side touching his face.",
-      "motion_prompt": "Kebede breathes slowly and smiles with his eyes closed; almost still.",
+      "motion_prompt": "The old man breathes slowly with his eyes closed and a faint smile. Almost still. Slow push in.",
       "camera_move": "push_in",
       "render": {
         "9:16": "video",
@@ -350,7 +350,7 @@
         "subtitle_en": "He had invented it all, to give his friend the hope to go on living."
       },
       "keyframe_prompt": "Close-up of Ato Kebede beside the window with tears on his cheeks and a soft, grateful smile, his eyes lifted toward the window as warm golden light falls across his face.",
-      "motion_prompt": "A tear runs down Kebede's cheek as he smiles faintly; warm light grows; slow pull out.",
+      "motion_prompt": "A tear runs slowly down the old man's cheek as he smiles faintly; warm light grows on his face. Slow pull out.",
       "camera_move": "pull_out",
       "render": {
         "9:16": "video",

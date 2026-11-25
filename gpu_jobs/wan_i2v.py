@@ -40,13 +40,28 @@ from diffusers import AutoencoderKLWan, WanImageToVideoPipeline  # noqa: E402
 from diffusers.utils import export_to_video  # noqa: E402
 from PIL import Image  # noqa: E402
 
+# The first job loaded everything onto one 15 GB card with the models taking turns and ran out of
+# memory (FAILURES F16). Kaggle gives two cards: put the text encoder on one and the video model on
+# the other. If that is not possible, fall back to taking turns and reset placement before each try.
 vae = AutoencoderKLWan.from_pretrained(manifest["model"], subfolder="vae", torch_dtype=torch.float32)
-pipe = WanImageToVideoPipeline.from_pretrained(manifest["model"], vae=vae, torch_dtype=torch.bfloat16)
-pipe.enable_model_cpu_offload()
-try:
-    pipe.vae.enable_tiling()
-except Exception:
-    pass
+placement = "one GPU, models take turns"
+pipe = None
+if torch.cuda.device_count() >= 2:
+    try:
+        pipe = WanImageToVideoPipeline.from_pretrained(manifest["model"], vae=vae, torch_dtype=torch.bfloat16, device_map="balanced")
+        placement = "two GPUs, models spread"
+    except Exception as exc:
+        report["placement_error"] = f"{type(exc).__name__}: {exc}"[:300]
+        pipe = None
+if pipe is None:
+    pipe = WanImageToVideoPipeline.from_pretrained(manifest["model"], vae=vae, torch_dtype=torch.bfloat16)
+    pipe.enable_model_cpu_offload()
+report["placement"] = placement
+for option in ("enable_tiling", "enable_slicing"):
+    try:
+        getattr(pipe.vae, option)()
+    except Exception:
+        pass
 report["setup_seconds"] = round(time.time() - started, 1)
 report["gpu"] = torch.cuda.get_device_name(0)
 save_report()
@@ -66,13 +81,13 @@ def generate(item, frames, steps):
         image=image, prompt=item["prompt"], negative_prompt=manifest["negative_prompt"],
         height=item["height"], width=item["width"], num_frames=frames,
         guidance_scale=manifest["guidance_scale"], num_inference_steps=steps,
-        generator=torch.Generator(device="cuda").manual_seed(item["seed"]),
+        generator=torch.Generator(device="cpu").manual_seed(item["seed"]),
     ).frames[0]
     export_to_video(output, os.path.join(OUT, item["file"]), fps=manifest["fps"])
 
 
 # If memory runs out or a clip fails, try fewer frames, then fewer steps as well.
-LADDER = [(manifest["num_frames"], manifest["steps"]), (49, manifest["steps"]), (49, 20)]
+LADDER = [(manifest["num_frames"], manifest["steps"]), (49, manifest["steps"]), (33, 20)]
 budget_seconds = manifest.get("budget_minutes", 300) * 60
 
 for item in manifest["items"]:
@@ -85,9 +100,16 @@ for item in manifest["items"]:
         save_report()
         continue
     for frames, steps in LADDER:
+        if placement.startswith("one GPU"):
+            try:
+                pipe.maybe_free_model_hooks()
+            except Exception:
+                pass
         gc.collect()
-        torch.cuda.empty_cache()
-        torch.cuda.reset_peak_memory_stats()
+        for index in range(torch.cuda.device_count()):
+            with torch.cuda.device(index):
+                torch.cuda.empty_cache()
+                torch.cuda.reset_peak_memory_stats()
         try:
             generate(item, frames, steps)
         except Exception as exc:
@@ -95,7 +117,7 @@ for item in manifest["items"]:
             del exc
             continue
         record.update(status="ok", frames=frames, steps=steps,
-                      peak_vram_gb=round(torch.cuda.max_memory_allocated() / 1e9, 2))
+                      peak_vram_gb=round(max(torch.cuda.max_memory_allocated(i) for i in range(torch.cuda.device_count())) / 1e9, 2))
         break
     else:
         record["status"] = "failed"
