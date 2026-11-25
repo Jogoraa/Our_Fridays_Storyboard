@@ -171,7 +171,7 @@
       "motion_prompt": "Girma speaks softly and gestures with one hand toward the window; slow push in.",
       "camera_move": "push_in",
       "render": {
-        "9:16": "still",
+        "9:16": "video",
         "16:9": "still"
       },
       "reference_assets": [],
@@ -238,7 +238,7 @@
       "motion_prompt": "Kebede breathes slowly and smiles with his eyes closed; almost still.",
       "camera_move": "push_in",
       "render": {
-        "9:16": "still",
+        "9:16": "video",
         "16:9": "still"
       },
       "reference_assets": [],
@@ -353,7 +353,7 @@
       "motion_prompt": "A tear runs down Kebede's cheek as he smiles faintly; warm light grows; slow pull out.",
       "camera_move": "pull_out",
       "render": {
-        "9:16": "still",
+        "9:16": "video",
         "16:9": "still"
       },
       "reference_assets": [],
