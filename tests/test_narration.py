@@ -38,12 +38,18 @@ class FakeSynth:
 
 @pytest.fixture
 def sb():
-    return copy.deepcopy(load_storyboard())
+    """The repo storyboard, normalised to English so tests do not depend on the film's language."""
+    board = copy.deepcopy(load_storyboard())
+    for shot in board["shots"]:
+        shot["narration"]["lang"] = "en"
+        shot["narration"]["text"] = shot["narration"]["source_en"]
+    return board
 
 
 @pytest.fixture
 def run(tmp_path):
     def _run(sb, synth, **kwargs):
+        kwargs.setdefault("lang", "en")
         return narration.run(
             sb, synth=synth, out_dir=tmp_path / "narration", log_path=tmp_path / "runs.jsonl",
             sleep=lambda _: None, **kwargs,

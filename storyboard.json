@@ -1,13 +1,13 @@
 {
   "schema_version": "1.1",
   "title": "Our Fridays",
-  "project_status": "draft",
+  "project_status": "radio_cut",
   "story_note": "A fictional story written by the author about friendship, unspoken love and change. No real person is depicted or voiced.",
   "audience": "Young Ethiopian adults (the author's friends and cohort colleagues), watching on a phone.",
   "intent": "They recognise the feeling of something left unsaid, and leave warmed that the friendship continues.",
-  "narration_language": "en",
+  "narration_language": "am",
   "subtitle_language": "en",
-  "narration_style": "One warm, reflective narrator, natural pacing. Quoted dialogue is read by the narrator.",
+  "narration_style": "One warm, reflective narrator, natural pacing, in Amharic. Quoted dialogue is read by the narrator.",
   "narration_voice": {
     "voice": "Sulafat",
     "style_instruction": "warm, calm, unhurried storytelling"
@@ -79,10 +79,10 @@
       ],
       "reason": "Establish their comfortable, familiar friendship.",
       "narration": {
-        "text": "Every Friday, Rahel and Bekele met at the same small café. She knew exactly how he took his coffee.",
-        "lang": "en",
-        "source_en": "Every Friday, Rahel and Bekele met at the same small café. She knew exactly how he took his coffee.",
-        "subtitle_en": "Every Friday, Rahel and Bekele met at the same small café. She knew exactly how he took his coffee."
+        "text": "ራሄልና በቀለ አርብ አርብ ሁልጊዜ በሚገናኙበት ትንሽዬ ካፌ ነበረች። ራሄልም በቀለ ቡናውን እንዴት እንደሚወደው ታውቅ ነበር።",
+        "lang": "am",
+        "source_en": "There was a little café where Rahel and Bekele met every Friday. Rahel knew just how Bekele liked his coffee.",
+        "subtitle_en": "There was a little café where Rahel and Bekele met every Friday. Rahel knew just how Bekele liked his coffee."
       },
       "keyframe_prompt": "Inside a small café at golden hour, Rahel and Bekele sit close together at a wooden table with two simple cups. Rahel slides his preferred coffee toward Bekele. Frame them together in the centre with enough headroom for a portrait crop.",
       "motion_prompt": "A gentle slow push toward the table as Rahel slides a cup toward Bekele.",
@@ -103,10 +103,10 @@
       ],
       "reason": "Show his attention and introduce his unspoken feelings.",
       "narration": {
-        "text": "He knew when her smile was hiding a difficult day. What she didn’t know was that he loved her.",
-        "lang": "en",
-        "source_en": "He knew when her smile was hiding a difficult day. What she didn’t know was that he loved her.",
-        "subtitle_en": "He knew when her smile was hiding a difficult day. What she didn’t know was that he loved her."
+        "text": "ራሄል ፈገግ ሳትል ስትቀር ከጀርባው ከባድ ቀን እንዳለበት በቀለ ያውቅ ነበር። እርሷ ግን እሱ እንደሚወዳት ፈጽሞ አታውቅም ነበር።",
+        "lang": "am",
+        "source_en": "When Rahel didn’t smile, Bekele knew a hard day lay behind it. But she never knew that he loved her.",
+        "subtitle_en": "When Rahel didn’t smile, Bekele knew a hard day lay behind it. But she never knew that he loved her."
       },
       "keyframe_prompt": "At the same café table, Rahel gives a small tired smile; Bekele notices with a quiet sympathetic look and gently moves her cup closer. The mood is intimate, restrained and clearly platonic from her point of view.",
       "motion_prompt": "Subtle eye movement and a small movement of Bekele's hand toward the coffee cup.",
@@ -127,10 +127,10 @@
       ],
       "reason": "Introduce the change that puts their friendship under pressure.",
       "narration": {
-        "text": "One afternoon, Rahel told him she’d accepted a job in another city. Bekele smiled and told her he was proud.",
-        "lang": "en",
-        "source_en": "One afternoon, Rahel told him she’d accepted a job in another city. Bekele smiled and told her he was proud.",
-        "subtitle_en": "One afternoon, Rahel told him she’d accepted a job in another city. Bekele smiled and told her he was proud."
+        "text": "አንድ ቀን ከሰዓት በኋላ ራሄል በሌላ ከተማ ሥራ እንዳገኘች ነገረችው። በቀለ ፈገግ ብሎ «የኔ ጀግና እንዴት እንደምኮራብሽ ግን ታውቂያለሽ» ሲል ነገራት።",
+        "lang": "am",
+        "source_en": "One afternoon, Rahel told him she’d found a job in another city. Bekele smiled and said, “My hero, you know how proud I am of you.”",
+        "subtitle_en": "One afternoon, Rahel told him she’d found a job in another city. Bekele smiled and said, “My hero, you know how proud I am of you.”"
       },
       "keyframe_prompt": "In the same café Rahel shares good news with a mixture of excitement and nervousness; Bekele responds with a supportive smile that hides a trace of sadness. Focus on their faces and body language rather than phone text.",
       "motion_prompt": "Rahel speaks with a small excited gesture; Bekele smiles gently.",
@@ -150,10 +150,10 @@
       ],
       "reason": "Make the unsaid confession tangible.",
       "narration": {
-        "text": "That night, he typed, “There’s something I’ve wanted to tell you.” His thumb hovered over send.",
-        "lang": "en",
-        "source_en": "That night, he typed, “There’s something I’ve wanted to tell you.” His thumb hovered over send.",
-        "subtitle_en": "That night, he typed, “There’s something I’ve wanted to tell you.” His thumb hovered over send."
+        "text": "በዚያች ምሽት፣ በቀለ «አንድ ልነግርሽ የፈለኩት ነገር ነበር» ብሎ ጻፈ፤ ከዚያም ጣቱ ላክ በሚለው ቁልፍ ላይ ቆመ።",
+        "lang": "am",
+        "source_en": "That night, Bekele typed, “There was something I wanted to tell you.” Then his thumb stopped over send.",
+        "subtitle_en": "That night, Bekele typed, “There was something I wanted to tell you.” Then his thumb stopped over send."
       },
       "keyframe_prompt": "In Bekele's modest apartment at night, he sits alone holding a phone, lit softly by a lamp and the screen. Frame his face and hand; the screen remains blank for text to be added in editing.",
       "motion_prompt": "Slow close-in toward the phone as Bekele's thumb pauses above the screen.",
@@ -166,7 +166,7 @@
       "seed": 1004,
       "overlay_text": [
         {
-          "text": "There’s something I’ve wanted to tell you.",
+          "text": "አንድ ልነግርሽ የፈለኩት ነገር ነበር",
           "at_fraction": 0.35,
           "role": "draft"
         }
@@ -180,10 +180,10 @@
       ],
       "reason": "Show the cost of his hesitation.",
       "narration": {
-        "text": "But he deleted the message. He was afraid the truth might change their friendship.",
-        "lang": "en",
-        "source_en": "But he deleted the message. He was afraid the truth might change their friendship.",
-        "subtitle_en": "But he deleted the message. He was afraid the truth might change their friendship."
+        "text": "ነገር ግን መልዕክቱን አጠፋው። የእውነቱ መታወቅ ጓደኝነታቸውን ሊለውጠው ይችላል ብሎም ፈራ።",
+        "lang": "am",
+        "source_en": "But he deleted the message. He was afraid that the truth coming out might change their friendship.",
+        "subtitle_en": "But he deleted the message. He was afraid that the truth coming out might change their friendship."
       },
       "keyframe_prompt": "A close view of Bekele looking between his phone and a small, unbranded printed photograph of two friends at a café. His expression is conflicted; the phone screen is neutral and blank.",
       "motion_prompt": "He lowers his gaze and slowly withdraws his thumb, leaving a beat of stillness.",
@@ -204,10 +204,10 @@
       ],
       "reason": "Let Rahel express her own feelings while showing Bekele's care.",
       "narration": {
-        "text": "At the bus station, Rahel admitted she was scared. Bekele picked up her bag and walked beside her.",
-        "lang": "en",
-        "source_en": "At the bus station, Rahel admitted she was scared. Bekele picked up her bag and walked beside her.",
-        "subtitle_en": "At the bus station, Rahel admitted she was scared. Bekele picked up her bag and walked beside her."
+        "text": "በአውቶቡስ ጣቢያውም እንደ ደረሱ፤ ራሄል እንደፈራች ተናገረች። በቀለም ጓዟን ተሸክሞ አብሯት ሄደ።",
+        "lang": "am",
+        "source_en": "When they reached the bus station, Rahel said she was scared. Bekele carried her bag and walked with her.",
+        "subtitle_en": "When they reached the bus station, Rahel said she was scared. Bekele carried her bag and walked with her."
       },
       "keyframe_prompt": "At a contemporary city bus station during soft morning light, Rahel with her tan shoulder bag looks nervous before a departure. Bekele lifts a single travel bag and walks beside her; both are grouped in the central crop-safe area.",
       "motion_prompt": "Bekele picks up the bag as Rahel takes a small breath; they take a few gentle steps.",
@@ -228,10 +228,10 @@
       ],
       "reason": "Show her active choice to keep their friendship alive.",
       "narration": {
-        "text": "Before boarding, she handed him a small packet of coffee. “So we can still have our Fridays,” she said.",
-        "lang": "en",
-        "source_en": "Before boarding, she handed him a small packet of coffee. “So we can still have our Fridays,” she said.",
-        "subtitle_en": "Before boarding, she handed him a small packet of coffee. “So we can still have our Fridays,” she said."
+        "text": "በአውቶቡሱም ከመሳፈሯ በፊት ትንሽ ቡና ዘግና ሰጠችውና፣ «የአርብ ቡናችን እንዳይቀር» አለችው።",
+        "lang": "am",
+        "source_en": "Before she boarded the bus, she packed him a little coffee. “So we don’t miss our Friday coffee,” she said.",
+        "subtitle_en": "Before she boarded the bus, she packed him a little coffee. “So we don’t miss our Friday coffee,” she said."
       },
       "keyframe_prompt": "At the bus station Rahel offers Bekele a plain unbranded small paper packet of coffee beans. Their hands and warm, restrained expressions are visible. A bus stands softly out of focus behind them.",
       "motion_prompt": "Rahel extends the coffee packet; Bekele accepts it and they exchange a quiet smile.",
@@ -251,10 +251,10 @@
       ],
       "reason": "Resolve the separation with a promise of continued friendship while leaving his feelings unspoken.",
       "narration": {
-        "text": "As the bus pulled away, his phone lit up: “Friday. Same time?” Bekele smiled and typed, “I’ll be there.”",
-        "lang": "en",
-        "source_en": "As the bus pulled away, his phone lit up: “Friday. Same time?” Bekele smiled and typed, “I’ll be there.”",
-        "subtitle_en": "As the bus pulled away, his phone lit up: “Friday. Same time?” Bekele smiled and typed, “I’ll be there.”"
+        "text": "ልክ አውቶብሱ ሲንቀሳቀስ፣ ስልኩ በራ፡ “አርብ። ልክ እንደ ተለመደው?” በቀለ ፈገግ ብሎ “እመጣለሁ” ብሎ ጻፈ።",
+        "lang": "am",
+        "source_en": "Just as the bus pulled away, his phone lit up: “Friday. Same as always?” Bekele smiled and typed, “I’ll be there.”",
+        "subtitle_en": "Just as the bus pulled away, his phone lit up: “Friday. Same as always?” Bekele smiled and typed, “I’ll be there.”"
       },
       "keyframe_prompt": "Bekele stands at the bus station holding the coffee packet; a departing bus is softly blurred in the background. He glances at his phone and smiles gently; keep the screen blank for the message to be added in editing.",
       "motion_prompt": "The bus moves gently out of frame as Bekele lowers his gaze to the phone and smiles.",
@@ -267,12 +267,12 @@
       "seed": 1008,
       "overlay_text": [
         {
-          "text": "Friday. Same time?",
+          "text": "አርብ። ልክ እንደ ተለመደው?",
           "at_fraction": 0.35,
           "role": "received"
         },
         {
-          "text": "I’ll be there.",
+          "text": "እመጣለሁ",
           "at_fraction": 0.75,
           "role": "sent"
         }

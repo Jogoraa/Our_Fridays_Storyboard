@@ -14,7 +14,7 @@ def cut(tmp_path_factory):
     tmp = tmp_path_factory.mktemp("radio")
     sb = copy.deepcopy(load_storyboard())
     durations = narration.run(
-        sb, synth=FakeSynth(), out_dir=tmp / "narration", log_path=tmp / "runs.jsonl", sleep=lambda _: None,
+        sb, lang="en", synth=FakeSynth(), out_dir=tmp / "narration", log_path=tmp / "runs.jsonl", sleep=lambda _: None,
     )
     plan = timing.build_timing(sb, durations)
     bed = music.placeholder(plan["total"], out_dir=tmp / "music")
