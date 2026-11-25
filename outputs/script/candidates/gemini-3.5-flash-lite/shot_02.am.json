@@ -1,6 +1,6 @@
 {
   "shot": "shot_02",
   "source_en": "He knew when her smile was hiding a difficult day. What she didn’t know was that he loved her.",
-  "proposed_am": "ራሄል ፈገግ ስትል ከጀርባው ከባድ ቀን እንዳለበት በቀለ ያውቅ ነበር። እርሷ ግን እሱ እንደሚወዳት ፈጽሞ አታውቅም ነበር።",
+  "proposed_am": "ራሄል ፈገግ ሳትል ስትቀር፤ ከጀርባው ከባድ ቀን እንዳለበት በቀለ ያውቅ ነበር። እርሷ ግን እሱ እንደሚወዳት ፈጽሞ አታውቅም",
   "model": "gemini-3.5-flash-lite"
 }

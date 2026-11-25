@@ -1,0 +1,66 @@
+{
+  "fps": 24,
+  "shots": [
+    {
+      "id": "shot_01",
+      "start": 0.0,
+      "duration": 10.583333333333334,
+      "narration_start": 0.4,
+      "narration_duration": 9.48
+    },
+    {
+      "id": "shot_02",
+      "start": 10.583333333333334,
+      "duration": 9.416666666666666,
+      "narration_start": 10.983333333333334,
+      "narration_duration": 8.28
+    },
+    {
+      "id": "shot_03",
+      "start": 20.0,
+      "duration": 10.708333333333334,
+      "narration_start": 20.4,
+      "narration_duration": 9.6
+    },
+    {
+      "id": "shot_04",
+      "start": 30.708333333333332,
+      "duration": 8.333333333333334,
+      "narration_start": 31.10833333333333,
+      "narration_duration": 7.2
+    },
+    {
+      "id": "shot_05",
+      "start": 39.041666666666664,
+      "duration": 7.25,
+      "narration_start": 39.44166666666666,
+      "narration_duration": 6.12
+    },
+    {
+      "id": "shot_06",
+      "start": 46.291666666666664,
+      "duration": 8.875,
+      "narration_start": 46.69166666666666,
+      "narration_duration": 7.76
+    },
+    {
+      "id": "shot_07",
+      "start": 55.166666666666664,
+      "duration": 9.125,
+      "narration_start": 55.56666666666666,
+      "narration_duration": 8.0
+    },
+    {
+      "id": "shot_08",
+      "start": 64.29166666666667,
+      "duration": 11.333333333333334,
+      "narration_start": 64.69166666666668,
+      "narration_duration": 10.2
+    }
+  ],
+  "end_card": {
+    "start": 75.625,
+    "duration": 3.0
+  },
+  "total": 78.625
+}
