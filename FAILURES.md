@@ -95,3 +95,17 @@ Newest last. Only things that actually happened are recorded here.
 - **What happened:** With the radio cut of "Our Fridays" finished, the author replaced the story with "The Window" (DESIGN.md, decision log).
 - **What it cost:** eleven new narration requests against a ten-request window, and every test that had quietly depended on the film's own storyboard (shot count, character names) would have broken.
 - **Fix:** tests now load a frozen sample storyboard (`tests/fixtures/storyboard.json`); one test checks the live storyboard is valid. The character-specific wording in the keyframe prompt ("the woman from reference image 1") became a `noun` field on each character. No stage needed a code change beyond that.
+
+## F14. Every keyframe ran out of GPU memory
+
+- **When:** 25 November, first picture job on Kaggle. Evidence: `runs.jsonl`, stage `keyframes`, 22 lines with status `failed`; the job's own report is kept at `outputs/references/v1/job_report.json`.
+- **What broke:** The nine reference portraits were made (about 85 s each, peak 12.5 GB of the T4's 15 GB). The first keyframe then failed with `CUDA out of memory. Tried to allocate 16.23 GiB`. After that every remaining image failed within 0.02 s with `Tried to allocate 20.00 MiB ... 4.81 MiB is free`, including the three shots that use no reference at all.
+- **Two causes:**
+  1. A keyframe was conditioned on two reference portraits at full size (864x1152 each). The model attends over the tokens of the picture being made plus the tokens of every reference, and attention memory grows with the square of that count. Two full references more than doubled the tokens: roughly 13,000 instead of 5,200.
+  2. The job caught the error and went on, but the failed attempt's tensors were still referenced by the exception, so `torch.cuda.empty_cache()` freed nothing and one failure took down the other 21 images.
+- **What fixed it (`gpu_jobs/flux_keyframes.py`):**
+  - References are shrunk to 512 pixels on the long side before conditioning. They only need to carry a face and clothes. That brings the token count to about 6,700.
+  - Before every image the job runs `gc.collect()` and empties the cache, and it drops the exception object before retrying.
+  - A retry ladder: if memory still runs out, try 384-pixel references, then the picture itself at five sixths of the size. The size actually used is recorded per image in `runs.jsonl` (`made_at`, `reference_side`, `failed_attempts`).
+- **Cost of the failure:** 944 s of GPU session and about an hour of waiting, for nine usable images.
+- **Lesson:** "Keep going after an error" is only safe if the error leaves the GPU clean. And a job that takes fifteen minutes to start needs its own retries inside it.
