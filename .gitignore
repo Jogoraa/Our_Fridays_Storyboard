@@ -1,0 +1,10 @@
+.env
+.env.*
+!.env.example
+kaggle.json
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+outputs/tmp/
+.superpowers/
