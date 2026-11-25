@@ -1,0 +1,9 @@
+{
+  "key": "2e88e9be4697721fc2f2146a12dd68d98d12fbdc2af2cae64034dda164cdbe85",
+  "written": "2026-11-25T19:53:21+00:00",
+  "shot": "shot_06",
+  "aspect": "9:16",
+  "seed": 2006,
+  "model": "Wan-AI/Wan2.2-TI2V-5B-Diffusers",
+  "gpu_seconds": 3378.3
+}

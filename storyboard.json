@@ -170,7 +170,7 @@
       "motion_prompt": "The old man speaks softly and gestures gently with his raised hand, turning his face slightly toward the window light. Slow push in.",
       "camera_move": "push_in",
       "render": {
-        "9:16": "video",
+        "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
@@ -237,7 +237,7 @@
       "motion_prompt": "The old man breathes slowly with his eyes closed and a faint smile. Almost still. Slow push in.",
       "camera_move": "push_in",
       "render": {
-        "9:16": "video",
+        "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],
@@ -352,7 +352,7 @@
       "motion_prompt": "A tear runs slowly down the old man's cheek as he smiles faintly; warm light grows on his face. Slow pull out.",
       "camera_move": "pull_out",
       "render": {
-        "9:16": "video",
+        "9:16": "still",
         "16:9": "still"
       },
       "reference_assets": [],

@@ -139,7 +139,8 @@ Newest last. Only things that actually happened are recorded here.
 
 - **When:** 25 November. Evidence: `runs.jsonl`, stage `video`, three lines with status `failed`.
 - **What broke:** Wan 2.2 TI2V-5B, image-to-video, 480x832, 73 frames, 30 steps, on one T4 with the models taking turns. `Tried to allocate 4.91 GiB` with 0.9 GB free and 13.7 GB already in use. The two smaller rungs (49 frames, then 20 steps) failed in under a second because the first failure left the card full, exactly as in F14.
-- **Status:** Not fixed yet. All three shots fell back to moving stills, which is what the shots stage is for. The retry will apply what F14 taught: spread the models over both GPUs, and reset the model placement after a failure.
+- **Fix:** The retry spread the models over both GPUs and reset placement after each failure, as F14 had taught. It worked, but only at 33 frames and 20 steps, and each 1.4-second clip took 57 minutes (EXPERIMENTS E15). The clips are kept; the film uses moving stills because a 1.4-second clip cannot carry an 8-second shot.
+- **One more thing broke:** downloading the finished job timed out on the third clip (`Read timed out. (read timeout=300)`), so two of three clips were collected. The log line for the third says no clip came back; the clip was made on Kaggle and lost on the way.
 
 ## F17. A dropped connection killed the local wait
 
