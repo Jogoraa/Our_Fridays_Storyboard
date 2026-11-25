@@ -174,6 +174,9 @@ def call_with_retry(
             if last:
                 raise ProviderError(f"{provider} {model} failed after {attempts} attempts: {exc}") from exc
             sleep(base_delay * 2 ** (attempt - 1))
+        except ConfigError:
+            # No request was sent (for example a missing key), so there is no model call to log.
+            raise
         except Exception as exc:
             latency = round(time.perf_counter() - started, 3)
             log_run(

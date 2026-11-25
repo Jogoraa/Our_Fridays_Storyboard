@@ -139,3 +139,14 @@ def test_require_env_blank_value_counts_as_missing(monkeypatch):
     monkeypatch.setenv("BLANK_KEY", "  ")
     with pytest.raises(ConfigError, match="BLANK_KEY"):
         require_env("BLANK_KEY")
+
+
+def test_config_error_is_not_logged_as_a_model_call(tmp_path):
+    log = tmp_path / "runs.jsonl"
+
+    def fn():
+        raise ConfigError("Missing GEMINI_API_KEY in .env")
+
+    with pytest.raises(ConfigError, match="GEMINI_API_KEY"):
+        call_with_retry(fn, stage="s", provider="p", model="m", params={}, sleep=lambda _: None, log_path=log)
+    assert not log.exists()
