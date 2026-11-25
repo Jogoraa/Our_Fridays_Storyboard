@@ -49,3 +49,10 @@ def test_changed_subtitle_reassembles(cut):
     changed["shots"][0]["narration"]["subtitle_en"] = "A different subtitle."
     assemble.radio_cut(changed, plan, **kwargs)
     assert output.stat().st_mtime_ns != before
+
+
+def test_mix_applies_the_tempo_to_every_narration_clip(cut):
+    _, plan, _, _ = cut
+    faster = {**plan, "tempo": 1.08}
+    assert assemble.mix_filter(faster, 8).count("atempo=1.08") == 8
+    assert "atempo" not in assemble.mix_filter(plan, 8)

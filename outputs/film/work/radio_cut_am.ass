@@ -11,19 +11,19 @@ Style: Sub,Arial,44,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,1,0,0,0,100,100,
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.40,0:00:05.76,Sub,,0,0,0,,There was a little café where Rahel and\NBekele met every Friday.
-Dialogue: 0,0:00:05.76,0:00:09.74,Sub,,0,0,0,,Rahel knew just how Bekele liked his\Ncoffee.
-Dialogue: 0,0:00:10.57,0:00:16.24,Sub,,0,0,0,,When Rahel didn’t smile, Bekele knew a\Nhard day lay behind it.
-Dialogue: 0,0:00:16.24,0:00:19.93,Sub,,0,0,0,,But she never knew that he loved her.
-Dialogue: 0,0:00:20.73,0:00:24.21,Sub,,0,0,0,,One afternoon, Rahel told him she’d\Nfound a job in another city.
-Dialogue: 0,0:00:24.21,0:00:28.09,Sub,,0,0,0,,Bekele smiled and said, “My hero, you\Nknow how proud I am of you.”
-Dialogue: 0,0:00:28.90,0:00:35.96,Sub,,0,0,0,,That night, Bekele typed, “There was\Nsomething I wanted to tell you.”
-Dialogue: 0,0:00:35.96,0:00:39.64,Sub,,0,0,0,,Then his thumb stopped over send.
-Dialogue: 0,0:00:40.44,0:00:42.15,Sub,,0,0,0,,But he deleted the message.
-Dialogue: 0,0:00:42.15,0:00:46.88,Sub,,0,0,0,,He was afraid that the truth coming out\Nmight change their friendship.
-Dialogue: 0,0:00:47.69,0:00:51.39,Sub,,0,0,0,,When they reached the bus station, Rahel\Nsaid she was scared.
-Dialogue: 0,0:00:51.39,0:00:54.29,Sub,,0,0,0,,Bekele carried her bag and walked with\Nher.
-Dialogue: 0,0:00:55.11,0:00:58.31,Sub,,0,0,0,,Before she boarded the bus, she packed\Nhim a little coffee.
-Dialogue: 0,0:00:58.31,0:01:01.17,Sub,,0,0,0,,“So we don’t miss our Friday coffee,”\Nshe said.
-Dialogue: 0,0:01:01.98,0:01:08.69,Sub,,0,0,0,,Just as the bus pulled away, his phone\Nlit up: “Friday. Same as always?”
-Dialogue: 0,0:01:08.69,0:01:12.80,Sub,,0,0,0,,Bekele smiled and typed, “I’ll be\Nthere.”
+Dialogue: 0,0:00:00.35,0:00:06.04,Sub,,0,0,0,,There was a little café where Rahel and\NBekele met every Friday.
+Dialogue: 0,0:00:06.04,0:00:10.25,Sub,,0,0,0,,Rahel knew just how Bekele liked his\Ncoffee.
+Dialogue: 0,0:00:10.85,0:00:17.09,Sub,,0,0,0,,When Rahel didn’t smile, Bekele knew a\Nhard day lay behind it.
+Dialogue: 0,0:00:17.09,0:00:21.11,Sub,,0,0,0,,But she never knew that he loved her.
+Dialogue: 0,0:00:21.72,0:00:27.40,Sub,,0,0,0,,One afternoon, Rahel told him she’d\Nfound a job in another city.
+Dialogue: 0,0:00:27.40,0:00:33.55,Sub,,0,0,0,,Bekele smiled and said, “My hero, you\Nknow how proud I am of you.”
+Dialogue: 0,0:00:34.18,0:00:40.80,Sub,,0,0,0,,That night, Bekele typed, “There was\Nsomething I wanted to tell you.”
+Dialogue: 0,0:00:40.80,0:00:44.27,Sub,,0,0,0,,Then his thumb stopped over send.
+Dialogue: 0,0:00:44.89,0:00:47.32,Sub,,0,0,0,,But he deleted the message.
+Dialogue: 0,0:00:47.32,0:00:53.92,Sub,,0,0,0,,He was afraid that the truth coming out\Nmight change their friendship.
+Dialogue: 0,0:00:54.56,0:00:59.87,Sub,,0,0,0,,When they reached the bus station, Rahel\Nsaid she was scared.
+Dialogue: 0,0:00:59.87,0:01:03.91,Sub,,0,0,0,,Bekele carried her bag and walked with\Nher.
+Dialogue: 0,0:01:04.52,0:01:08.77,Sub,,0,0,0,,Before she boarded the bus, she packed\Nhim a little coffee.
+Dialogue: 0,0:01:08.77,0:01:12.45,Sub,,0,0,0,,“So we don’t miss our Friday coffee,”\Nshe said.
+Dialogue: 0,0:01:13.06,0:01:19.89,Sub,,0,0,0,,Just as the bus pulled away, his phone\Nlit up: “Friday. Same as always?”
+Dialogue: 0,0:01:19.89,0:01:24.09,Sub,,0,0,0,,Bekele smiled and typed, “I’ll be\Nthere.”

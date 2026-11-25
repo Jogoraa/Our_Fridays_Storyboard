@@ -12,15 +12,21 @@ class TimingError(Exception):
     """The measured narration does not fit the film."""
 
 
-def build_timing(sb: dict, durations: dict[str, float], *, lead: float = 0.4, tail: float = 0.7) -> dict:
-    """Each shot lasts lead + narration + tail, rounded up to a whole frame. Shots are contiguous."""
+def build_timing(sb: dict, durations: dict[str, float], *, lead: float = 0.35, tail: float = 0.55) -> dict:
+    """Each shot lasts lead + narration + tail, rounded up to a whole frame. Shots are contiguous.
+
+    narration_voice.tempo (1.0 = as recorded) plays the voice slightly faster without changing its
+    pitch. It exists so a slow reader can fit the 90-second limit without cutting the author's lines.
+    """
+    tempo = float(sb.get("narration_voice", {}).get("tempo", 1.0))
     shots = []
     cursor_frames = 0
     for shot in sb["shots"]:
         shot_id = shot["id"]
         if shot_id not in durations:
             raise TimingError(f"no measured narration for {shot_id}; run the narration stage first")
-        narration = float(durations[shot_id])
+        source = float(durations[shot_id])
+        narration = source / tempo
         frames = math.ceil(round((lead + narration + tail) * FPS, 6))
         start = cursor_frames / FPS
         shots.append({
@@ -29,12 +35,14 @@ def build_timing(sb: dict, durations: dict[str, float], *, lead: float = 0.4, ta
             "duration": frames / FPS,
             "narration_start": start + lead,
             "narration_duration": narration,
+            "source_duration": source,
         })
         cursor_frames += frames
     end_start = cursor_frames / FPS
     end_duration = float(sb["end_card"]["duration_seconds"])
     return {
         "fps": FPS,
+        "tempo": tempo,
         "shots": shots,
         "end_card": {"start": end_start, "duration": end_duration},
         "total": end_start + end_duration,

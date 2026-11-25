@@ -79,6 +79,11 @@
         "style_instruction": {
           "type": "string",
           "minLength": 1
+        },
+        "tempo": {
+          "type": "number",
+          "minimum": 0.9,
+          "maximum": 1.15
         }
       }
     },

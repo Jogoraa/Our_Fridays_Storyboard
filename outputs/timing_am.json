@@ -1,66 +1,75 @@
 {
   "fps": 24,
+  "tempo": 1.1,
   "shots": [
     {
       "id": "shot_01",
       "start": 0.0,
-      "duration": 10.166666666666666,
-      "narration_start": 0.4,
-      "narration_duration": 9.04
+      "duration": 10.5,
+      "narration_start": 0.35,
+      "narration_duration": 9.6,
+      "source_duration": 10.56
     },
     {
       "id": "shot_02",
-      "start": 10.166666666666666,
-      "duration": 10.166666666666666,
-      "narration_start": 10.566666666666666,
-      "narration_duration": 9.06
+      "start": 10.5,
+      "duration": 10.875,
+      "narration_start": 10.85,
+      "narration_duration": 9.963636363636363,
+      "source_duration": 10.96
     },
     {
       "id": "shot_03",
-      "start": 20.333333333333332,
-      "duration": 8.166666666666666,
-      "narration_start": 20.73333333333333,
-      "narration_duration": 7.06
+      "start": 21.375,
+      "duration": 12.458333333333334,
+      "narration_start": 21.725,
+      "narration_duration": 11.527272727272726,
+      "source_duration": 12.68
     },
     {
       "id": "shot_04",
-      "start": 28.5,
-      "duration": 11.541666666666666,
-      "narration_start": 28.9,
-      "narration_duration": 10.44
+      "start": 33.833333333333336,
+      "duration": 10.708333333333334,
+      "narration_start": 34.18333333333334,
+      "narration_duration": 9.781818181818181,
+      "source_duration": 10.76
     },
     {
       "id": "shot_05",
-      "start": 40.041666666666664,
-      "duration": 7.25,
-      "narration_start": 40.44166666666666,
-      "narration_duration": 6.14
+      "start": 44.541666666666664,
+      "duration": 9.666666666666666,
+      "narration_start": 44.891666666666666,
+      "narration_duration": 8.727272727272727,
+      "source_duration": 9.6
     },
     {
       "id": "shot_06",
-      "start": 47.291666666666664,
-      "duration": 7.416666666666667,
-      "narration_start": 47.69166666666666,
-      "narration_duration": 6.3
+      "start": 54.208333333333336,
+      "duration": 9.958333333333334,
+      "narration_start": 54.55833333333334,
+      "narration_duration": 9.054545454545455,
+      "source_duration": 9.96
     },
     {
       "id": "shot_07",
-      "start": 54.708333333333336,
-      "duration": 6.875,
-      "narration_start": 55.108333333333334,
-      "narration_duration": 5.76
+      "start": 64.16666666666667,
+      "duration": 8.541666666666666,
+      "narration_start": 64.51666666666667,
+      "narration_duration": 7.636363636363636,
+      "source_duration": 8.4
     },
     {
       "id": "shot_08",
-      "start": 61.583333333333336,
-      "duration": 11.625,
-      "narration_start": 61.983333333333334,
-      "narration_duration": 10.52
+      "start": 72.70833333333333,
+      "duration": 11.666666666666666,
+      "narration_start": 73.05833333333332,
+      "narration_duration": 10.727272727272727,
+      "source_duration": 11.8
     }
   ],
   "end_card": {
-    "start": 73.20833333333333,
+    "start": 84.375,
     "duration": 3.0
   },
-  "total": 76.20833333333333
+  "total": 87.375
 }

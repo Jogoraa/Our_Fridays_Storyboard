@@ -10,7 +10,8 @@
   "narration_style": "One warm, reflective narrator, natural pacing, in Amharic. Quoted dialogue is read by the narrator.",
   "narration_voice": {
     "voice": "Sulafat",
-    "style_instruction": "warm, calm, unhurried storytelling"
+    "style_instruction": "warm, calm, unhurried storytelling",
+    "tempo": 1.1
   },
   "visual_style": "Naturalistic cinematic photography in a contemporary Ethiopian city; muted terracotta, coffee brown and navy palette; gentle natural light; restrained expressions; shallow depth of field. Keep the subject central and allow reframing for both portrait and landscape. No generated legible text, logos, watermarks or celebrity likenesses.",
   "style_block": "Naturalistic cinematic photograph, contemporary Ethiopian city, muted terracotta, coffee brown and navy palette, gentle natural light, shallow depth of field, restrained expressions, subject centred, no text, no logos, no watermark.",

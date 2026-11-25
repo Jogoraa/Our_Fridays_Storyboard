@@ -68,3 +68,17 @@ def test_overrun_raises_with_per_shot_breakdown():
 def test_underrun_raises():
     with pytest.raises(TimingError, match="under"):
         check_total(build_timing(storyboard(), durations(4.0)))
+
+
+def test_tempo_shortens_the_narration_window():
+    sb = storyboard()
+    sb["narration_voice"] = {"voice": "v", "style_instruction": "s", "tempo": 1.1}
+    timing = build_timing(sb, durations(11.0))
+    assert timing["tempo"] == 1.1
+    assert timing["shots"][0]["narration_duration"] == pytest.approx(10.0)
+    assert timing["shots"][0]["source_duration"] == pytest.approx(11.0)
+
+
+def test_tempo_defaults_to_one():
+    timing = build_timing(storyboard(), durations(7.0))
+    assert timing["tempo"] == 1.0 and timing["shots"][0]["narration_duration"] == 7.0

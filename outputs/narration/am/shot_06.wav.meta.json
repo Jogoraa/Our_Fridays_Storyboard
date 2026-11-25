@@ -1,0 +1,9 @@
+{
+  "key": "c4668ed42693c52e64279f4cf1da484f2324a7aad996722eb83571975d73e777",
+  "written": "2026-11-25T08:00:23+00:00",
+  "shot": "shot_06",
+  "lang": "am",
+  "seconds": 9.96,
+  "model": "gemini-3.8-flash-tts",
+  "mode": "single"
+}
