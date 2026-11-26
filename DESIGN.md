@@ -46,7 +46,13 @@ Two look decisions follow from the intent. The imagined shots (04, 05) have thei
 
 The project began as "Our Fridays", a fictional story about two friends and an unspoken love. The pipeline was built around it and a radio cut was produced in English and in Amharic (its storyboard and measurements are kept in `outputs/archive/our_fridays/`; the calls are in `runs.jsonl`).
 
-Before it was shown to anyone, the author chose to replace the story with this one. His reasons, in his words, are to be added here by him. What the builder observed: the brief asks for a story that matters to the maker and their family, and "Our Fridays" was invented for the assignment; this parable is one the author already carried, in his own language, about elders.
+Before it was shown to anyone, the author chose to replace the story with this one. His reasons, as he gave them on 26 November:
+
+> "I've known the story a long ago. My friend sent me the story on Telegram and it touched my heart: that giving a hope for each other is the best thing we could do, and how hope gives us a bright imagination, and some things are even better on listening level, and they are not as good as when we hear them from the other perspective. And thirdly, hope is the most important thing to keep people alive and in health as well."
+
+Three things follow from that for the film. Hope given in words is the whole plot, so the narration carries the story and the pictures serve it. What is heard is better than what is seen, so the imagined garden (shots 04 and 05) is the most beautiful thing in the film and the real view (shot 09) is a blank wall. And hope keeps a person alive, so the film ends on Kebede grateful, not broken.
+
+What the builder observed at the time: the brief asks for a story that matters to the maker and their family, and "Our Fridays" was invented for the assignment; this parable is one the author already carried, in his own language, about elders.
 
 What the change cost: the narration, the subtitles and the radio cut. What it did not cost: any code. The storyboard is the only file that changed, which is the point of having one contract. The tests were moved onto a frozen sample storyboard at the same time so they no longer depend on which film is being made.
 
