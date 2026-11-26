@@ -1,0 +1,6 @@
+tests/
+.superpowers/
+.venv/
+report/
+outputs/tmp/
+outputs/clips/

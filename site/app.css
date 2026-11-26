@@ -188,9 +188,49 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
 .doc hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
 .doc .state { color: var(--ink-soft); }
 
-.foot { background: var(--green); color: #e6ece2; padding: 2.2rem clamp(1rem, 4vw, 3rem); font-size: 0.92rem; }
-.foot p { max-width: 72rem; margin: 0 auto 0.4rem; }
-.foot a { color: #fff; }
+/* ---- footer: the room after dark, with the window's light falling across the floor ---- */
+.foot { position: relative; overflow: hidden; background: #1f3329; color: #dfe7da; }
+.foot::before {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgb(255 244 214 / 0.16), rgb(255 244 214 / 0.03));
+  clip-path: polygon(58% 0, 76% 0, 100% 100%, 64% 100%);
+}
+.foot::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: #1f3329; opacity: 0.55;
+  clip-path: polygon(66.6% 0, 67.4% 0, 82.6% 100%, 81.4% 100%);
+}
+.foot-inner { position: relative; z-index: 1; max-width: 72rem; margin: 0 auto; padding: clamp(3.5rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem) 2rem; }
+
+.last-line { margin: 0 0 clamp(3rem, 6vw, 4.5rem); max-width: 46rem; }
+.last-line p { font: 400 clamp(1.5rem, 3.2vw, 2.35rem)/1.5 "Noto Serif Ethiopic", var(--serif); color: #fffdf6; margin: 0 0 0.8rem; text-wrap: balance; }
+.last-line footer { font: 400 1.1rem/1.5 var(--serif); color: #b9c8b6; }
+
+.foot-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 12rem)) minmax(0, 1fr); gap: 2.5rem clamp(2rem, 6vw, 5rem); padding-bottom: 3rem; border-bottom: 1px solid rgb(223 231 218 / 0.22); }
+.foot-grid h2 { font: 600 0.82rem var(--sans); letter-spacing: 0.02em; color: #9fb39d; margin: 0 0 0.9rem; }
+.foot-grid nav a { display: block; color: #eef3ea; text-decoration: none; padding: 0.28rem 0; width: fit-content; background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat; transition: background-size 0.35s var(--ease), color 0.2s; }
+.foot-grid nav a:hover { color: #fff; background-size: 100% 1px; }
+.foot-grid p { margin: 0 0 0.8rem; max-width: 46ch; font-size: 0.95rem; line-height: 1.6; color: #c9d5c5; }
+
+.foot-base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; padding-top: 2rem; }
+.maker {
+  display: inline-flex; align-items: center; gap: 1rem;
+  color: #fffdf6; text-decoration: none;
+  padding: 0.85rem 1.4rem 0.85rem 0.95rem;
+  border: 1px solid rgb(223 231 218 / 0.35); border-radius: 6px;
+  background: rgb(255 253 246 / 0.04);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.maker:hover { background: rgb(255 253 246 / 0.1); border-color: #fffdf6; color: #fff; transform: translateY(-2px); }
+.maker-frame { width: 1.9rem; height: 2.4rem; flex: none; border: 4px solid #b98a55; background: #fff4d6; box-shadow: inset 0 0 0 1px #7a4f2b; transition: box-shadow 0.3s var(--ease); }
+.maker:hover .maker-frame { box-shadow: inset 0 0 0 1px #7a4f2b, 0 0 1.4rem rgb(255 244 214 / 0.55); }
+.maker-text { display: grid; line-height: 1.2; }
+.maker-text small { font-size: 0.8rem; color: #b9c8b6; }
+.maker-text strong { font: 600 1.3rem var(--serif); letter-spacing: -0.01em; white-space: nowrap; }
+.maker-go { font-size: 0.9rem; color: #c9d5c5; padding-left: 1rem; border-left: 1px solid rgb(223 231 218 / 0.3); white-space: nowrap; }
+.maker:hover .maker-go { color: #fff; }
+.foot-note { margin: 0; max-width: 38ch; font-size: 0.86rem; line-height: 1.55; color: #9fb39d; }
+.foot :focus-visible { outline-color: #fff4d6; }
 
 @media (max-width: 54rem) {
   .room { grid-template-columns: 1fr; min-height: 0; }
@@ -200,6 +240,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-
   .shot figure { max-width: 15rem; }
   .brief td:first-child { width: auto; }
   .brief td:last-child { white-space: normal; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .foot-grid > div { grid-column: 1 / -1; }
+  .foot::before, .foot::after { display: none; }
+  .maker { width: 100%; flex-wrap: wrap; }
+  .maker-go { margin-left: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -6,7 +6,7 @@ Two old men share a room in a home for the elderly. One has the bed by the only 
 
 The pipeline turns one file, `storyboard.json`, into narration, pictures, music and a finished edit in vertical (9:16) and horizontal (16:9). Change one shot in that file, run one command, and only that shot is regenerated.
 
-**Watch it and read about it:** https://jogoraa.github.io/the-window-film/ — the films, every shot with its reason, the run log and all the documents, on one page that reads this repository's own files.
+**Showcase page:** `index.html` in this repository is a static page with the films, every shot and its reason, the run log and all the documents. It reads this repository's own files, needs no build step, and deploys as it is to any static host.
 
 ## Run it
 
