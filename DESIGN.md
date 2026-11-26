@@ -64,13 +64,15 @@ Narration over placeholder music on a black screen with subtitles (`uv run film 
 
 Questions to ask: What happened in the story, in your own words? Where did you lose interest or get confused? Did you see the ending coming, and how did it leave you feeling? Did any word sound wrong or disrespectful toward the elders?
 
-**In progress: one of three listeners so far.**
+**In progress: two of three listeners so far.**
 
 | Listener | When | What they said |
 |---|---|---|
 | A friend of the author | 25 to 26 November, after hearing the radio cut | "It's quite a nice story," but the narration does not sound like a native Amharic speaker. |
-| Second listener | pending | |
+| A second friend of the author | 25 to 26 November, after hearing the radio cut | Some Amharic words need a particular pronunciation and the AI narrator does not fully get them, which is "a bit funny, not in a bad way though". |
 | Third listener | pending | |
+
+Two listeners, independently, heard the same thing: the story works and the voice is not quite a native one. The second was more specific than the first: it is particular words, and the effect is slightly comic.
 
 What changed because of it:
 
