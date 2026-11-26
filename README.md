@@ -6,6 +6,8 @@ Two old men share a room in a home for the elderly. One has the bed by the only 
 
 The pipeline turns one file, `storyboard.json`, into narration, pictures, music and a finished edit in vertical (9:16) and horizontal (16:9). Change one shot in that file, run one command, and only that shot is regenerated.
 
+**Watch it and read about it:** https://jogoraa.github.io/the-window-film/ — the films, every shot with its reason, the run log and all the documents, on one page that reads this repository's own files.
+
 ## Run it
 
 You need [uv](https://docs.astral.sh/uv/) and [FFmpeg](https://ffmpeg.org/) on your PATH. Nothing else.
@@ -81,6 +83,7 @@ No money. Every model ran on a free tier or a free GPU. What it costs is time an
 | `runs.jsonl` | One line per model call: model, parameters, seed, latency, GPU seconds, status |
 | `outputs/` | Everything generated, kept so a run can be inspected and reused |
 | `tests/` | The tests, on a frozen sample storyboard |
+| `index.html`, `site/` | The showcase page. Static, no build step; it loads `storyboard.json`, `runs.jsonl` and the documents directly |
 | [DESIGN.md](DESIGN.md) | Audience, intent, why each shot exists, the audience tests and what they changed |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Stages, contracts, caching, GPU jobs, failure handling |
 | [EXPERIMENTS.md](EXPERIMENTS.md) | Hypothesis, change, result, decision |

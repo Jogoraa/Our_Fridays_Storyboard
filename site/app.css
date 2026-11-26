@@ -1,0 +1,207 @@
+/* The Window: showcase page.
+   The look is the room in the film: a cream wall, a green band below it, a wooden window frame. */
+
+:root {
+  --wall: #f4eee0;
+  --wall-deep: #e9e0cc;
+  --dado: #dfe6d8;
+  --green: #2f4a3a;
+  --green-soft: #56705f;
+  --ink: #1d231f;
+  --ink-soft: #4a544c;
+  --wood: #7a4f2b;
+  --wood-dark: #5a3819;
+  --jacaranda: #5b4296;
+  --paper: #fffdf8;
+  --line: #cfc6b0;
+  --serif: "Fraunces", "Noto Serif Ethiopic", Georgia, serif;
+  --sans: "Public Sans", "Noto Serif Ethiopic", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+body {
+  margin: 0;
+  background: var(--wall);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+img, video { max-width: 100%; display: block; }
+a { color: var(--jacaranda); text-underline-offset: 0.18em; }
+a:hover { color: var(--green); }
+:focus-visible { outline: 3px solid var(--jacaranda); outline-offset: 3px; border-radius: 2px; }
+code { font-family: var(--mono); font-size: 0.9em; background: rgb(47 74 58 / 0.09); padding: 0.1em 0.35em; border-radius: 3px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip { position: absolute; left: -999px; top: 0.5rem; background: var(--paper); padding: 0.5rem 0.75rem; z-index: 20; }
+.skip:focus { left: 0.5rem; }
+
+/* ---- top bar ---- */
+.bar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+  padding: 0.7rem clamp(1rem, 4vw, 3rem);
+  background: rgb(244 238 224 / 0.94);
+  border-bottom: 1px solid var(--line);
+}
+.mark { white-space: nowrap; display: inline-flex; align-items: center; gap: 0.6rem; font: 600 1.05rem var(--serif); color: var(--ink); text-decoration: none; }
+.mark-frame { width: 1.05rem; height: 1.3rem; border: 3px solid var(--wood); background: #fff; box-shadow: inset 0 0 0 1px var(--wood-dark); }
+.bar nav { display: flex; gap: clamp(0.9rem, 2.4vw, 2rem); overflow-x: auto; white-space: nowrap; }
+.bar nav a { color: var(--ink-soft); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 0.3rem 0; border-bottom: 2px solid transparent; }
+.bar nav a:hover, .bar nav a[aria-current="true"] { color: var(--green); border-bottom-color: var(--green); }
+
+/* ---- the room: hero ---- */
+.room {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 6vw, 6rem) 0;
+  background: linear-gradient(to bottom, var(--wall) 0, var(--wall) calc(100% - 7.5rem), var(--dado) calc(100% - 7.5rem), var(--dado) 100%);
+  min-height: min(92vh, 56rem);
+}
+.room-copy { max-width: 34rem; padding-bottom: 9rem; }
+h1 { font: 600 clamp(2.8rem, 7vw, 5.25rem)/0.98 var(--serif); letter-spacing: -0.025em; margin: 0 0 1.4rem; text-wrap: balance; }
+h1 .am { display: block; font: 400 0.42em/1.4 "Noto Serif Ethiopic", var(--serif); letter-spacing: 0; color: var(--green-soft); margin-top: 0.5rem; }
+.logline { font: 400 clamp(1.15rem, 1.6vw, 1.4rem)/1.5 var(--serif); margin: 0 0 1rem; text-wrap: pretty; }
+.credit { color: var(--ink-soft); font-size: 0.98rem; margin: 0 0 2rem; }
+
+.cuts { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cuts button {
+  font: 600 0.95rem var(--sans); color: var(--green);
+  background: transparent; border: 1.5px solid var(--green); border-radius: 999px;
+  padding: 0.55rem 1.05rem; cursor: pointer;
+  transition: background 0.25s var(--ease), color 0.25s var(--ease);
+}
+.cuts button span { font-weight: 400; opacity: 0.75; margin-left: 0.3rem; }
+.cuts button:hover { background: rgb(47 74 58 / 0.1); }
+.cuts button[aria-pressed="true"] { background: var(--green); color: var(--paper); }
+.cut-note { color: var(--ink-soft); font-size: 0.92rem; margin: 0.9rem 0 0; min-height: 1.5em; }
+
+/* the window the film plays in */
+.window { align-self: end; justify-self: center; width: min(23.5rem, 78vw); transition: width 0.6s var(--ease); }
+.window[data-cut="16x9"], .window[data-cut="radio"] { width: min(46rem, 90vw); }
+.pane {
+  background: #0d0f0e;
+  border: 14px solid var(--wood);
+  border-bottom-width: 10px;
+  box-shadow: inset 0 0 0 2px var(--wood-dark), 0 1.5rem 3rem -1rem rgb(40 30 15 / 0.45);
+  aspect-ratio: 9 / 16; overflow: hidden;
+  transition: aspect-ratio 0.6s var(--ease);
+}
+.window[data-cut="16x9"] .pane { aspect-ratio: 16 / 9; }
+.window[data-cut="radio"] .pane { aspect-ratio: 16 / 9; }
+.window[data-cut="radio"] video { object-fit: contain; }
+.pane video { width: 100%; height: 100%; object-fit: cover; background: #0d0f0e; }
+.sill { height: 1.1rem; margin: 0 -0.9rem; background: var(--wood-dark); border-radius: 2px; box-shadow: 0 0.6rem 1rem -0.4rem rgb(40 30 15 / 0.5); }
+.pane.opening { animation: open 0.9s var(--ease); }
+@keyframes open { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* ---- sections ---- */
+.wrap { max-width: 72rem; margin: 0 auto; padding: clamp(3rem, 7vw, 5.5rem) clamp(1rem, 4vw, 3rem); }
+.band { background: var(--dado); }
+.plain { background: var(--wall); }
+h2 { font: 600 clamp(1.9rem, 3.4vw, 2.75rem)/1.1 var(--serif); letter-spacing: -0.018em; margin: 0 0 0.9rem; text-wrap: balance; }
+h3 { font: 600 1.2rem/1.3 var(--serif); margin: 2.6rem 0 0.9rem; }
+.lede { max-width: 68ch; color: var(--ink-soft); margin: 0 0 2.2rem; }
+.fine { color: var(--ink-soft); font-size: 0.9rem; max-width: 72ch; }
+
+/* ---- shot by shot ---- */
+.strip { list-style: none; margin: 0 0 2rem; padding: 0 0 0.6rem; display: flex; gap: 0.6rem; overflow-x: auto; }
+.strip button {
+  display: block; padding: 0; width: 5.2rem; flex: none; cursor: pointer;
+  background: none; border: 3px solid transparent; border-radius: 3px; position: relative;
+  transition: border-color 0.2s var(--ease), transform 0.3s var(--ease);
+}
+.strip img { aspect-ratio: 9 / 16; object-fit: cover; width: 100%; border-radius: 1px; }
+.strip button span { position: absolute; left: 0.3rem; bottom: 0.25rem; font: 600 0.75rem var(--sans); color: #fff; text-shadow: 0 1px 3px rgb(0 0 0 / 0.8); }
+.strip button:hover { transform: translateY(-3px); }
+.strip button[aria-current="true"] { border-color: var(--wood); }
+
+.shot { display: grid; grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.shot figure { margin: 0; }
+.shot figure img { width: 100%; border: 8px solid var(--wood); box-shadow: inset 0 0 0 1px var(--wood-dark), 0 1rem 2rem -1rem rgb(40 30 15 / 0.4); }
+.shot figure.swap img { animation: open 0.55s var(--ease); }
+.shot figcaption { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.6rem; }
+.shot-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; margin-bottom: 1rem; }
+.shot-head strong { font: 600 1.35rem var(--serif); }
+.shot-head span { color: var(--ink-soft); font-size: 0.92rem; }
+.shot .narration { font: 400 clamp(1.3rem, 2.2vw, 1.75rem)/1.55 "Noto Serif Ethiopic", var(--serif); margin: 0 0 0.6rem; }
+.shot .subtitle { font: 400 1.1rem/1.5 var(--serif); color: var(--ink-soft); margin: 0 0 1.4rem; }
+.shot .reason { background: var(--paper); padding: 1rem 1.2rem; border-radius: 4px; margin: 0 0 1.4rem; max-width: 60ch; }
+.shot .reason b { display: block; font-size: 0.85rem; font-weight: 600; color: var(--green); margin-bottom: 0.2rem; }
+.shot dl { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.45rem 1.2rem; margin: 0 0 1.4rem; font-size: 0.94rem; }
+.shot dt { color: var(--ink-soft); }
+.shot dd { margin: 0; }
+.shot details { margin-bottom: 0.6rem; max-width: 70ch; }
+.shot summary { cursor: pointer; font-weight: 600; color: var(--green); }
+.shot details p { font-size: 0.94rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+.shot .actions { display: flex; flex-wrap: wrap; gap: 0.8rem 1.2rem; align-items: center; margin-top: 1.4rem; }
+.shot audio { height: 2.4rem; max-width: 100%; }
+.go { font: 600 0.95rem var(--sans); color: var(--paper); background: var(--green); border: 0; border-radius: 999px; padding: 0.6rem 1.15rem; cursor: pointer; transition: background 0.2s var(--ease); }
+.go:hover { background: var(--jacaranda); }
+
+/* ---- how it was made ---- */
+.stages { list-style: none; margin: 0 0 2.5rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0; border-top: 2px solid var(--green); }
+.stages li { padding: 1rem 1.2rem 1.1rem 0; border-bottom: 1px solid var(--line); }
+.stages b { display: block; font: 600 1.05rem var(--serif); }
+.stages span { display: block; font-size: 0.9rem; color: var(--ink-soft); }
+.stages em { font-style: normal; font-size: 0.82rem; color: var(--green); }
+
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+th, td { text-align: left; padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-weight: 600; color: var(--ink-soft); font-size: 0.85rem; white-space: nowrap; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; padding-right: 1.4rem; }
+#ledger td:first-child { font-weight: 600; }
+.band th, .band td { border-bottom-color: #c2ccb9; }
+
+/* ---- the brief ---- */
+.brief td:first-child { font-weight: 600; width: 15rem; }
+.brief td:nth-child(2) { color: var(--ink-soft); }
+.brief td:last-child { white-space: nowrap; }
+.brief .group td { font: 600 1.05rem var(--serif); color: var(--green); padding-top: 1.6rem; border-bottom: 2px solid var(--green); }
+.brief button, .files button { font: inherit; color: var(--jacaranda); background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline; text-underline-offset: 0.18em; }
+.brief button:hover, .files button:hover { color: var(--green); }
+.files { list-style: none; padding: 0; margin: 0; columns: 2 20rem; column-gap: 3rem; }
+.files li { break-inside: avoid; padding: 0.45rem 0; border-bottom: 1px solid #c2ccb9; display: flex; gap: 0.8rem; justify-content: space-between; }
+.files li span { color: var(--ink-soft); font-size: 0.9rem; text-align: right; }
+
+/* ---- documents ---- */
+.tabs { display: flex; gap: 0.2rem; overflow-x: auto; border-bottom: 2px solid var(--green); }
+.tabs button { font: 600 0.92rem var(--sans); color: var(--ink-soft); background: none; border: 0; border-radius: 4px 4px 0 0; padding: 0.7rem 1rem; cursor: pointer; white-space: nowrap; }
+.tabs button:hover { color: var(--green); }
+.tabs button[aria-selected="true"] { background: var(--green); color: var(--paper); }
+.doc { background: var(--paper); padding: clamp(1.25rem, 4vw, 3rem); min-height: 20rem; }
+.doc > * { max-width: 72ch; }
+.doc > .table-scroll, .doc > pre { max-width: 100%; }
+.doc h1 { font: 600 2rem/1.15 var(--serif); letter-spacing: -0.015em; margin: 0 0 1rem; }
+.doc h2 { font-size: 1.45rem; margin: 2.4rem 0 0.7rem; }
+.doc h3 { font-size: 1.12rem; margin: 1.8rem 0 0.5rem; }
+.doc p, .doc li { line-height: 1.65; }
+.doc ul, .doc ol { padding-left: 1.3rem; }
+.doc li { margin-bottom: 0.35rem; }
+.doc blockquote { margin: 1.2rem 0; padding: 0.2rem 0 0.2rem 1.2rem; border-left: 1px solid var(--green); color: var(--ink-soft); font-family: var(--serif); font-size: 1.08rem; }
+.doc pre { background: #1d231f; color: #eef0e6; padding: 1rem 1.2rem; border-radius: 4px; overflow-x: auto; font: 0.86rem/1.55 var(--mono); }
+.doc pre code { background: none; padding: 0; color: inherit; }
+.doc table { font-size: 0.9rem; margin: 1rem 0; }
+.doc hr { border: 0; border-top: 1px solid var(--line); margin: 2rem 0; }
+.doc .state { color: var(--ink-soft); }
+
+.foot { background: var(--green); color: #e6ece2; padding: 2.2rem clamp(1rem, 4vw, 3rem); font-size: 0.92rem; }
+.foot p { max-width: 72rem; margin: 0 auto 0.4rem; }
+.foot a { color: #fff; }
+
+@media (max-width: 54rem) {
+  .room { grid-template-columns: 1fr; min-height: 0; }
+  .room-copy { padding-bottom: 0; }
+  .window { justify-self: center; }
+  .shot { grid-template-columns: 1fr; }
+  .shot figure { max-width: 15rem; }
+  .brief td:first-child { width: auto; }
+  .brief td:last-child { white-space: normal; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

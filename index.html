@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Window — a short film and the pipeline that makes it</title>
+  <meta name="description" content="An 81-second film narrated in Amharic, generated from one storyboard file by a reproducible pipeline. Watch it, walk through it shot by shot, and read how it was made.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Noto+Serif+Ethiopic:wght@400;600&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site/app.css">
+</head>
+<body>
+  <a class="skip" href="#film">Skip to the film</a>
+
+  <header class="bar">
+    <a class="mark" href="#top" aria-label="The Window, top of page">
+      <span class="mark-frame" aria-hidden="true"></span>
+      <span>The Window</span>
+    </a>
+    <nav aria-label="Sections">
+      <a href="#film">Film</a>
+      <a href="#shots">Shot by shot</a>
+      <a href="#made">How it was made</a>
+      <a href="#brief">The brief</a>
+      <a href="#documents">Documents</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="room" id="film" aria-labelledby="title">
+      <div class="room-copy">
+        <h1 id="title">The Window <span class="am" lang="am">መስኮቱ</span></h1>
+        <p class="logline">Two old men share a room in a home for the elderly. One has the bed by the only window, and every afternoon he describes the world outside to the friend who cannot sit up.</p>
+        <p class="credit">Adapted from the parable “The Hospital Window”. Narrated in Amharic with English subtitles. <span id="runtime">81 seconds.</span></p>
+        <div class="cuts" role="group" aria-label="Choose a version">
+          <button type="button" data-cut="9x16" aria-pressed="true">Vertical <span>9:16</span></button>
+          <button type="button" data-cut="16x9" aria-pressed="false">Horizontal <span>16:9</span></button>
+          <button type="button" data-cut="radio" aria-pressed="false">Radio cut <span>voice only</span></button>
+        </div>
+        <p class="cut-note" id="cut-note"></p>
+      </div>
+      <div class="window" id="window" data-cut="9x16">
+        <div class="pane">
+          <video id="player" controls playsinline preload="metadata" poster="outputs/keyframes/shot_04_9x16.jpg">
+            <source src="outputs/film/the_window_9x16.mp4" type="video/mp4">
+            Your browser cannot play this video. <a href="outputs/film/the_window_9x16.mp4">Download the film</a>.
+          </video>
+        </div>
+        <div class="sill" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="band" id="shots" aria-labelledby="shots-h">
+      <div class="wrap">
+        <h2 id="shots-h">Shot by shot</h2>
+        <p class="lede">Eleven shots, each with a reason to exist. Everything below is read from <code>storyboard.json</code>, the one file every stage of the pipeline works from. Choose a shot; the film can jump to it.</p>
+        <ol class="strip" id="strip" aria-label="Shots"></ol>
+        <article class="shot" id="shot" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <section class="plain" id="made" aria-labelledby="made-h">
+      <div class="wrap">
+        <h2 id="made-h">How it was made</h2>
+        <p class="lede">Nothing here was edited by hand. One command, <code>uv run film</code>, turns the storyboard into narration, pictures, a score and both films. Every model call leaves one line in <code>runs.jsonl</code>; the table below is computed from that file as you load this page.</p>
+        <ol class="stages" id="stages"></ol>
+        <div class="ledger">
+          <h3>The run log, by stage</h3>
+          <div class="table-scroll"><table id="ledger"><caption class="sr">Model calls per stage, from runs.jsonl</caption></table></div>
+          <p class="fine" id="ledger-note"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="brief" aria-labelledby="brief-h">
+      <div class="wrap">
+        <h2 id="brief-h">The brief, and where each part is answered</h2>
+        <p class="lede">The assignment, “AI-Content Generation: The Heritage Short”, asks for a film and for the pipeline that makes it, and grades the process as heavily as the result. This is what it asks for, in short, and where to look.</p>
+        <div class="table-scroll"><table class="brief" id="brief-table"><caption class="sr">Requirements and evidence</caption></table></div>
+        <h3>The files the brief asks a repository to contain</h3>
+        <ul class="files" id="files"></ul>
+      </div>
+    </section>
+
+    <section class="plain" id="documents" aria-labelledby="docs-h">
+      <div class="wrap">
+        <h2 id="docs-h">Documents</h2>
+        <p class="lede">The project’s written record, loaded straight from the repository. What broke is written down as carefully as what worked.</p>
+        <div class="reader">
+          <div class="tabs" role="tablist" aria-label="Documents" id="doc-tabs"></div>
+          <article class="doc" id="doc" role="tabpanel" tabindex="0"></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Made with AI. All three characters and the home are fictional; no real person or organisation is shown or voiced.</p>
+    <p><a href="https://github.com/Jogoraa/the-window-film">Source on GitHub</a> · FLUX.2 klein · ACE-Step 1.5 · Gemini TTS · FFmpeg</p>
+  </footer>
+
+  <script src="site/app.js" defer></script>
+</body>
+</html>
