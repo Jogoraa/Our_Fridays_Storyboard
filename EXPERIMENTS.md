@@ -151,3 +151,12 @@ Entries E1 to E10 were run on the project's first story, "Our Fridays", before t
 - **Result:** The author, a native speaker, listened to all three (`outputs/narration/voice_test/`) and chose to keep `Sulafat`.
 - **Decision:** No change to `narration_voice`. The hypothesis was not confirmed by the one judge who could confirm it. The listener's comment stands in DESIGN.md as given, and the question goes to the remaining listeners.
 - **Also learned:** the speech allowance resets at 08:00 UTC. It is a daily limit after all, not the rolling window that E8 concluded from one evening's behaviour.
+
+## E17. Can the narrator be steered off pressing its consonants?
+
+- **Why:** A second listener said some Amharic words need a particular pronunciation that the narrator does not get. The author named an example, ይጋሩ in the first line, and described the fault: the words are read pressed (ጫን ተብለው). Amharic spelling does not mark which consonants are doubled, so a speech model has to guess.
+- **Hypotheses:** (A) a style instruction asking for soft, light, never-doubled consonants will fix it without touching the text; (B) replacing the word with one the model is less likely to press on will fix it; (C) both together.
+- **Change:** the film's first line recorded three ways, same voice, on `gemini-3.8-flash-lite-tts` (`runs.jsonl`, stage `narration`, purpose `pronunciation test after audience feedback`). For B and C, "አንድ ክፍል ይጋሩ ነበር" became "በአንድ ክፍል አብረው ይኖሩ ነበር". Files in `outputs/narration/pronunciation_test/`.
+- **Result:** The author listened to all four versions, including the current one, and judged none of the three better. The narration stays as recorded.
+- **Decision:** No change. A style instruction did not reach pronunciation at the level of a single consonant, and changing the author's wording to suit the model was not worth it for a fault a listener called "a bit funny, not in a bad way".
+- **What this adds to E16:** two listeners heard a non-native quality in the voice; two different remedies (a native-labelled voice, a pronunciation instruction) were tried and judged by a native speaker; neither won. On today's free speech model this is a limit of the tool for Amharic, and it is reported as one.

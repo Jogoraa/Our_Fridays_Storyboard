@@ -78,6 +78,7 @@ What changed because of it:
 
 - The complaint was about the voice, not the words (the Amharic text was written by the author, a native speaker). The narrator was `Sulafat`, a general multilingual voice. Looking for the cause turned up two voices in the provider's library that are recorded as native Amharic speakers and had not been tried: `am-et-tutor-1` (a woman in her early fifties from Addis Ababa) and `am-et-assistant-1` (a man in his late twenties from Wollo).
 - The film's first line was recorded with each (`outputs/narration/voice_test/`) and the author, a native speaker, compared all three. He chose to keep `Sulafat`. So this comment led to an experiment (EXPERIMENTS E16) and a considered decision, not to a change in the storyboard. It is recorded here as it happened.
+- The second comment named the fault more exactly, and the author gave an example: ይጋሩ in the first line is read pressed, as if the consonant were doubled. The first line was recorded three more ways (a softer reading instruction, a different word, both). The author judged none of them better than the current take, so the narration stays (EXPERIMENTS E17). Two remedies tried, neither adopted: the non-native quality is a limit of the free speech model for Amharic, and the film says so in its documents instead of hiding it.
 
 ## Test 2: the near-final cut
 
