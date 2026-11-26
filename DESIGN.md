@@ -64,9 +64,19 @@ Narration over placeholder music on a black screen with subtitles (`uv run film 
 
 Questions to ask: What happened in the story, in your own words? Where did you lose interest or get confused? Did you see the ending coming, and how did it leave you feeling? Did any word sound wrong or disrespectful toward the elders?
 
-- Date and participants: **not yet conducted**
-- What they said: **pending**
-- What changed in the storyboard because of it: **pending**
+**In progress: one of three listeners so far.**
+
+| Listener | When | What they said |
+|---|---|---|
+| A friend of the author | 25 to 26 November, after hearing the radio cut | "It's quite a nice story," but the narration does not sound like a native Amharic speaker. |
+| Second listener | pending | |
+| Third listener | pending | |
+
+What changed because of it:
+
+- The complaint was about the voice, not the words (the Amharic text was written by the author, a native speaker). The narrator was `Sulafat`, a general multilingual voice. Looking for the cause turned up two voices in the provider's library that are recorded as native Amharic speakers and had not been tried: `am-et-tutor-1` (a woman in her early fifties from Addis Ababa) and `am-et-assistant-1` (a man in his late twenties from Wollo).
+- The film's first line was recorded with each (`outputs/narration/voice_test/`) for the author and the listener to compare with the current voice. The choice, and the change to `narration_voice` in the storyboard, are recorded in EXPERIMENTS E16.
+- The voice had also been sped up by 10% to fit 90 seconds. The native voices read faster, so that speed-up may no longer be needed; this is checked in the same experiment.
 
 ## Test 2: the near-final cut
 
