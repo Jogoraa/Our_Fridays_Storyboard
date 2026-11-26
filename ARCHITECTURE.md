@@ -125,6 +125,10 @@ Outputs are written to a temporary file and renamed, and the meta file is writte
 
 Keys are read from `.env`, which is git-ignored. `.env.example` lists the names. No key is written to logs, outputs or documents.
 
+## Checked from a clean clone
+
+On 26 November the repository was cloned into an empty folder with no `.env` and `uv run film` was run once. It exited 0 in 2 minutes 5 seconds. `runs.jsonl` had 225 lines before and 225 after: no model was called. Narration, references, keyframes and the score were cache hits; the 22 shot clips, which are not kept in the repository because FFmpeg re-renders them identically, were rendered again; both films were present at the end.
+
 ## Tests
 
 `uv run pytest` runs about 106 tests in about 90 seconds with no network. Hosted calls and GPU jobs are replaced by fakes that return generated audio or small files; FFmpeg is real, so the radio cut and the film are actually assembled in both aspect ratios and their length, frame size and loudness are measured. The tests use a frozen sample storyboard (`tests/fixtures/storyboard.json`), so they do not change when the film does.

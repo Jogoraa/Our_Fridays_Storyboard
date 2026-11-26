@@ -18,7 +18,7 @@ uv run film
 
 `uv run film` validates the storyboard and runs every stage in order: narration, timing, keyframes, video, shots, film. The finished films are written to `outputs/film/the_window_9x16.mp4` and `outputs/film/the_window_16x9.mp4`.
 
-**On a clean clone no keys are needed.** Everything the models generated is kept in `outputs/` with a fingerprint of the inputs that produced it. The run sees that nothing changed, makes zero model calls, and re-assembles both films with FFmpeg in a few minutes. The first run downloads the Python dependencies.
+**On a clean clone no keys are needed.** Everything the models generated is kept in `outputs/` with a fingerprint of the inputs that produced it. The run sees that nothing changed, makes zero model calls, re-renders the shot clips with FFmpeg and leaves both films in `outputs/film/`. Checked on a clean clone: about two minutes, and `runs.jsonl` did not grow by a line. The first run downloads the Python dependencies.
 
 **To generate something new you need keys.** Copy `.env.example` to `.env` and fill it in:
 

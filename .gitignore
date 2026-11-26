@@ -10,7 +10,7 @@ outputs/tmp/
 .superpowers/
 outputs/film/work/*.wav
 outputs/smoke/
-outputs/clips/*.mp4
+outputs/clips/
 outputs/tmp/
 outputs/film/work/
 report/
