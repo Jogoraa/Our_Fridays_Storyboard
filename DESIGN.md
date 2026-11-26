@@ -75,8 +75,7 @@ Questions to ask: What happened in the story, in your own words? Where did you l
 What changed because of it:
 
 - The complaint was about the voice, not the words (the Amharic text was written by the author, a native speaker). The narrator was `Sulafat`, a general multilingual voice. Looking for the cause turned up two voices in the provider's library that are recorded as native Amharic speakers and had not been tried: `am-et-tutor-1` (a woman in her early fifties from Addis Ababa) and `am-et-assistant-1` (a man in his late twenties from Wollo).
-- The film's first line was recorded with each (`outputs/narration/voice_test/`) for the author and the listener to compare with the current voice. The choice, and the change to `narration_voice` in the storyboard, are recorded in EXPERIMENTS E16.
-- The voice had also been sped up by 10% to fit 90 seconds. The native voices read faster, so that speed-up may no longer be needed; this is checked in the same experiment.
+- The film's first line was recorded with each (`outputs/narration/voice_test/`) and the author, a native speaker, compared all three. He chose to keep `Sulafat`. So this comment led to an experiment (EXPERIMENTS E16) and a considered decision, not to a change in the storyboard. It is recorded here as it happened.
 
 ## Test 2: the near-final cut
 
@@ -84,6 +83,16 @@ The near-final film, played to at least three people from the audience.
 
 Questions to ask: Are Girma and Kebede recognisably the same two men in every shot? Could you read the subtitles comfortably? Was the music ever in the way of the voice? Did the white wall and the reveal land?
 
-- Date and participants: **not yet conducted**
-- What they said: **pending**
-- What changed because of it: **pending**
+**In progress: the number of viewers is to be confirmed by the author.**
+
+| Viewers | When | What they said |
+|---|---|---|
+| Friends of the author, watching the first cut with pictures | 25 November | They asked how Gash Girma could be in two places at once, "lying on the bed and sitting behind": was it meant to be something abstract, or a mistake that needed fixing? |
+
+What changed because of it:
+
+- It was a mistake, and the viewers had seen exactly what the builder had seen on the contact sheet: in the vertical version of shot 2 there were three men, one lying down and two sitting behind him. The viewers read the extra figure as the same man twice, which is worse than an extra stranger: it made them wonder whether the film was being symbolic at the moment it most needed to be plain.
+- Shot 2 was changed in the storyboard. Its `characters` went from two to one, and its `keyframe_prompt` and `reason` were rewritten: Kebede alone, flat on his back, with the window and Girma's folded shawl out of focus behind him. Only shot 2 was regenerated, re-rendered and cut back into both films (EXPERIMENTS E14; `git log -- storyboard.json`).
+- A first attempt, adding the sentence "exactly two people in the picture" to the prompt, did not fix it. The rejected images are kept in `outputs/keyframes/rejected/`.
+
+Still to ask the remaining viewers: are the two men the same in every shot, can the subtitles be read comfortably, is the music ever in the way, and does the white wall land.

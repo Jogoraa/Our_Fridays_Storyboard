@@ -141,3 +141,13 @@ Entries E1 to E10 were run on the project's first story, "Our Fridays", before t
 - **Why they are not in the film:** a shot lasts 6 to 9 seconds. A 1.4-second clip has to be slowed and then held on its last frame for about seven seconds, which reads as a movement that stops dead. It is also 480x832 stretched to 1080x1920, softer than the 720x1280 keyframe. The slow push-in over the still is smoother for the whole length of the shot.
 - **Decision:** All shots stay moving stills (`render: still`). The video stage and its fallback remain in the pipeline for a larger GPU. At 57 GPU minutes per 1.4 seconds, animating the whole film at this length would take about 55 hours, against a quota of 30 a week.
 - **What changed my mind:** I expected the model to be the limit. The limit was that an hour of a free GPU buys a second and a half.
+
+## E16. Would a voice recorded as a native Amharic speaker be better?
+
+- **Why:** The first listener to the radio cut said the story was nice but the narration did not sound like a native Amharic speaker (DESIGN.md, test 1).
+- **Hypothesis:** The words are the author's, so the cause is the voice. `Sulafat` is a general multilingual voice; a voice the provider lists under `am-ET` should sound more native.
+- **Change:** voice only. The film's first line, same text and style instruction, recorded with `am-et-tutor-1` (a woman from Addis Ababa) and `am-et-assistant-1` (a man from Wollo), found by querying the voice library for `am-ET`. Both on `gemini-3.8-flash-lite-tts`, because the main model's daily allowance was used up (`runs.jsonl`, stage `narration`, purpose `voice comparison after audience feedback`).
+- **Measured:** `am-et-tutor-1` 7.79 s, 0.110 s per character; `am-et-assistant-1` 7.51 s, 0.106; `Sulafat` on the main model 8.00 s, 0.113. The native voices are slightly faster, not enough to matter.
+- **Result:** The author, a native speaker, listened to all three (`outputs/narration/voice_test/`) and chose to keep `Sulafat`.
+- **Decision:** No change to `narration_voice`. The hypothesis was not confirmed by the one judge who could confirm it. The listener's comment stands in DESIGN.md as given, and the question goes to the remaining listeners.
+- **Also learned:** the speech allowance resets at 08:00 UTC. It is a daily limit after all, not the rolling window that E8 concluded from one evening's behaviour.
