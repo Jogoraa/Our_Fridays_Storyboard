@@ -4,6 +4,7 @@
    drift from the project. */
 
 const REPO = "https://github.com/Jogoraa/the-window-film";
+const RAW = "https://raw.githubusercontent.com/Jogoraa/the-window-film/main";
 const $ = (selector, root = document) => root.querySelector(selector);
 const el = (tag, attrs = {}, ...children) => {
   const node = document.createElement(tag);
@@ -269,7 +270,8 @@ async function openDoc(name, scroll = false) {
   if (scroll) $("#documents").scrollIntoView();
   if (!cache.has(name)) {
     panel.innerHTML = `<p class="state">Loading ${name}…</p>`;
-    try { cache.set(name, markdown(await getText(name))); }
+    // Some hosts do not publish a README; fall back to the copy on GitHub.
+    try { cache.set(name, markdown(await getText(name).catch(() => getText(`${RAW}/${name}`)))); }
     catch (error) {
       panel.replaceChildren(el("p", { class: "state" }, document.createTextNode(`${name} could not be loaded here. `), el("a", { href: `${REPO}/blob/main/${name}`, text: "Read it on GitHub" }), document.createTextNode(".")));
       return;

@@ -6,7 +6,7 @@ Two old men share a room in a home for the elderly. One has the bed by the only 
 
 The pipeline turns one file, `storyboard.json`, into narration, pictures, music and a finished edit in vertical (9:16) and horizontal (16:9). Change one shot in that file, run one command, and only that shot is regenerated.
 
-**Showcase page:** `index.html` in this repository is a static page with the films, every shot and its reason, the run log and all the documents. It reads this repository's own files, needs no build step, and deploys as it is to any static host.
+**Watch it and read about it:** https://the-window-film.vercel.app/ — the films, every shot with its reason, the run log and all the documents on one page. The page (`index.html`) is static and reads this repository's own files.
 
 ## Run it
 
@@ -51,7 +51,7 @@ uv run film --only keyframes --collect   # pick up a GPU job that is already run
 uv run film --force --only film     # ignore the cache for the stage that runs
 uv run python -m pipeline.smoke     # call each provider once and log the latency
 uv run python -m pipeline.costs     # rebuild COSTS.md from runs.jsonl
-uv run pytest                       # about 110 tests, no network needed
+uv run pytest                       # 109 tests, no network needed
 ```
 
 ## What it does, stage by stage

@@ -131,4 +131,4 @@ On 26 November the repository was cloned into an empty folder with no `.env` and
 
 ## Tests
 
-`uv run pytest` runs about 106 tests in about 90 seconds with no network. Hosted calls and GPU jobs are replaced by fakes that return generated audio or small files; FFmpeg is real, so the radio cut and the film are actually assembled in both aspect ratios and their length, frame size and loudness are measured. The tests use a frozen sample storyboard (`tests/fixtures/storyboard.json`), so they do not change when the film does.
+`uv run pytest` runs 109 tests in about 90 seconds with no network. Hosted calls and GPU jobs are replaced by fakes that return generated audio or small files; FFmpeg is real, so the radio cut and the film are actually assembled in both aspect ratios and their length, frame size and loudness are measured. The tests use a frozen sample storyboard (`tests/fixtures/storyboard.json`), so they do not change when the film does.

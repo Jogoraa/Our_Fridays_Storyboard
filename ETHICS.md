@@ -39,10 +39,10 @@ Listed as each model is actually used.
 | Narration | `gemini-3.8-flash-tts`, fallback `gemini-3.8-flash-lite-tts` | Gemini API, free tier | Gemini API terms | Free-tier inputs may be used to improve Google's products, so no private data is sent |
 | Script draft (first story only) | `gemini-3.5-flash-lite` | Gemini API, free tier | Gemini API terms | Its Amharic was rejected; see FAILURES.md F7 |
 | References and keyframes | FLUX.2 klein 4B (`black-forest-labs/FLUX.2-klein-4B`) | Kaggle notebook, Tesla T4 | Apache 2.0 | The 4B model, not the 9B one, which is non-commercial |
+| Score | ACE-Step 1.5 (`acestep-v15-turbo`) | Kaggle notebook, Tesla T4 | MIT; outputs may be used commercially | Instrumental, no lyrics, no voice |
+| Video test | Wan 2.2 TI2V-5B | Kaggle notebook, two Tesla T4 | Apache 2.0 | Three test clips were made; none is used in the film (EXPERIMENTS E15) |
 | Assembly | FFmpeg 9 | Local | LGPL/GPL | A tool, not a model; deterministic |
 | Radio-cut bed | FFmpeg synthesis | Local | Our own output | A placeholder, not the score |
-
-Video (Wan 2.2, Apache 2.0) and music (ACE-Step 1.5, MIT) are added here when they have actually been run.
 
 ## Style and private data
 
