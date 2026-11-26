@@ -64,13 +64,13 @@ Narration over placeholder music on a black screen with subtitles (`uv run film 
 
 Questions to ask: What happened in the story, in your own words? Where did you lose interest or get confused? Did you see the ending coming, and how did it leave you feeling? Did any word sound wrong or disrespectful toward the elders?
 
-**In progress: two of three listeners so far.**
+**Three listeners:** the same three friends who later watched the film (colleagues from the author's workplace and a friend from school), as the author reports it. Two of them commented on the radio cut by itself.
 
 | Listener | When | What they said |
 |---|---|---|
 | A friend of the author | 25 to 26 November, after hearing the radio cut | "It's quite a nice story," but the narration does not sound like a native Amharic speaker. |
 | A second friend of the author | 25 to 26 November, after hearing the radio cut | Some Amharic words need a particular pronunciation and the AI narrator does not fully get them, which is "a bit funny, not in a bad way though". |
-| Third listener | pending | |
+| The third friend | 25 to 26 November | No separate comment on the radio cut alone was reported. |
 
 Two listeners, independently, heard the same thing: the story works and the voice is not quite a native one. The second was more specific than the first: it is particular words, and the effect is slightly comic.
 
@@ -97,4 +97,12 @@ What changed because of it:
 - Shot 2 was changed in the storyboard. Its `characters` went from two to one, and its `keyframe_prompt` and `reason` were rewritten: Kebede alone, flat on his back, with the window and Girma's folded shawl out of focus behind him. Only shot 2 was regenerated, re-rendered and cut back into both films (EXPERIMENTS E14; `git log -- storyboard.json`).
 - A first attempt, adding the sentence "exactly two people in the picture" to the prompt, did not fix it. The rejected images are kept in `outputs/keyframes/rejected/`.
 
-Not yet asked of these viewers, and worth asking now that shot 2 is fixed: can the subtitles be read comfortably, is the music ever in the way, and does the white wall land.
+### What the same people said after seeing both
+
+The three friends heard the radio cut first and saw the film with pictures afterwards. Comparing the two, they told the author the story "makes a lot more sense this way", with the pictures.
+
+The friend who first sent the author this story on Telegram also watched the film. He was amazed and said: "it feels alive now."
+
+What this means for the design. The radio cut did its job as a cheap prototype: it showed that the words carried the story and it surfaced the pronunciation problem before any picture existed. But for this particular story it could only ever be half a test. The story is about what one man sees and another imagines, and the turn is a picture, a white wall. Listeners followed it on the voice alone; they felt it when they could see the garden and then see the wall. That is the author's second reason for choosing the story, turned around: some things are better heard than seen, and this ending is the one thing that has to be seen.
+
+Not yet asked of these viewers, and worth asking now that shot 2 is fixed: can the subtitles be read comfortably, and is the music ever in the way.
