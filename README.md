@@ -11,8 +11,8 @@ The pipeline turns one file, `storyboard.json`, into narration, pictures, music 
 You need [uv](https://docs.astral.sh/uv/) and [FFmpeg](https://ffmpeg.org/) on your PATH. Nothing else.
 
 ```bash
-git clone https://github.com/Jogoraa/Our_Fridays_Storyboard.git
-cd Our_Fridays_Storyboard
+git clone https://github.com/Jogoraa/the-window-film.git
+cd the-window-film
 uv run film
 ```
 
