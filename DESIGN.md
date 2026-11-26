@@ -83,11 +83,11 @@ The near-final film, played to at least three people from the audience.
 
 Questions to ask: Are Girma and Kebede recognisably the same two men in every shot? Could you read the subtitles comfortably? Was the music ever in the way of the voice? Did the white wall and the reveal land?
 
-**In progress: the number of viewers is to be confirmed by the author.**
+**Three viewers.** They saw the first cut with pictures, before shot 2 was corrected.
 
 | Viewers | When | What they said |
 |---|---|---|
-| Friends of the author, watching the first cut with pictures | 25 November | They asked how Gash Girma could be in two places at once, "lying on the bed and sitting behind": was it meant to be something abstract, or a mistake that needed fixing? |
+| Three friends of the author: colleagues from his workplace and a friend from school | 25 November | They asked how Gash Girma could be in two places at once, "lying on the bed and sitting behind": was it meant to be something abstract, or a mistake that needed fixing? |
 
 What changed because of it:
 
@@ -95,4 +95,4 @@ What changed because of it:
 - Shot 2 was changed in the storyboard. Its `characters` went from two to one, and its `keyframe_prompt` and `reason` were rewritten: Kebede alone, flat on his back, with the window and Girma's folded shawl out of focus behind him. Only shot 2 was regenerated, re-rendered and cut back into both films (EXPERIMENTS E14; `git log -- storyboard.json`).
 - A first attempt, adding the sentence "exactly two people in the picture" to the prompt, did not fix it. The rejected images are kept in `outputs/keyframes/rejected/`.
 
-Still to ask the remaining viewers: are the two men the same in every shot, can the subtitles be read comfortably, is the music ever in the way, and does the white wall land.
+Not yet asked of these viewers, and worth asking now that shot 2 is fixed: can the subtitles be read comfortably, is the music ever in the way, and does the white wall land.
